@@ -3,9 +3,9 @@
 # from their site, not republication. Anything derived from the .sav stays out
 # of git. See the data-availability statement in README.md.
 # ===========================================================================
-data/
-data_local/
-STU/
+/data/
+/data_local/
+/STU/
 *.sav
 *.zip
 *.parquet
@@ -13,8 +13,8 @@ STU/
 
 # Generated outputs. Every table is reproducible via scripts/run_all.py, so
 # committing them adds noise and risks shipping stale numbers.
-results/
-models/
+/results/
+/models/
 *.pkl
 *.joblib
 *.npy
