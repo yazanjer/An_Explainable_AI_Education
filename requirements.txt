@@ -1,0 +1,30 @@
+# Fully pinned. Reproducibility is a deliverable (editor comment 1).
+# Regenerate the lock with: pip freeze > requirements-lock.txt
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.14.1
+scikit-learn==1.5.2
+pyyaml==6.0.2
+pyarrow==17.0.0
+matplotlib==3.9.2
+seaborn==0.13.2
+statsmodels==0.14.4
+# --- data ingest -----------------------------------------------------------
+pyreadstat==1.2.7
+# --- models ----------------------------------------------------------------
+xgboost==2.1.1
+lightgbm==4.5.0
+tensorflow==2.17.0
+scikeras==0.13.0
+imbalanced-learn==0.12.4
+# --- feature selection -----------------------------------------------------
+Boruta==0.4.3
+skrebate==0.62
+# --- explainability --------------------------------------------------------
+shap==0.46.0
+lime==0.2.0.1
+# --- infrastructure --------------------------------------------------------
+tqdm==4.66.5
+joblib==1.4.2
+pytest==8.3.3
+nbstripout==0.7.1

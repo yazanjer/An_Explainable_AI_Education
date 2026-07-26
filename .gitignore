@@ -1,0 +1,44 @@
+# ===========================================================================
+# PISA microdata is NOT redistributable. The OECD licence permits download
+# from their site, not republication. Anything derived from the .sav stays out
+# of git. See the data-availability statement in README.md.
+# ===========================================================================
+data/
+data_local/
+STU/
+*.sav
+*.zip
+*.parquet
+*.feather
+
+# Generated outputs. Every table is reproducible via scripts/run_all.py, so
+# committing them adds noise and risks shipping stale numbers.
+results/
+models/
+*.pkl
+*.joblib
+*.npy
+
+# CSV is ignored by default because extracts land as .csv, but the
+# configuration files that ARE part of the repository are force-added below.
+*.csv
+!config/*.csv
+
+# Config and codebooks are source, not data.
+!config/*.yaml
+!config/*.yml
+
+# Notebooks are committed with outputs stripped (nbstripout).
+.ipynb_checkpoints/
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+.DS_Store
+.idea/
+.vscode/
