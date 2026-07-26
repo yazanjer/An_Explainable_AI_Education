@@ -35,17 +35,22 @@ Colab badges are embedded at the top of each notebook. Replace `yazanjer` in the
 
 Follow this once. Total time ≈ 20 minutes, most of it the OECD download.
 
-### Step 1 — Create the folder
+### Step 1 — Do NOT create the folder
 
-In Google Drive create a folder named exactly:
+`git clone` creates it. Creating it by hand first makes the clone fail with
+`exit status 128`, because git refuses to clone into a non-empty directory.
+(`RUN_ALL.ipynb` detects this and fetches in place instead, but the numbered
+notebooks do not.)
+
+The folder will be:
 
 ```
 MyDrive/An_Explainable_AI_Education/
 ```
 
-The name matters: `src/vlpso_xai/config.py` looks for this folder first when running under Colab. If you prefer a different name or location, see Step 6.
+The name matters: `src/vlpso_xai/config.py` looks for it first when running under Colab. For a different name or location, see Step 6.
 
-You only need to create the top-level folder. This structure is built automatically on first run:
+This structure is built automatically on first run:
 
 ```
 MyDrive/An_Explainable_AI_Education/
