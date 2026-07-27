@@ -34,8 +34,12 @@ lightgbm>=4.0
 imbalanced-learn>=0.12
 
 # --- feature selection -----------------------------------------------------
+# NOTE: skrebate's released versions are 0.1 ... 0.8.2, plus yanked 0.61/0.62.
+# Under PEP 440, 0.62 > 0.8.2 (62 > 8), so a constraint of ">=0.62" matches
+# NOTHING and makes pip abort the whole file -- taking pyreadstat with it.
+# ReliefF falls back to an internal implementation when skrebate is absent.
 Boruta>=0.3
-skrebate>=0.62
+skrebate>=0.8
 
 # --- explainability --------------------------------------------------------
 shap>=0.44

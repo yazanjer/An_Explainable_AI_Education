@@ -1,0 +1,15 @@
+# Optional. Each has a documented fallback or is used by one analysis only.
+#   skrebate  -> ReliefF falls back to the internal implementation
+#   Boruta    -> the Boruta baseline is skipped
+#   shap/lime -> notebook 06 only
+#   xgboost/lightgbm -> those models are dropped from the registry
+seaborn>=0.13
+statsmodels>=0.14
+xgboost>=2.0
+lightgbm>=4.0
+imbalanced-learn>=0.12
+Boruta>=0.3
+skrebate>=0.8
+shap>=0.44
+lime>=0.2
+nbstripout>=0.7
