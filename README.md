@@ -257,6 +257,23 @@ See [`CITATION.cff`](CITATION.cff).
 
 ---
 
+## Verification
+
+[`VERIFICATION_REPORT.md`](VERIFICATION_REPORT.md) records the outcome of every
+check, including the ones that failed. Headlines:
+
+* **309 tests pass**, on synthetic data, no PISA microdata required.
+* Leakage guard raises on outcome, plausible-value, weight, design, identifier
+  and 20 adversarial derived/encoded column names, with no false positives.
+* Unrestricted permutation returns **AUC 0.5029** (n = 20). The pipeline is clean.
+* Two quick-mode runs with the same seed produce **byte-identical** hashes for
+  all 140 artefacts.
+* An independent adversarial audit found 15 defects in this rebuild; **8 are
+  fixed**, 7 remain open and are listed with severities.
+
+Not yet done: a cold-start Colab run end to end, the SHAP/LIME numbers, and the
+manuscript edits for editor comments 8 and 10.
+
 ## Known limitations
 
 Stated plainly, because the previous version of this work overclaimed.

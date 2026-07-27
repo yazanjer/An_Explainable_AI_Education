@@ -31,6 +31,13 @@
 # Notebooks are committed with outputs stripped (nbstripout).
 .ipynb_checkpoints/
 
+# macOS iCloud / Drive sync conflict copies. These appear as "file 2.py" beside
+# the original, and pytest COLLECTS THEM -- inflating the suite from 163 tests
+# to 286 by running every test twice against a stale copy. They must never be
+# committed.
+* 2.*
+* 3.*
+*\ 2.*
 __pycache__/
 *.py[cod]
 .pytest_cache/
