@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import hashlib
 import logging
+import shutil
 import subprocess
+import time
 from pathlib import Path
 from typing import List, Optional
 
@@ -54,6 +56,54 @@ def ensure_raw(cfg) -> Path:
     )
 
 
+def stage_locally(path: Path, min_free_gb: float = 3.0) -> Path:
+    """Copy a large source file to local disk before repeatedly reading it.
+
+    Google Drive is mounted over FUSE. Every read is a network round trip, and
+    building the analytic frame makes roughly ten passes over the 1.8 GB SPSS
+    file (one per column batch, per contiguous country block). On local disk
+    that takes ~40 seconds; from Drive it can take well over an hour and looks
+    like a hang.
+
+    Copying once (1-2 minutes) and reading locally is dramatically faster. The
+    copy lives in the ephemeral runtime, so it costs no Drive quota and
+    disappears on disconnect -- the Drive original is untouched.
+
+    Falls back to the original path if the file is already local or there is
+    not enough free space.
+    """
+    path = Path(path)
+    if not str(path).startswith("/content/drive"):
+        return path                      # already local
+
+    cache = Path("/content/pisa_local_cache")
+    target = cache / path.name
+    if target.exists() and target.stat().st_size == path.stat().st_size:
+        logger.info("using local copy %s", target)
+        return target
+
+    try:
+        usage = shutil.disk_usage("/content")
+        need = path.stat().st_size + min_free_gb * 1e9
+        if usage.free < need:
+            logger.warning(
+                "only %.1f GB free on local disk; reading directly from Drive. "
+                "This will be SLOW (many passes over a %0.1f GB file over FUSE).",
+                usage.free / 1e9, path.stat().st_size / 1e9,
+            )
+            return path
+    except Exception:
+        return path
+
+    cache.mkdir(parents=True, exist_ok=True)
+    logger.info("copying %.1f GB from Drive to local disk (1-2 min, one off) ...",
+                path.stat().st_size / 1e9)
+    t0 = time.perf_counter()
+    shutil.copy2(path, target)
+    logger.info("copied in %.0fs -> %s", time.perf_counter() - t0, target)
+    return target
+
+
 def _contiguous_blocks(mask):
     """Yield (offset, length) for each run of True in a boolean array."""
     import numpy as np
@@ -91,7 +141,7 @@ def build_analytic_frame(cfg, force: bool = False) -> pd.DataFrame:
 
     import pyreadstat
 
-    sav = ensure_raw(cfg)
+    sav = stage_locally(ensure_raw(cfg))
     countries = [cfg.section("data", "primary_country")] + list(
         cfg.section("data", "external_countries"))
 
@@ -107,7 +157,7 @@ def build_analytic_frame(cfg, force: bool = False) -> pd.DataFrame:
                 len(blocks), [(o, n) for o, n in blocks])
 
     # 2. Read only those row ranges, in column batches, and assemble.
-    BATCH = 250
+    BATCH = 400
     per_block = []
     for bi, (offset, length) in enumerate(blocks):
         parts, miss = [], np.zeros(length, dtype=np.int32)
