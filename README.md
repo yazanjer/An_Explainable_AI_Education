@@ -181,6 +181,9 @@ To force a clean re-run:
 
 | Symptom | Cause | Fix |
 |---|---|---|
+| `remote: Support for password authentication was removed` | Using an account password | Use a Personal Access Token; reset with `bash scripts/reset_git_credentials.sh` |
+| `refusing to allow a Personal Access Token to ... workflow` | Token lacks the `workflow` scope | Add the scope, then `bash scripts/reset_git_credentials.sh` and push again |
+| `Authentication failed` / wrong GitHub account cached | Stale keychain credential | `bash scripts/reset_git_credentials.sh` |
 | `MessageError: credential propagation was unsuccessful` | Drive mount timed out | Re-run with `drive.mount('/content/drive', force_remount=True)` |
 | `OSError: [Errno 5] Input/output error` | Drive rate limit or quota | Wait a few minutes and re-run; checkpoints resume |
 | Kernel dies reading the `.sav` | 1.8 GB exceeds standard-runtime RAM | Switch to a high-RAM runtime, or run only `--stages ingest`, which reads in column batches |
