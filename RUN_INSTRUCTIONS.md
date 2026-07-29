@@ -39,6 +39,10 @@ next. Do not run them all at once.
 | Cell | What it does | Time | You should see at the end |
 |---|---|---|---|
 | 1 | Downloads the code, installs software | 5 min | `Cell 1 OK - continue to Cell 2.` |
+
+**Cell 1 prints a line like `Commit : d2ad12e ...`.** If Dr. Yazan asks which
+version you are running, that is the answer. **Always run Cell 1 after he tells
+you he has pushed an update** — it is what pulls the new code.
 | 2 | Checks the software works | 2 min | `163 passed` (the number may differ slightly; **it must say "passed" and not "failed"**) |
 | 3 | Downloads the PISA data (500 MB) | 20 min | `Data ready: ...CY07_MSU_STU_QQQ.sav` |
 | 4 | Checks the data is readable | 1 min | `Cell 4 OK - ready to run.` |
@@ -105,9 +109,11 @@ Your downloaded data is kept; only the code is refreshed.
 | `numpy.dtype size changed` | Runtime → Restart session, re-run Cell 1 |
 | Anything in Cell 2 says `failed` | **Stop.** Screenshot and report. Do not continue. |
 | Disk full | Delete `data/raw/SPSS_STU_QQQ.zip` from Drive — it is no longer needed |
+| Cell 1 warns `working tree differs` or `Drive may be serving a cached copy` | Set `FORCE_REMOUNT = True` in Cell 1, run it, then set back to `False` |
+| A fix was pushed but nothing changed | Re-run **Cell 1** (not just the failing cell), then check the `Commit :` line |
 
 **Do not** edit any file other than the two switches in Cell 1
-(`RUN_FULL`, `FRESH_CLONE`).
+(`RUN_FULL`, `FRESH_CLONE`, `FORCE_REMOUNT`).
 
 **Do not** upload the PISA data anywhere or share it. It is licensed to be
 downloaded from the OECD, not redistributed.
