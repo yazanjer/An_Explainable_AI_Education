@@ -54,12 +54,35 @@ def ensure_raw(cfg) -> Path:
     )
 
 
+def _contiguous_blocks(mask):
+    """Yield (offset, length) for each run of True in a boolean array."""
+    import numpy as np
+
+    idx = np.flatnonzero(mask)
+    if idx.size == 0:
+        return []
+    breaks = np.flatnonzero(np.diff(idx) > 1)
+    starts = np.r_[idx[0], idx[breaks + 1]]
+    ends = np.r_[idx[breaks], idx[-1]]
+    return [(int(a), int(b - a + 1)) for a, b in zip(starts, ends)]
+
+
 def build_analytic_frame(cfg, force: bool = False) -> pd.DataFrame:
     """Country-filtered frame with full-width missingness, cached as parquet.
 
-    Missingness is counted across ALL 1,119 source columns because the
-    exclusion rule is defined that way; counting it over a subset would give a
-    different analytic sample.
+    MEMORY. An earlier version did ``df, _ = pyreadstat.read_sav(sav)`` and
+    filtered afterwards. That materialises all 612,004 x 1,119 cells -- several
+    GB -- to keep 41,875 rows, and the Colab kernel is killed with SIGKILL
+    (exit -9) before it ever reaches the filter.
+
+    The analytic countries occupy CONTIGUOUS row ranges in the PISA file
+    (Spain 178,897-214,839; Portugal 471,311-477,242), so we read only those
+    slices via ``row_offset``/``row_limit``. Peak memory is proportional to the
+    retained sample, not to the file.
+
+    Missingness is counted across ALL 1,119 source columns, because the
+    exclusion rule is defined that way -- but only for the retained rows, in
+    column batches.
     """
     out = cfg.paths.data_processed / "analytic.parquet"
     if out.exists() and not force:
@@ -73,19 +96,46 @@ def build_analytic_frame(cfg, force: bool = False) -> pd.DataFrame:
         cfg.section("data", "external_countries"))
 
     _, meta = pyreadstat.read_sav(str(sav), metadataonly=True)
+    all_cols = list(meta.column_names)
+
+    # 1. One cheap pass over a single column to locate the rows we want.
     cnt, _ = pyreadstat.read_sav(str(sav), usecols=["CNT"])
     keep = cnt["CNT"].isin(countries).to_numpy()
-    logger.info("%d of %d rows in %s", keep.sum(), len(cnt), countries)
+    logger.info("%d of %d rows in %s", int(keep.sum()), len(cnt), countries)
+    blocks = _contiguous_blocks(keep)
+    logger.info("retained rows span %d contiguous block(s): %s",
+                len(blocks), [(o, n) for o, n in blocks])
 
-    miss = np.zeros(len(cnt), dtype=np.int32)
-    for i in range(0, len(meta.column_names), 250):
-        d, _ = pyreadstat.read_sav(str(sav), usecols=meta.column_names[i:i + 250])
-        miss += d.isna().sum(axis=1).to_numpy(dtype=np.int32)
-        del d
+    # 2. Read only those row ranges, in column batches, and assemble.
+    BATCH = 250
+    per_block = []
+    for bi, (offset, length) in enumerate(blocks):
+        parts, miss = [], np.zeros(length, dtype=np.int32)
+        for i in range(0, len(all_cols), BATCH):
+            cols = all_cols[i:i + BATCH]
+            d, _ = pyreadstat.read_sav(str(sav), usecols=cols,
+                                       row_offset=offset, row_limit=length)
+            miss += d.isna().sum(axis=1).to_numpy(dtype=np.int32)
+            parts.append(d)
+        blk = pd.concat(parts, axis=1)
+        blk["n_missing_allcols"] = miss
+        per_block.append(blk)
+        del parts
+        logger.info("block %d/%d read: %d rows", bi + 1, len(blocks), length)
 
-    df, _ = pyreadstat.read_sav(str(sav))
-    df["n_missing_allcols"] = miss
-    df = df[keep].reset_index(drop=True)
+    df = pd.concat(per_block, ignore_index=True)
+    del per_block
+
+    # Guard: the contiguity assumption must hold, or we silently lose students.
+    if len(df) != int(keep.sum()):
+        raise RuntimeError(
+            f"read {len(df)} rows but {int(keep.sum())} were selected; the "
+            "country blocks are not contiguous in this file. Re-run with the "
+            "chunked reader."
+        )
+    if "CNT" in df.columns:
+        assert set(df["CNT"].unique()) <= set(countries), "country filter leaked"
+
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(out, index=False)
     logger.info("cached %s (%d rows x %d cols)", out, len(df), df.shape[1])
