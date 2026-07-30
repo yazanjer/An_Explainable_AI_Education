@@ -28,6 +28,7 @@ Rules enforced structurally, not by discipline:
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import time
@@ -66,6 +67,7 @@ def _config_fingerprint(
     selector: Optional[Any] = None,
     feature_names: Sequence[str] = (),
     weighted: bool = False,
+    sample_signature: Optional[str] = None,
 ) -> str:
     """Short hash of everything that changes what a fold MEANS.
 
@@ -78,7 +80,15 @@ def _config_fingerprint(
     feature matrix, and whether weights were used**. With `resume=True` and a
     shared checkpoint directory, changing `Chi2Filter(k=15)` to `k=10`, or
     editing the allowlist, silently reloaded the old fold and reported it as
-    new. Everything that can change a result is now hashed.
+    new.
+
+    A live run then exposed a THIRD gap: hashing feature NAMES does not capture
+    the ROWS. When the analytic sample was corrected from Spain+Portugal pooled
+    to Spain only, the columns were identical, so the fingerprint was identical,
+    so every contaminated fold was silently resumed and reported as the fixed
+    result. `sample_signature` now covers the rows -- their count, the label
+    distribution and the set of groups -- so any change to the sample forces a
+    recomputation.
     """
     import hashlib
 
@@ -106,6 +116,7 @@ def _config_fingerprint(
             "n_features": len(feature_names),
             "features": sorted(str(f) for f in feature_names),
             "weighted": bool(weighted),
+            "sample": sample_signature,
         },
         sort_keys=True,
     ).encode()
@@ -150,10 +161,25 @@ def run_nested_cv(
     y = np.asarray(y).astype(int)
     groups = np.asarray(groups)
     rows: List[Dict[str, Any]] = []
+    # Signature of the ROWS, not just the columns.
+    _sig = hashlib.sha256(
+        json.dumps({
+            "n_rows": int(len(y)),
+            "n_pos": int(np.sum(y == 1)),
+            "n_groups": int(len(np.unique(groups))),
+            "group_digest": hashlib.sha256(
+                np.ascontiguousarray(np.sort(np.unique(groups))).tobytes()
+            ).hexdigest()[:16],
+        }, sort_keys=True).encode()
+    ).hexdigest()[:12]
+
     fingerprint = _config_fingerprint(
         cfg, list(models), selector=selector_factory(),
         feature_names=list(X.columns), weighted=sample_weight is not None,
+        sample_signature=_sig,
     )
+    logger.info("run fingerprint %s (sample %s, n=%d, groups=%d)",
+                fingerprint, _sig, len(y), len(np.unique(groups)))
 
     for rep in range(cfg.outer_repeats):
         outer = school_grouped_splitter(

@@ -95,6 +95,15 @@ Then send Dr. Yazan:
 
 ## If something goes wrong
 
+**If Dr. Yazan says results looked wrong and he has pushed a fix**, delete the
+saved progress before re-running, so old results are not reused:
+
+```python
+!rm -rf /content/drive/MyDrive/An_Explainable_AI_Education/results/checkpoints/*
+```
+
+Then re-run Cell 1 and Cell 5.
+
 **First, try this** — it fixes most problems:
 
 In Cell 1, set `FRESH_CLONE = True`, run Cell 1, then set it back to `False`.
