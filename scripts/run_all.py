@@ -89,15 +89,43 @@ def stage_sample(cfg, df):
 
     out = cfg.paths.results / "sample"; out.mkdir(parents=True, exist_ok=True)
     thr = cfg.section("data", "missing_row_threshold")
-    rows = [{"step": "country subset", "n": len(df),
+    primary = cfg.section("data", "primary_country")
+    external = list(cfg.section("data", "external_countries"))
+
+    # ------------------------------------------------------------------
+    # CRITICAL: restrict to the PRIMARY country.
+    #
+    # build_analytic_frame() returns the primary country AND the external
+    # validation countries, because both are read in one pass over the SPSS
+    # file. An earlier version of this function applied only the missingness
+    # rule, so Spain and Portugal were POOLED: the held-out country was in the
+    # training data, and the "external" validation was not external at all.
+    #
+    # Caught by the sample-flow table reporting 41,875 students in 1,365
+    # schools (= 35,943 Spanish + 5,932 Portuguese) where Spain alone is
+    # 35,943 in 1,089. Printing the flow is what made it visible.
+    # ------------------------------------------------------------------
+    n_all = len(df)
+    df = df[df["CNT"] == primary].reset_index(drop=True)
+    logger.info("primary country %s: %d of %d rows (%s held out for external "
+                "validation)", primary, len(df), n_all, external or "none")
+
+    rows = [{"step": f"all countries read ({primary} + {', '.join(external) or 'none'})",
+             "n": n_all, "schools": None},
+            {"step": f"primary country = {primary}", "n": len(df),
              "schools": df.CNTSCHID.nunique()}]
     for t in [thr] + list(cfg.section("data", "missing_row_threshold_sensitivity")):
         k = df[df.n_missing_allcols <= t]
-        rows.append({"step": f"missingness <= {t}", "n": len(k),
+        label = "primary" if t == thr else "sensitivity"
+        rows.append({"step": f"missingness <= {t} [{label}]", "n": len(k),
                      "schools": k.CNTSCHID.nunique()})
     pd.DataFrame(rows).to_csv(out / "sample_flow.csv", index=False)
 
     prim = df[df.n_missing_allcols <= thr].reset_index(drop=True)
+    assert set(prim["CNT"].unique()) == {primary}, (
+        f"analytic sample must contain only {primary}; found "
+        f"{sorted(prim['CNT'].unique())}. The external validation country "
+        "would be inside the training data.")
     # Drop any pre-existing cat_pv* before recomputing. Blindly concatenating
     # onto a cached frame that already carries them produces DUPLICATE column
     # names, so prim["cat_pv1"] silently returns a 2-column DataFrame and every
@@ -186,6 +214,23 @@ def main() -> int:
         level=logging.DEBUG if args.verbose else logging.INFO,
         format="%(asctime)s %(levelname)-7s %(name)s | %(message)s")
     cfg = _setup(args.config)
+
+    # Self-identify. Diagnosing a stale Google Drive copy by inferring it from
+    # a MISSING log line wasted several rounds; the running code now states
+    # which commit it is.
+    import subprocess as _sp
+    root = Path(__file__).resolve().parents[1]
+    try:
+        sha = _sp.check_output(["git", "-C", str(root), "rev-parse", "--short", "HEAD"],
+                               stderr=_sp.DEVNULL, text=True).strip()
+        subj = _sp.check_output(["git", "-C", str(root), "log", "-1", "--pretty=%s"],
+                                stderr=_sp.DEVNULL, text=True).strip()[:60]
+    except Exception:
+        sha, subj = "unknown", "(not a git checkout)"
+    import vlpso_xai
+    from vlpso_xai.data import ingest as _ing
+    logger.info("code    %s %s | vlpso_xai %s | ingest.stage_locally=%s",
+                sha, subj, vlpso_xai.__version__, hasattr(_ing, "stage_locally"))
     logger.info("config %s | hash %s | root %s",
                 cfg.config_path.name, cfg.hash()[:12], cfg.paths.root)
 
