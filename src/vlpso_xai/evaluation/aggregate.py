@@ -53,10 +53,15 @@ THE CORRECT HIERARCHY
 There are three levels, and only the first is a pooling operation::
 
     level 1  folds within (task, method, pv, repeat)
-             -> CONCATENATE. The K outer folds partition the sample, so each
-                student appears exactly once. This is the out-of-fold
-                prediction vector. AUC and a school-clustered BCa bootstrap
-                variance are computed here, and nowhere else.
+             -> METRIC WITHIN EACH FOLD, THEN AVERAGE BY FOLD SIZE. The K outer
+                folds partition the sample, so each student is scored exactly
+                once -- but each fold's model is selected in its own inner loop,
+                so the K score vectors are NOT on a common scale and must not be
+                concatenated. See :func:`fold_weighted_metric` for the evidence
+                that forced this. The school-clustered bootstrap recomputes the
+                fold-weighted average on each resample, so it respects the
+                clustering and the fold boundaries at once. Computed here, and
+                nowhere else.
 
     level 2  repeats within (task, method, pv)
              -> AVERAGE the per-repeat AUCs. Repeats are re-partitions of one
@@ -99,6 +104,8 @@ __all__ = [
     "parse_checkpoint_name",
     "load_fold_predictions",
     "oof_predictions",
+    "fold_weighted_metric",
+    "cluster_bootstrap_foldwise",
     "auc_by_repeat",
     "aggregate_task_method",
     "aggregation_table",
@@ -489,6 +496,187 @@ def oof_predictions(
     return out
 
 
+def _single_metric(
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+    metric: str,
+    threshold: float,
+    sample_weight: Optional[np.ndarray],
+) -> float:
+    """One metric, not the full panel.
+
+    :func:`~vlpso_xai.evaluation.metrics.classification_metrics` computes about
+    a dozen quantities including a confusion matrix and a Brier score. Inside a
+    bootstrap that cost is multiplied by ``n_resamples x n_folds``: at the full
+    budget of 2,000 resamples over 150 repeats of 5 folds that is 1.5 million
+    calls, and the panel makes it roughly an order of magnitude slower than it
+    needs to be. Ranking metrics also do not depend on the threshold at all.
+    """
+    from sklearn import metrics as skm
+
+    w = sample_weight
+    if metric == "auc":
+        return float(skm.roc_auc_score(y_true, y_score, sample_weight=w))
+    if metric == "average_precision":
+        return float(skm.average_precision_score(y_true, y_score, sample_weight=w))
+    y_pred = (y_score >= threshold).astype(int)
+    if metric == "balanced_accuracy":
+        return float(skm.balanced_accuracy_score(y_true, y_pred, sample_weight=w))
+    if metric == "accuracy":
+        return float(skm.accuracy_score(y_true, y_pred, sample_weight=w))
+    if metric == "f1":
+        return float(skm.f1_score(y_true, y_pred, zero_division=0, sample_weight=w))
+    if metric == "recall":
+        return float(skm.recall_score(y_true, y_pred, zero_division=0, sample_weight=w))
+    if metric == "precision":
+        return float(skm.precision_score(y_true, y_pred, zero_division=0, sample_weight=w))
+    # Anything else falls back to the full panel rather than guessing.
+    return float(classification_metrics(y_true, y_score, threshold,
+                                        sample_weight=w)[metric])
+
+
+def fold_weighted_metric(
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+    fold: np.ndarray,
+    *,
+    metric: str = "auc",
+    threshold: float = 0.5,
+    sample_weight: Optional[np.ndarray] = None,
+    min_per_fold: int = 20,
+) -> Dict[str, object]:
+    r"""Metric computed **within each fold**, then averaged by fold size.
+
+    This is the primary level-1 estimand, and the reason is empirical.
+
+    The first version of this module concatenated the folds of a repeat and
+    computed one AUC over the result. That is only valid if the per-fold models
+    put their scores on a common scale. In nested CV they do not: each outer
+    fold selects its own estimator and hyperparameters inside its own inner
+    loop. A pooled AUC then compares a student scored by fold 1's model against
+    a student scored by fold 3's model, which is not a ranking of anything.
+
+    Observed on the real 750-fold run, medium_vs_high. Of the ten plausible
+    values, exactly two — PV5 and PV7 — had all 25 of their folds select
+    GradientBoosting. Those two are exactly the two whose pooled AUC was stable
+    across repeats (SD 0.0010 and 0.0008). The other eight mixed in 1–8
+    RandomForest folds and their pooled AUC swung by 0.014–0.031 between
+    repeats, despite the *per-fold* AUCs being near-identical (per-repeat mean
+    0.6956–0.6967, a range of 0.001). The instability was entirely an artefact
+    of concatenating incomparable scores.
+
+    Averaging within folds removes the cross-fold comparison. Folds are
+    weighted by their size, so the estimate is not distorted by the last fold
+    being a few students smaller.
+
+    Returns the estimate plus ``n_folds_used`` and ``n_folds_dropped``: a fold
+    with fewer than ``min_per_fold`` rows or only one class cannot yield an
+    AUC, and is dropped rather than silently scored as 0.5 or NaN-propagated.
+    """
+    y_true = np.asarray(y_true).astype(int)
+    y_score = np.asarray(y_score, dtype=float)
+    fold = np.asarray(fold)
+    w = None if sample_weight is None else np.asarray(sample_weight, dtype=float)
+
+    vals, sizes, dropped = [], [], 0
+    for f in np.unique(fold):
+        m = fold == f
+        if m.sum() < min_per_fold or len(np.unique(y_true[m])) < 2:
+            dropped += 1
+            continue
+        v = _single_metric(y_true[m], y_score[m], metric, threshold,
+                           None if w is None else w[m])
+        if not np.isfinite(v):
+            dropped += 1
+            continue
+        vals.append(float(v))
+        sizes.append(float(m.sum() if w is None else w[m].sum()))
+
+    if not vals:
+        return {"estimate": float("nan"), "n_folds_used": 0,
+                "n_folds_dropped": int(dropped), "fold_values": []}
+    vals_a, sizes_a = np.asarray(vals), np.asarray(sizes)
+    return {
+        "estimate": float(np.average(vals_a, weights=sizes_a)),
+        "n_folds_used": int(vals_a.size),
+        "n_folds_dropped": int(dropped),
+        "fold_values": vals,
+        "fold_sd": float(vals_a.std(ddof=1)) if vals_a.size > 1 else 0.0,
+    }
+
+
+def cluster_bootstrap_foldwise(
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+    fold: np.ndarray,
+    groups: np.ndarray,
+    *,
+    metric: str = "auc",
+    threshold: float = 0.5,
+    n_resamples: int = 2000,
+    alpha: float = 0.05,
+    sample_weight: Optional[np.ndarray] = None,
+    random_state: int = 42,
+    min_per_fold: int = 20,
+) -> Dict[str, float]:
+    """Percentile CI for the fold-averaged metric, resampling SCHOOLS.
+
+    Both structures must be respected at once. Students within a school are
+    correlated, so schools are the resampling unit; and scores are only
+    comparable within a fold, so the statistic recomputed on each resample is
+    the fold-weighted average, not a pooled metric. Schools nest inside folds —
+    the outer split is school-grouped — so resampling schools and then grouping
+    by fold is well defined.
+
+    Percentile rather than BCa: the jackknife BCa acceleration would require
+    one fold-wise recomputation per school, ~1,084 of them per repeat, which at
+    150 repeats is not affordable. The interval is reported as percentile and
+    labelled as such.
+    """
+    y_true = np.asarray(y_true).astype(int)
+    y_score = np.asarray(y_score, dtype=float)
+    fold = np.asarray(fold)
+    groups = np.asarray(groups)
+    w = None if sample_weight is None else np.asarray(sample_weight, dtype=float)
+    rng = np.random.default_rng(random_state)
+
+    def _stat(idx: np.ndarray) -> float:
+        return fold_weighted_metric(
+            y_true[idx], y_score[idx], fold[idx], metric=metric,
+            threshold=threshold, sample_weight=None if w is None else w[idx],
+            min_per_fold=min_per_fold,
+        )["estimate"]
+
+    observed = fold_weighted_metric(
+        y_true, y_score, fold, metric=metric, threshold=threshold,
+        sample_weight=w, min_per_fold=min_per_fold,
+    )
+    uniq = np.unique(groups)
+    by_group = {g: np.where(groups == g)[0] for g in uniq}
+
+    boots = np.empty(n_resamples)
+    for b in range(n_resamples):
+        picked = rng.choice(uniq, size=uniq.size, replace=True)
+        boots[b] = _stat(np.concatenate([by_group[g] for g in picked]))
+    boots = boots[np.isfinite(boots)]
+    if boots.size < 10:
+        return {"estimate": observed["estimate"], "ci_low": np.nan,
+                "ci_high": np.nan, "method": "failed", "n_resamples": int(boots.size)}
+
+    lo, hi = np.quantile(boots, [alpha / 2, 1 - alpha / 2])
+    return {
+        "estimate": float(observed["estimate"]),
+        "ci_low": float(lo), "ci_high": float(hi),
+        "boot_mean": float(boots.mean()), "boot_sd": float(boots.std(ddof=1)),
+        "method": "percentile (school-clustered, fold-averaged)",
+        "n_resamples": int(boots.size), "n_clusters": int(uniq.size),
+        "metric": metric,
+        "n_folds_used": observed["n_folds_used"],
+        "n_folds_dropped": observed["n_folds_dropped"],
+        "fold_sd": observed.get("fold_sd", float("nan")),
+    }
+
+
 def auc_by_repeat(
     cset: CheckpointSet,
     task: str,
@@ -502,6 +690,8 @@ def auc_by_repeat(
     alpha: float = 0.05,
     expected_folds: Optional[int] = None,
     random_state: int = 42,
+    estimand: str = "fold_mean",
+    divergence_tolerance: float = 0.005,
 ) -> pd.DataFrame:
     """**Level 2** — one row per repeat, each from a disjoint OOF vector.
 
@@ -527,22 +717,61 @@ def auc_by_repeat(
                 f"{task}/{method}/pv{pv}/rep{rep}. The nested-CV run stored NaN, "
                 "meaning it was executed without survey weights."
             )
-        ci = cluster_bootstrap_ci(
-            d["y_true"].to_numpy(), d["y_score"].to_numpy(), d["group"].to_numpy(),
-            metric=metric, n_resamples=n_resamples, method=bootstrap_method,
-            alpha=alpha, sample_weight=w, random_state=random_state + int(rep),
+        if estimand == "fold_mean":
+            ci = cluster_bootstrap_foldwise(
+                d["y_true"].to_numpy(), d["y_score"].to_numpy(),
+                d["fold"].to_numpy(), d["group"].to_numpy(),
+                metric=metric, n_resamples=n_resamples, alpha=alpha,
+                sample_weight=w, random_state=random_state + int(rep),
+            )
+        elif estimand == "pooled":
+            ci = cluster_bootstrap_ci(
+                d["y_true"].to_numpy(), d["y_score"].to_numpy(), d["group"].to_numpy(),
+                metric=metric, n_resamples=n_resamples, method=bootstrap_method,
+                alpha=alpha, sample_weight=w, random_state=random_state + int(rep),
+            )
+        else:
+            raise ValueError(f"Unknown estimand {estimand!r}; use 'fold_mean' or 'pooled'.")
+
+        # The other estimand is always computed as a diagnostic. Their
+        # divergence is the signature of cross-fold score incomparability --
+        # see fold_weighted_metric for the case that motivated this.
+        pooled_val = classification_metrics(
+            d["y_true"].to_numpy(), d["y_score"].to_numpy(),
+            float(d["threshold"].iloc[0]), sample_weight=w,
+        )[metric]
+        fm = fold_weighted_metric(
+            d["y_true"].to_numpy(), d["y_score"].to_numpy(), d["fold"].to_numpy(),
+            metric=metric, threshold=float(d["threshold"].iloc[0]), sample_weight=w,
         )
         rows.append({
             "task": task, "method": method, "pv": int(pv), "rep": int(rep),
             "n_students": int(len(d)), "n_schools": int(d["group"].nunique()),
             "n_folds": int(d["fold"].nunique()),
+            "estimand": estimand,
             metric: float(ci["estimate"]),
+            f"{metric}_fold_mean": float(fm["estimate"]),
+            f"{metric}_pooled": float(pooled_val),
+            "pooled_minus_fold_mean": float(pooled_val - fm["estimate"]),
+            "between_fold_sd": float(fm.get("fold_sd", np.nan)),
+            "n_folds_dropped": int(fm["n_folds_dropped"]),
             "boot_sd": float(ci.get("boot_sd", np.nan)),
             "sampling_variance": float(ci.get("boot_sd", np.nan)) ** 2,
             "ci_low": float(ci["ci_low"]), "ci_high": float(ci["ci_high"]),
             "bootstrap": ci["method"], "weighted": bool(weighted),
         })
-    return pd.DataFrame(rows)
+    out = pd.DataFrame(rows)
+    bad = out[out["pooled_minus_fold_mean"].abs() > divergence_tolerance]
+    if not bad.empty:
+        logger.warning(
+            "Pooled and fold-averaged %s diverge by more than %.3f in %d of %d "
+            "repeats for %s/%s/pv%s (max %.4f). The per-fold models are not on a "
+            "common score scale, so the POOLED figure is not interpretable. The "
+            "reported estimand is %r.",
+            metric, divergence_tolerance, len(bad), len(out), task, method, pv,
+            out["pooled_minus_fold_mean"].abs().max(), estimand,
+        )
+    return out
 
 
 def aggregate_task_method(
@@ -557,6 +786,8 @@ def aggregate_task_method(
     alpha: float = 0.05,
     expected_folds: Optional[int] = None,
     random_state: int = 42,
+    estimand: str = "fold_mean",
+    divergence_tolerance: float = 0.005,
 ) -> Dict[str, object]:
     """**Level 3** — Rubin's rules across plausible values.
 
@@ -578,6 +809,7 @@ def aggregate_task_method(
                 cset, task, method, pv, metric=metric, n_resamples=n_resamples,
                 bootstrap_method=bootstrap_method, weighted=weighted, alpha=alpha,
                 expected_folds=expected_folds, random_state=random_state,
+                estimand=estimand, divergence_tolerance=divergence_tolerance,
             )
             for pv in sorted(
                 cset.index[
@@ -598,6 +830,8 @@ def aggregate_task_method(
             repeat_min=(metric, "min"),
             repeat_max=(metric, "max"),
             sampling_variance=("sampling_variance", "mean"),
+            pooled_minus_fold_mean=("pooled_minus_fold_mean", "mean"),
+            between_fold_sd=("between_fold_sd", "mean"),
             n_repeats=(metric, "size"),
             n_students=("n_students", "max"),
             n_schools=("n_schools", "max"),
@@ -618,6 +852,11 @@ def aggregate_task_method(
         "n_students": int(per_pv["n_students"].max()),
         "n_schools": int(per_pv["n_schools"].max()),
         "single_pv": bool(len(per_pv) < 2),
+        "estimand": estimand,
+        "max_abs_pooled_minus_fold_mean": float(
+            per_rep["pooled_minus_fold_mean"].abs().max()
+        ),
+        "mean_between_fold_sd": float(per_rep["between_fold_sd"].mean()),
         "weighted": bool(weighted),
         # A (task, method) row spans the PVs, and each PV is its own cell with
         # its own fingerprint. Record them all rather than pretend there is one.

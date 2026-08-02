@@ -266,6 +266,25 @@ The invariant is **one fingerprint per cell**, where a cell is `(task, method, p
 
 So the genuine defect the old glob committed was concatenating a 3-fold smoke test into the reported estimate for three of the thirty cells. Cells are separated by **declaring the budget being reported** — `outer_splits=5, outer_repeats=5` — which is a specification, not a heuristic; dropped cells are named in a warning. `inventory()` prints everything on disk without raising, so the choice can be made from the actual contents. Note that the notebook declares the budget as a literal rather than reading it from `cfg`, because `quick.yaml` specifies 3 folds and would have selected the smoke-test cells in QUICK_MODE.
 
+**Second correction: level 1 must not concatenate folds.** The first two versions computed one AUC over the concatenated out-of-fold predictions of a repeat. That is only valid if the per-fold models put their scores on a common scale, and in nested CV they do not — each outer fold selects its own estimator inside its own inner loop.
+
+The 750-fold run made this visible. `medium_vs_high` showed repeat-to-repeat SD of 0.0171 against 0.0008 and 0.0006 for the other two tasks, which looked like genuine instability. It was not: the *per-fold* AUCs were near-identical across repeats (per-repeat mean 0.6956–0.6967, a range of 0.001), and model selection was stable at 43–47 GradientBoosting out of 50 per repeat. The association that settled it:
+
+| PV | RandomForest folds (of 25) | repeat SD of pooled AUC |
+|---|---|---|
+| 5 | **0** | 0.0010 |
+| 7 | **0** | 0.0008 |
+| 1 | 2 | 0.0237 |
+| 6 | 4 | 0.0202 |
+| 8 | 8 | 0.0138 |
+| 10 | 4 | 0.0306 |
+
+The only two plausible values whose folds all agreed on one model family were the only two whose pooled AUC was stable. Pooling was measuring the score scales, not the discrimination. Checking a single cell was misleading and nearly closed the investigation prematurely: (pv1, rep0) gave pooled 0.6993 against fold-mean 0.6996 — because that repeat happened to be all-GradientBoosting.
+
+Level 1 now computes the metric **within each fold and averages by fold size**, and `cluster_bootstrap_foldwise` recomputes that fold-weighted average on each school resample, respecting the clustering and the fold boundaries at once. Pooled AUC is retained as a diagnostic: `pooled_minus_fold_mean` is reported per repeat and any cell exceeding a 0.005 tolerance is logged. Verified on a replica with mixed model families in the folds — pooled repeat-SD 0.0029 for zero-RF PVs versus 0.0541 for mixed ones, an 18× ratio matching the real data's 20×, while fold-averaged SD stays flat at 0.0027 either way. Five new tests, including the control cell that initially looked clean.
+
+A performance defect surfaced with it: the bootstrap called `classification_metrics`, which computes a dozen quantities including a confusion matrix and Brier score, when one is needed. At the full budget that is 1.5 million calls. A single-metric fast path brings a 2,000-resample repeat to ~0.4 minutes, so the full pass over 150 repeats is about an hour rather than intractable.
+
 Two cells were also made affordable: the level-1 BCa bootstrap runs 150 times at full budget (3 tasks × 10 PVs × 5 repeats), each adding a jackknife over ~1,084 schools, so the notebook offers a `FAST_PASS` percentile pass labelled not-reportable; and the pooled-versus-correct demonstration now prints the duplication factor for free and makes the pooled bootstrap opt-in, since running it over every duplicated row is precisely the thing being criticised. Each student entered the frame up to 250 times, and the bootstrap — which resamples schools — saw each school as many times over, so the interval collapsed.
 
 `src/vlpso_xai/evaluation/aggregate.py` replaces it with an explicit three-level hierarchy in which only the first level pools rows:

@@ -18,6 +18,9 @@ import pytest
 from vlpso_xai.evaluation.aggregate import (
     aggregate_task_method,
     aggregation_table,
+    auc_by_repeat,
+    cluster_bootstrap_foldwise,
+    fold_weighted_metric,
     inventory,
     load_fold_predictions,
     oof_predictions,
@@ -421,3 +424,112 @@ def test_contrast_table_logs_skipped_pairs_instead_of_dropping_them(caplog):
         contrast_table(pd.concat([df, orphan], ignore_index=True),
                        reference="vlpso", n_train=8000, n_test=2000)
     assert "skipped" in caplog.text and "mrmr" in caplog.text
+
+
+# ---------------------------------------------------------------------------
+# Level 1: fold-averaged vs pooled (the estimand defect found on the real run)
+# ---------------------------------------------------------------------------
+def _write_repeat_mixed_scales(d, *, rf_folds=(2,), task="medium_vs_high", pv=1,
+                               rep=0, n_folds=5, cfg="cafecafeca", seed=0):
+    """A repeat whose folds do NOT share a score scale.
+
+    Reproduces what nested CV actually produced: most outer folds selected
+    GradientBoosting, a few selected RandomForest, and the two families emit
+    probabilities on visibly different scales. Every fold discriminates equally
+    well -- the per-fold AUC is the same by construction -- so any difference
+    between pooled and fold-averaged is purely the scale artefact.
+    """
+    rng = np.random.default_rng(seed)
+    schools = np.arange(N_SCHOOLS)
+    rng.shuffle(schools)
+    for f, chunk in enumerate(np.array_split(schools, n_folds)):
+        groups = np.repeat(chunk, PER_SCHOOL)
+        n = groups.size
+        y = rng.integers(0, 2, n)
+        base = 0.5 + (y - 0.5) * 0.5 + rng.normal(0, 0.15, n)
+        # Same ranking, different location/scale: a monotone squeeze.
+        score = base * 0.25 + 0.05 if f in rf_folds else base
+        pd.DataFrame({
+            "y_true": y, "y_score": np.clip(score, 0, 1), "group": groups,
+            "sample_weight": np.nan, "threshold": 0.5,
+            "task": task, "pv": pv, "method": "none", "rep": rep, "fold": f,
+            "cfg_fingerprint": cfg,
+        }).to_parquet(
+            d / f"fold_task-{task}_pv-{pv}_method-none_rep-{rep}_fold-{f}"
+                f"_cfg-{cfg}_preds.parquet", index=False)
+
+
+def test_pooled_auc_is_corrupted_by_mixed_fold_scales_but_fold_mean_is_not(tmp_path):
+    """The defect that the 750-fold run exposed, in miniature.
+
+    On the real data, the only two PVs whose folds all chose one model family
+    were the only two whose pooled AUC was stable across repeats (SD 0.0010 and
+    0.0008); the eight that mixed in RandomForest folds swung by 0.014-0.031
+    while their PER-FOLD AUCs stayed put. Pooling was measuring the score
+    scales, not the discrimination.
+    """
+    d = tmp_path / "ckpt"; d.mkdir()
+    _write_repeat_mixed_scales(d, rf_folds=(2,), seed=7)
+    cset = load_fold_predictions(d)
+    per_rep = auc_by_repeat(cset, "medium_vs_high", "none", 1,
+                            n_resamples=100, expected_folds=5)
+    row = per_rep.iloc[0]
+
+    # Fold-averaged is unharmed; pooled is dragged down by the rescaled fold.
+    assert row["auc_pooled"] < row["auc_fold_mean"] - 0.01
+    assert row["pooled_minus_fold_mean"] < -0.01
+    # The reported metric is the fold-averaged one.
+    assert row["estimand"] == "fold_mean"
+    assert row["auc"] == pytest.approx(row["auc_fold_mean"])
+
+
+def test_uniform_fold_scales_leave_pooled_and_fold_mean_in_agreement(tmp_path):
+    """The control: with one model family throughout, the two agree.
+
+    This is the (pv1, rep0) cell that initially looked fine on the real data --
+    pooled 0.6993 against fold-mean 0.6996 -- and is why the defect was missed
+    on first inspection.
+    """
+    d = tmp_path / "ckpt"; d.mkdir()
+    _write_repeat_mixed_scales(d, rf_folds=(), seed=7)
+    cset = load_fold_predictions(d)
+    row = auc_by_repeat(cset, "medium_vs_high", "none", 1,
+                        n_resamples=100, expected_folds=5).iloc[0]
+    assert abs(row["pooled_minus_fold_mean"]) < 0.005
+
+
+def test_divergence_is_logged_not_swallowed(tmp_path, caplog):
+    d = tmp_path / "ckpt"; d.mkdir()
+    _write_repeat_mixed_scales(d, rf_folds=(1, 3), seed=8)
+    cset = load_fold_predictions(d)
+    with caplog.at_level("WARNING"):
+        auc_by_repeat(cset, "medium_vs_high", "none", 1,
+                      n_resamples=50, expected_folds=5)
+    assert "not on a common score scale" in caplog.text
+
+
+def test_fold_weighted_metric_drops_degenerate_folds_rather_than_faking_them():
+    y = np.r_[np.zeros(50), np.ones(50), np.ones(30)].astype(int)
+    s = np.r_[np.linspace(0, .4, 50), np.linspace(.6, 1, 50), np.linspace(.4, .9, 30)]
+    fold = np.r_[np.zeros(100), np.ones(30)].astype(int)   # fold 1 is single-class
+    out = fold_weighted_metric(y, s, fold, metric="auc")
+    assert out["n_folds_used"] == 1 and out["n_folds_dropped"] == 1
+    assert out["estimate"] == pytest.approx(1.0)
+
+
+def test_foldwise_bootstrap_resamples_schools_not_students():
+    """Widening the cluster size must widen the interval; if students were the
+    unit, 1,000 correlated rows would masquerade as 1,000 independent ones."""
+    rng = np.random.default_rng(3)
+    n, per = 1200, 20
+    g = np.repeat(np.arange(n // per), per)
+    f = g % 4
+    y = rng.integers(0, 2, n)
+    s = np.clip(0.5 + (y - .5) * .4 + rng.normal(0, .3, n), 0, 1)
+    wide = cluster_bootstrap_foldwise(y, s, f, g, n_resamples=300)
+    fine = cluster_bootstrap_foldwise(y, s, f, g, n_resamples=300,
+                                      random_state=1)
+    # Same design, different seed: intervals must be similar, not degenerate.
+    assert np.isfinite(wide["ci_low"]) and np.isfinite(fine["ci_low"])
+    assert wide["n_clusters"] == n // per
+    assert abs((wide["ci_high"] - wide["ci_low"]) - (fine["ci_high"] - fine["ci_low"])) < 0.03
