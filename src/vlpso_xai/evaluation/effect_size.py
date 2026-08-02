@@ -44,18 +44,43 @@ never reported in the same table.
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, asdict
 from typing import Dict, List, Optional, Sequence
 
 import numpy as np
 import pandas as pd
 
+logger = logging.getLogger(__name__)
+
 #: Cohen's conventions. Reported honestly: 0.13-0.18 is NEGLIGIBLE.
 COHEN_THRESHOLDS = {"negligible": 0.2, "small": 0.5, "medium": 0.8}
 
+#: Below this many matched folds, a paired *d* gets no qualitative label.
+#:
+#: Closes audit finding **M4** -- "Paired Cohen's *d* over 3 CV folds is
+#: labelled 'large' -- the same category error as ``main.tex:651``, by a
+#: different route." The original manuscript inflated a near-zero number into
+#: "large"; the rebuild avoided that but then attached a *correct* band to an
+#: estimate with no precision, which misleads in the same direction for a
+#: different reason.
+#:
+#: With J = 3 the standard error of a paired *d* is roughly
+#: :math:`\sqrt{1/J + d^2/(2J)} \approx 0.6`, so a point estimate of 0.9 has an
+#: interval that comfortably covers "negligible" and "large" at once. Ten is
+#: the point at which the interval is narrow enough that a single band is
+#: usually defensible; it is a floor, not a licence, which is why the CI check
+#: below applies as well.
+MIN_FOLDS_FOR_MAGNITUDE = 10
+
 
 def interpret_d(d: float, thresholds: Dict[str, float] = COHEN_THRESHOLDS) -> str:
-    """Map |d| to Cohen's conventional bands. No inflation."""
+    """Map |d| to Cohen's conventional bands. No inflation.
+
+    This is the unguarded point-estimate mapping. For anything that reaches a
+    table or the manuscript use :func:`interpret_d_guarded`, which refuses to
+    label an estimate the design cannot resolve.
+    """
     a = abs(float(d))
     if not np.isfinite(a):
         return "undefined"
@@ -66,6 +91,82 @@ def interpret_d(d: float, thresholds: Dict[str, float] = COHEN_THRESHOLDS) -> st
     if a < thresholds["medium"]:
         return "medium"
     return "large"
+
+
+def cohens_d_paired_ci(
+    diff: Sequence[float],
+    *,
+    alpha: float = 0.05,
+    n_boot: int = 5000,
+    random_state: int = 42,
+) -> Dict[str, float]:
+    """Percentile bootstrap interval for a paired *d*, resampling FOLDS.
+
+    Folds are the unit of resampling because they are the unit of replication
+    for a method contrast. With few folds the interval comes out very wide --
+    that is the point. It is the quantity that makes an underpowered design
+    visible instead of letting a bare point estimate imply precision it does
+    not have.
+    """
+    d = np.asarray(diff, dtype=float)
+    d = d[np.isfinite(d)]
+    j = d.size
+    point = cohens_d_paired(d)
+    if j < 3:
+        return {"d": point, "ci_low": float("nan"), "ci_high": float("nan"),
+                "n_pairs": int(j), "n_boot": 0}
+    rng = np.random.default_rng(random_state)
+    boots = np.empty(n_boot)
+    for b in range(n_boot):
+        boots[b] = cohens_d_paired(d[rng.integers(0, j, j)])
+    boots = boots[np.isfinite(boots)]
+    if boots.size < 50:
+        return {"d": point, "ci_low": float("nan"), "ci_high": float("nan"),
+                "n_pairs": int(j), "n_boot": int(boots.size)}
+    lo, hi = np.quantile(boots, [alpha / 2, 1 - alpha / 2])
+    return {"d": point, "ci_low": float(lo), "ci_high": float(hi),
+            "n_pairs": int(j), "n_boot": int(boots.size)}
+
+
+def interpret_d_guarded(
+    d: float,
+    n_pairs: int,
+    *,
+    ci_low: float = float("nan"),
+    ci_high: float = float("nan"),
+    thresholds: Dict[str, float] = COHEN_THRESHOLDS,
+    min_pairs: int = MIN_FOLDS_FOR_MAGNITUDE,
+) -> str:
+    """Band label, or an explicit refusal to give one.
+
+    A qualitative label is emitted only when BOTH conditions hold:
+
+    1. there are at least ``min_pairs`` matched folds; and
+    2. the confidence interval for *d* falls entirely inside one band.
+
+    Otherwise the return value states why, e.g.
+    ``'indeterminate (J=3 < 10)'`` or ``'indeterminate (CI spans
+    negligible-large)'``. These strings are meant to be printed verbatim into
+    the manuscript table. A reader should be told that the design cannot
+    resolve the effect, not handed a band that happens to contain the point
+    estimate.
+    """
+    if not np.isfinite(d):
+        return "undefined"
+    if int(n_pairs) < int(min_pairs):
+        return f"indeterminate (J={int(n_pairs)} < {int(min_pairs)})"
+    if np.isfinite(ci_low) and np.isfinite(ci_high):
+        lo_band = interpret_d(ci_low, thresholds)
+        hi_band = interpret_d(ci_high, thresholds)
+        # An interval straddling zero covers the negligible band by definition.
+        if ci_low <= 0.0 <= ci_high:
+            lo_band = "negligible"
+        if lo_band != hi_band:
+            a, b = sorted({lo_band, hi_band},
+                          key=lambda s: ["negligible", "small", "medium", "large"].index(s)
+                          if s in ("negligible", "small", "medium", "large") else 99)
+            return f"indeterminate (CI spans {a}-{b})"
+    return interpret_d(d, thresholds)
 
 
 # ---------------------------------------------------------------------------
@@ -127,6 +228,16 @@ class PairedContrast:
     ci_high: float
     test: str
     train_test_ratio: Optional[float] = None
+    # --- M4: precision of the effect size, not just its point estimate ---
+    #: Bootstrap interval for ``cohens_d_paired``, resampling folds.
+    d_ci_low: float = float("nan")
+    d_ci_high: float = float("nan")
+    #: The unguarded band, kept only so the guard can be audited. Never report
+    #: this column; report ``magnitude``.
+    magnitude_unguarded: str = ""
+    #: True when the design cannot support a qualitative label.
+    underpowered: bool = False
+    min_folds_for_magnitude: int = MIN_FOLDS_FOR_MAGNITUDE
 
     def as_dict(self) -> Dict:
         return asdict(self)
@@ -192,6 +303,8 @@ def paired_method_contrast(
     n_test: Optional[int] = None,
     alpha: float = 0.05,
     test: str = "nadeau_bengio",
+    min_folds_for_magnitude: int = MIN_FOLDS_FOR_MAGNITUDE,
+    d_random_state: int = 42,
 ) -> PairedContrast:
     """Compare two selectors on MATCHED outer folds.
 
@@ -235,16 +348,27 @@ def paired_method_contrast(
     else:
         raise ValueError(f"Unknown test {test!r}")
 
-    d = cohens_d_paired(diff)
+    # M4: the point estimate alone is not reportable. Attach its interval and
+    # let the guard decide whether a band is defensible at this fold count.
+    dstat = cohens_d_paired_ci(diff, alpha=alpha, random_state=d_random_state)
+    d = dstat["d"]
+    guarded = interpret_d_guarded(
+        d, dstat["n_pairs"], ci_low=dstat["ci_low"], ci_high=dstat["ci_high"],
+        min_pairs=min_folds_for_magnitude,
+    )
     return PairedContrast(
         method_a=method_a, method_b=method_b, metric=metric,
         n_folds=int(diff.size),
         mean_a=float(joined["a"].mean()), mean_b=float(joined["b"].mean()),
         mean_difference=float(diff.mean()),
-        cohens_d_paired=d, magnitude=interpret_d(d),
+        cohens_d_paired=d, magnitude=guarded,
         t_statistic=float(t), p_value=float(p),
         ci_low=float(lo), ci_high=float(hi),
         test=label, train_test_ratio=ratio,
+        d_ci_low=dstat["ci_low"], d_ci_high=dstat["ci_high"],
+        magnitude_unguarded=interpret_d(d),
+        underpowered=guarded.startswith("indeterminate"),
+        min_folds_for_magnitude=int(min_folds_for_magnitude),
     )
 
 
@@ -268,6 +392,7 @@ def contrast_table(
     answer different questions.
     """
     rows: List[Dict] = []
+    skipped: List[str] = []
     groups = fold_results.groupby(list(by)) if by else [((), fold_results)]
     for key, sub in groups:
         others = [m for m in sub[method_col].unique() if m != reference]
@@ -277,11 +402,23 @@ def contrast_table(
                     sub, reference, other, metric=metric,
                     n_train=n_train, n_test=n_test, method_col=method_col, **kwargs
                 )
-            except ValueError:
+            except ValueError as exc:
+                # Previously a bare `continue`. A dropped contrast changes the
+                # size of the multiplicity family, so silently discarding it
+                # makes every surviving p_adjusted wrong -- and the row simply
+                # vanishes from the table with no trace. Record it instead.
+                skipped.append(f"{key!r}: {reference} vs {other}: {exc}")
                 continue
             row = dict(zip(by, key if isinstance(key, tuple) else (key,)))
             row.update(c.as_dict())
             rows.append(row)
+
+    if skipped:
+        logger.warning(
+            "contrast_table skipped %d contrast(s); the multiplicity family is "
+            "smaller than intended and p_adjusted reflects the reduced family:\n  %s",
+            len(skipped), "\n  ".join(skipped),
+        )
 
     out = pd.DataFrame(rows)
     if out.empty:

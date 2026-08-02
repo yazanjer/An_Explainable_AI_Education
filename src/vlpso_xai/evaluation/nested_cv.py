@@ -285,6 +285,12 @@ def run_nested_cv(
                     "sample_weight": (np.asarray(sample_weight)[te]
                                       if sample_weight is not None else np.nan),
                     "threshold": thr,
+                    # The fingerprint is in the filename, but a frame that has
+                    # been read and concatenated no longer knows its filename.
+                    # Audit M2 was exactly that: a glob over two fingerprints
+                    # produced one indistinguishable frame. Carrying it as a
+                    # column lets any downstream consumer verify what it holds.
+                    "cfg_fingerprint": fingerprint,
                     **{k: v for k, v in key.items()},
                 }).to_parquet(
                     ckpt.with_name(ckpt.stem + "_preds.parquet"), index=False

@@ -271,8 +271,9 @@ check, including the ones that failed. Headlines:
 * Unrestricted permutation returns **AUC 0.5029** (n = 20). The pipeline is clean.
 * Two quick-mode runs with the same seed produce **byte-identical** hashes for
   all 140 artefacts.
-* An independent adversarial audit found 15 defects in this rebuild; **8 are
-  fixed**, 7 remain open and are listed with severities.
+* An independent adversarial audit found 15 defects in this rebuild; **10 are
+  fixed** (M2 and M4 most recently), 4 remain open and are listed with
+  severities, plus one — M5 — partially closed.
 
 Not yet done: a cold-start Colab run end to end, the SHAP/LIME numbers, and the
 manuscript edits for editor comments 8 and 10.

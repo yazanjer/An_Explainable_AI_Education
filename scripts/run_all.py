@@ -34,6 +34,18 @@ logger = logging.getLogger("run_all")
 
 STAGES = ["ingest", "audit", "sample", "nested", "selection", "stats", "explain", "assets"]
 
+#: Stages that are DECLARED but NOT YET IMPLEMENTED in this script. They were
+#: silently accepted and silently did nothing, so a 30-hour run could complete
+#: "successfully" having produced none of the selector comparison, uncertainty
+#: quantification or explainability outputs the manuscript needs. Requesting one
+#: now fails loudly. The corresponding code exists and is tested -- it is driven
+#: from notebooks 03, 05 and 06, not from here.
+NOT_IMPLEMENTED = {
+    "selection": "feature-selection comparison and ablations (use notebooks/03 and 04)",
+    "stats": "bootstrap CIs, permutation nulls, stability, effect sizes (use notebook 05)",
+    "explain": "global/local SHAP, LIME stability, negative control (use notebook 06)",
+}
+
 
 def _setup(config: str):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
@@ -213,6 +225,15 @@ def main() -> int:
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
         format="%(asctime)s %(levelname)-7s %(name)s | %(message)s")
+    unimplemented = [s for s in args.stages if s in NOT_IMPLEMENTED]
+    if unimplemented:
+        raise SystemExit(
+            "These stages are not implemented in run_all.py and would have done "
+            "NOTHING silently:\n"
+            + "\n".join(f"    {s}: {NOT_IMPLEMENTED[s]}" for s in unimplemented)
+            + "\n\nRun the named notebook instead, or drop the stage."
+        )
+
     cfg = _setup(args.config)
 
     # Self-identify. Diagnosing a stale Google Drive copy by inferring it from

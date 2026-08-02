@@ -253,9 +253,38 @@ Naive standard errors understate uncertainty on this design by more than a facto
 
 The SE of the null mean is 0.0016, so the ±0.03 gate can now resolve a true null of 0.53 rather than rubber-stamping it. Decomposition is stable at **32.3% between-school / 67.7% within-school** of the 0.360 above chance. The permutation p-value is 0.048, which is the *floor* at n = 20 (1/(n+1)); the full budget of 100 is required to report anything smaller.
 
+**AUDIT-M2 — aggregation hierarchy replaces the pooled glob `FIXED`.** Notebook 05 previously globbed every `*_preds.parquet`, concatenated the lot and grouped by `task` alone. Four errors compounded in those five lines: the glob applied **no configuration filter at all**; it pooled selectors, which are different estimators; it pooled repeats, which are re-partitions of the *same* students; and it pooled plausible values, which carry *different labels* for 69.7% of students.
+
+On the fingerprint point, stated precisely: the local `results/checkpoints/` currently holds 30 fold-result checkpoints spanning **two** fingerprints (15 × `cfg-2a228fe0c5`, 5 × `cfg-350625c08f`, 5 unfingerprinted legacy) but only **5** `*_preds.parquet` files, all from `cfg-350625c08f`. So on *this* directory today the unfiltered glob happens to be uniform, and running it produces AUC 0.8735 — the handover's headline figure. The defect is that nothing in the old code checked, and the very next resumed run adds a second fingerprint to the prediction files as it already has to the fold-result files. The guard is written against the mechanism, not against today's directory listing. Each student entered the frame up to 250 times, and the bootstrap — which resamples schools — saw each school as many times over, so the interval collapsed.
+
+`src/vlpso_xai/evaluation/aggregate.py` replaces it with an explicit three-level hierarchy in which only the first level pools rows:
+
+| Level | Unit | Operation | Rationale |
+|---|---|---|---|
+| 1 | outer folds within (task, method, pv, repeat) | concatenate | The folds partition the sample, so each student appears exactly once. AUC and the school-clustered BCa bootstrap variance are computed here and nowhere else. |
+| 2 | repeats within (task, method, pv) | average the AUCs | A repeat is a re-partition of one sample, not a new sample. Its spread is partition noise, reported as a range, never added to sampling variance. |
+| 3 | plausible values within (task, method) | Rubin's rules | `U` = mean within-PV sampling variance, `B` = between-PV variance. The only step yielding a publishable CI, and the only one carrying PV measurement error (FMI ≈ 0.56, so it dominates). |
+| — | methods | never combined | Compared via `contrast_table`, not pooled. |
+
+Selecting a configuration fingerprint is **mandatory**: with more than one present `load_fold_predictions` raises and lists the candidates with their fold counts rather than picking the newest, largest or first — every one of those heuristics has a failure mode in which a stale run is reported as current, which is the class of error the module exists to prevent. Legacy unfingerprinted files count as a distinct, unusable configuration. `run_nested_cv` now also embeds `cfg_fingerprint` as a *column*, because a frame that has been read and concatenated no longer knows its filename; a mismatch between filename and payload raises.
+
+Three structural checks run before any level-1 vector is scored, because all three failure modes are silent: a **missing fold** (shrinks the sample and biases toward the surviving schools), a **non-contiguous fold set**, and **schools appearing in more than one outer fold** (the duplication M2 describes, arriving via mixed checkpoints).
+
+The headline regression test asserts the direction of the fix: on a synthetic set with 2 PVs × 2 repeats, the pooled frame holds each student 4× and the correct hierarchy must return a **strictly wider** interval. If that ever inverts, the fix has been undone. 24 new tests in `tests/test_aggregation.py`, all on fabricated checkpoints — no PISA microdata and no 34-hour run required.
+
+**AUDIT-M4 — effect-size magnitudes now guarded `FIXED`.** The original manuscript inflated a near-zero *d* into "large" (`main.tex:651`); the rebuild avoided that but then attached a *correct* band to an estimate with no precision, which misleads in the same direction by a different route. With J = 3 the standard error of a paired *d* is roughly √(1/J + d²/2J) ≈ 0.6, so a point estimate of 0.9 has an interval covering "negligible" and "large" at once.
+
+`interpret_d_guarded` emits a band only when **both** hold: at least `MIN_FOLDS_FOR_MAGNITUDE = 10` matched folds, **and** the bootstrap CI for *d* (resampling folds) lies entirely inside one band. Otherwise it returns a string stating why — `indeterminate (J=3 < 10)`, `indeterminate (CI spans negligible-large)` — and that string is what belongs in the manuscript table. `PairedContrast` gains `d_ci_low`, `d_ci_high`, `underpowered` and `magnitude_unguarded`; the last is kept only so the guard itself can be audited and must never be reported.
+
+The test for this reproduces the defect verbatim: 3 folds with a clean separation give |d| > 0.8, `magnitude_unguarded == "large"` — the old behaviour — and `magnitude == "indeterminate (J=3 < 10)"`.
+
+**Consequence for the paper:** every contrast in the current provisional selector comparison is 3-fold, so every magnitude cell now reads `indeterminate`. That is the honest state of the comparison and it does not improve until M11 is closed and notebook 03 is re-run at full budget with BPSO and VLPSO matched.
+
+**Partial: AUDIT-M5 — one silent degradation closed.** `contrast_table` swallowed failed contrasts with a bare `except ValueError: continue`. A dropped contrast shrinks the multiplicity family, so every surviving `p_adjusted` was wrong, and the row simply vanished from the table with no trace. Skipped pairs are now logged with the reason. The remaining M5 items (`error_score=np.nan`, folds skipped on failure, `selected` defaulting to all columns, Brier on `LinearSVC` margins) are untouched.
+
 ### Still outstanding
 
-M2 (notebook-05 pools predictions across methods/repeats/PVs), M4 (paired *d* over 3 folds labelled "large"), M5 (silent degradations), M7 (VLPSO/BPSO wrapper fitness uses ungrouped inner CV), M10 (budget claims exceed what was run), M11 (BPSO capped while VLPSO is not).
+M5 (remaining silent degradations), M7 (VLPSO/BPSO wrapper fitness uses ungrouped inner CV), M10 (budget claims exceed what was run), M11 (BPSO capped while VLPSO is not).
 
 **The response letter must not be sent until C3, M9 and M10 are resolved**, because it still asserts budgets (5×5 folds, ≥10 seeds, ≥1,000 SHAP instances, 100 permutations) that the committed results do not meet.
 
