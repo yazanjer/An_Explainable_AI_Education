@@ -18,12 +18,18 @@ The notebook did this::
 
 Four separate errors compound in those five lines.
 
-1. **The glob is unfiltered by configuration fingerprint.** The checkpoint
-   directory holds files from every run that has ever touched it. At the time
-   of writing it contains two distinct fingerprints (``cfg-2a228fe0c5`` and
-   ``cfg-350625c08f``) plus legacy files written before fingerprinting
-   existed. Those are different partitions of different samples. Concatenating
-   them produces a number that describes no single analysis.
+1. **The glob is unfiltered by configuration.** The checkpoint directory holds
+   files from every run that has ever touched it. The real one holds 33
+   fingerprints: 30 cells of a full 5x5 run (3 tasks x 10 PVs x 25 folds = the
+   750 folds on record) and 3 cells of a 3-fold quick-mode run left behind in
+   the same directory. The glob swept up both, so a 3-fold smoke test was
+   concatenated into the reported estimate.
+
+   Note carefully what is and is not a defect here. Distinct fingerprints
+   across different (task, pv) cells are **expected** — see :data:`CELL_COLS`
+   — because the fingerprint hashes the row signature and each task and PV is
+   a different row subset. The defect is two configurations for the *same*
+   cell, and no filter to tell the cases apart.
 
 2. **Pooling across methods.** ``none``, ``chi2``, ``mrmr``, ``bpso`` and
    ``vlpso`` are different estimators. Their union is not an estimator.
@@ -72,6 +78,7 @@ set raises, a partial fold set raises, and an overlapping fold set raises.
 
 from __future__ import annotations
 
+import logging
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -83,8 +90,12 @@ import pandas as pd
 from ..data.outcome import rubin_combine
 from .metrics import classification_metrics, cluster_bootstrap_ci
 
+logger = logging.getLogger(__name__)
+
 __all__ = [
+    "CELL_COLS",
     "CheckpointSet",
+    "inventory",
     "parse_checkpoint_name",
     "load_fold_predictions",
     "oof_predictions",
@@ -136,12 +147,32 @@ def parse_checkpoint_name(path: Path | str) -> Optional[Dict[str, object]]:
     }
 
 
+#: A "cell" is one call to :func:`~vlpso_xai.evaluation.nested_cv.run_nested_cv`.
+#:
+#: This matters for what counts as a fingerprint collision. ``stage_nested``
+#: loops over tasks and plausible values and calls ``run_nested_cv`` once per
+#: (task, pv) on the ROW SUBSET for that combination. The fingerprint hashes
+#: ``sample_signature`` -- row count, positive count, school count and a digest
+#: of the school ids -- so a different task or a different PV *necessarily*
+#: produces a different fingerprint. A full run is therefore 3 tasks x 10 PVs =
+#: 30 fingerprints x 25 folds (5 outer x 5 repeats) = the 750 folds on record.
+#:
+#: So "one fingerprint in the directory" is not the invariant and never could
+#: be. The invariant is **one fingerprint per cell**: two fingerprints for the
+#: same (task, method, pv) mean the same analysis was run twice under different
+#: configurations, and only then is a choice required.
+CELL_COLS = ("task", "method", "pv")
+
+
 @dataclass
 class CheckpointSet:
-    """The prediction checkpoints for exactly one configuration fingerprint."""
+    """Prediction checkpoints with exactly one configuration per cell.
+
+    See :data:`CELL_COLS` for why uniqueness is enforced per cell rather than
+    over the whole directory.
+    """
 
     index: pd.DataFrame
-    fingerprint: Optional[str]
 
     @property
     def tasks(self) -> List[str]:
@@ -151,14 +182,75 @@ class CheckpointSet:
     def methods(self) -> List[str]:
         return sorted(self.index["method"].unique())
 
+    @property
+    def fingerprints(self) -> Dict[tuple, Optional[str]]:
+        """``(task, method, pv) -> fingerprint``. One entry per cell."""
+        out = {}
+        for key, sub in self.index.groupby(list(CELL_COLS), dropna=False):
+            fps = [f for f in sub["cfg_fingerprint"].unique()]
+            out[key if isinstance(key, tuple) else (key,)] = fps[0] if fps else None
+        return out
+
+    @property
+    def fingerprint(self) -> Optional[str]:
+        """The single fingerprint, when the set happens to have only one.
+
+        ``None`` when it spans several cells, which is the normal case for a
+        full run. Kept because a one-cell set is the common shape in tests and
+        in quick-mode smoke runs.
+        """
+        fps = {f for f in self.index["cfg_fingerprint"].unique()}
+        return fps.pop() if len(fps) == 1 else None
+
     def describe(self) -> pd.DataFrame:
         """Fold inventory per (task, method, pv, rep). Print this before use."""
-        g = (
-            self.index.groupby(["task", "method", "pv", "rep"])["fold"]
+        return (
+            self.index.groupby(["task", "method", "pv", "rep", "cfg_fingerprint"],
+                               dropna=False)["fold"]
             .agg(n_folds="count", folds=lambda s: sorted(s.tolist()))
             .reset_index()
         )
-        return g
+
+    def budget(self) -> pd.DataFrame:
+        """CV shape per cell: repeats x folds, and the fingerprint behind it."""
+        per_rep = (
+            self.index.groupby([*CELL_COLS, "rep"], dropna=False)["fold"]
+            .count().rename("n_folds").reset_index()
+        )
+        return (
+            per_rep.groupby(list(CELL_COLS), dropna=False)
+            .agg(n_repeats=("rep", "nunique"),
+                 folds_per_repeat=("n_folds", "max"),
+                 min_folds_per_repeat=("n_folds", "min"))
+            .reset_index()
+            .merge(
+                self.index.groupby(list(CELL_COLS), dropna=False)["cfg_fingerprint"]
+                .first().reset_index(),
+                on=list(CELL_COLS), how="left",
+            )
+        )
+
+
+def inventory(checkpoint_dir: Path | str) -> pd.DataFrame:
+    """Every cell on disk, with its fingerprint and CV shape. Never raises.
+
+    Call this first when :func:`load_fold_predictions` refuses: it shows what
+    is actually there, so the budget to keep can be stated explicitly rather
+    than guessed.
+    """
+    idx = _scan(checkpoint_dir)
+    per_rep = (
+        idx.groupby([*CELL_COLS, "cfg_fingerprint", "rep"], dropna=False)["fold"]
+        .count().rename("n_folds").reset_index()
+    )
+    return (
+        per_rep.groupby([*CELL_COLS, "cfg_fingerprint"], dropna=False)
+        .agg(n_repeats=("rep", "nunique"), folds_per_repeat=("n_folds", "max"))
+        .reset_index()
+        .assign(total_folds=lambda d: d.n_repeats * d.folds_per_repeat)
+        .sort_values([*CELL_COLS])
+        .reset_index(drop=True)
+    )
 
 
 def _scan(checkpoint_dir: Path | str) -> pd.DataFrame:
@@ -179,74 +271,129 @@ def _scan(checkpoint_dir: Path | str) -> pd.DataFrame:
 def load_fold_predictions(
     checkpoint_dir: Path | str,
     *,
-    cfg_fingerprint: Optional[str] = None,
+    cfg_fingerprint: Optional[str | Sequence[str]] = None,
     task: Optional[str | Sequence[str]] = None,
     method: Optional[str | Sequence[str]] = None,
+    outer_splits: Optional[int] = None,
+    outer_repeats: Optional[int] = None,
     require_unique_fingerprint: bool = True,
 ) -> CheckpointSet:
-    """Index the prediction checkpoints for ONE configuration.
+    """Index the prediction checkpoints, one configuration per cell.
 
     Parameters
     ----------
     cfg_fingerprint:
-        The 10-character configuration hash to keep. If ``None`` and the
-        directory holds more than one, this **raises** and lists the candidates
-        with their fold counts. It does not pick the newest, the largest or the
-        first — every one of those heuristics has a failure mode in which a
-        stale run is reported as current, which is the exact class of error
-        this module exists to prevent.
+        Fingerprint, or list of fingerprints, to keep. Usually unnecessary:
+        distinct fingerprints across different (task, method, pv) cells are
+        expected (see :data:`CELL_COLS`), so this is only needed to break a
+        genuine within-cell collision.
+    outer_splits, outer_repeats:
+        The CV budget to keep, e.g. ``5`` and ``5``. Cells whose stored shape
+        does not match are dropped and reported. This is how a full 5x5 run is
+        separated from a 3-fold quick-mode run that shares the directory --
+        by **declaring the budget being reported**, which is a specification,
+        not a heuristic. Nothing here picks "the newest" or "the biggest".
     require_unique_fingerprint:
-        Escape hatch for tests only. Setting it ``False`` permits a mixed set
+        Escape hatch for tests only. ``False`` permits a within-cell collision
         and is never correct for a reported number.
 
     Raises
     ------
     ValueError
-        If the directory holds several fingerprints and none was specified.
+        If any single cell holds more than one configuration fingerprint, or
+        if the surviving cells have inconsistent CV shapes and no budget was
+        declared.
     """
     idx = _scan(checkpoint_dir)
-
-    fps = idx["cfg_fingerprint"].where(idx["cfg_fingerprint"].notna(), None)
-    distinct = sorted({f for f in fps if f is not None})
-    has_legacy = bool(fps.isna().any())
-
-    if cfg_fingerprint is None and require_unique_fingerprint:
-        n_variants = len(distinct) + (1 if has_legacy else 0)
-        if n_variants > 1:
-            counts = (
-                idx.assign(cfg=idx["cfg_fingerprint"].fillna("<legacy, unfingerprinted>"))
-                .groupby("cfg")
-                .size()
-                .sort_values(ascending=False)
-            )
-            listing = "\n".join(f"    {k}: {v} folds" for k, v in counts.items())
-            raise ValueError(
-                "The checkpoint directory holds more than one configuration "
-                "fingerprint. These are different partitions of possibly "
-                "different samples and must not be combined.\n"
-                f"{listing}\n"
-                "Pass cfg_fingerprint=... to choose one. Legacy files without "
-                "a fingerprint predate configuration hashing and cannot be "
-                "matched to a config; delete them or move them aside."
-            )
-        cfg_fingerprint = distinct[0] if distinct else None
+    distinct = sorted({f for f in idx["cfg_fingerprint"].unique() if f is not None})
 
     if cfg_fingerprint is not None:
-        idx = idx[idx["cfg_fingerprint"] == cfg_fingerprint]
+        want = [cfg_fingerprint] if isinstance(cfg_fingerprint, str) else list(cfg_fingerprint)
+        idx = idx[idx["cfg_fingerprint"].isin(want)]
         if idx.empty:
             raise ValueError(
-                f"No checkpoints with fingerprint {cfg_fingerprint!r}. "
+                f"No checkpoints with fingerprint(s) {want!r}. "
                 f"Available: {distinct or '<none>'}."
             )
 
     for col, val in (("task", task), ("method", method)):
         if val is not None:
-            want = [val] if isinstance(val, str) else list(val)
-            idx = idx[idx[col].isin(want)]
+            keep = [val] if isinstance(val, str) else list(val)
+            idx = idx[idx[col].isin(keep)]
             if idx.empty:
-                raise ValueError(f"No checkpoints with {col} in {want}.")
+                raise ValueError(f"No checkpoints with {col} in {keep}.")
 
-    return CheckpointSet(index=idx.reset_index(drop=True), fingerprint=cfg_fingerprint)
+    # --- Budget filter, applied before the collision check ------------------
+    # A quick-mode cell and a full-budget cell for the same (task, pv) is the
+    # commonest collision, and it is not ambiguous once the budget is stated.
+    if outer_splits is not None or outer_repeats is not None:
+        shape = (
+            idx.groupby([*CELL_COLS, "cfg_fingerprint"], dropna=False)
+            .agg(n_repeats=("rep", "nunique"), folds_per_repeat=("fold", "nunique"))
+            .reset_index()
+        )
+        ok = pd.Series(True, index=shape.index)
+        if outer_splits is not None:
+            ok &= shape["folds_per_repeat"] == int(outer_splits)
+        if outer_repeats is not None:
+            ok &= shape["n_repeats"] == int(outer_repeats)
+        if not ok.any():
+            listing = "\n".join(
+                f"    {r.task}/{r.method}/pv{r.pv} cfg-{r.cfg_fingerprint}: "
+                f"{r.n_repeats} repeats x {r.folds_per_repeat} folds"
+                for r in shape.itertuples()
+            )
+            raise ValueError(
+                f"No cell matches the declared budget "
+                f"{outer_repeats} repeats x {outer_splits} folds. On disk:\n{listing}"
+            )
+        dropped = shape[~ok]
+        if not dropped.empty:
+            logger.warning(
+                "Budget filter dropped %d cell(s) that do not match %s repeats x "
+                "%s folds:\n  %s",
+                len(dropped), outer_repeats, outer_splits,
+                "\n  ".join(
+                    f"{r.task}/{r.method}/pv{r.pv} cfg-{r.cfg_fingerprint}: "
+                    f"{r.n_repeats}x{r.folds_per_repeat}"
+                    for r in dropped.itertuples()
+                ),
+            )
+        keep_fps = shape.loc[ok, [*CELL_COLS, "cfg_fingerprint"]]
+        idx = idx.merge(keep_fps, on=[*CELL_COLS, "cfg_fingerprint"], how="inner")
+
+    # --- The real invariant: one configuration per cell ---------------------
+    if require_unique_fingerprint:
+        collisions = []
+        for key, sub in idx.groupby(list(CELL_COLS), dropna=False):
+            fps = sub["cfg_fingerprint"].where(sub["cfg_fingerprint"].notna(), None)
+            variants = sorted({f for f in fps if f is not None})
+            if fps.isna().any():
+                variants.append("<legacy, unfingerprinted>")
+            if len(variants) > 1:
+                counts = (
+                    sub.assign(cfg=sub["cfg_fingerprint"].fillna("<legacy, unfingerprinted>"))
+                    .groupby("cfg").size()
+                )
+                collisions.append(
+                    f"    {key}: "
+                    + ", ".join(f"{k} ({v} folds)" for k, v in counts.items())
+                )
+        if collisions:
+            raise ValueError(
+                "The same (task, method, pv) cell was run under more than one "
+                "configuration. These are different partitions of possibly "
+                "different samples and must not be combined:\n"
+                + "\n".join(collisions)
+                + "\n\nDeclare the budget you are reporting, e.g. "
+                "outer_splits=5, outer_repeats=5, or pass cfg_fingerprint=[...] "
+                "to choose explicitly. Legacy files without a fingerprint "
+                "predate configuration hashing and cannot be matched to a "
+                "config; delete them or move them aside.\n"
+                "Call aggregate.inventory(<dir>) to see everything on disk."
+            )
+
+    return CheckpointSet(index=idx.reset_index(drop=True))
 
 
 def oof_predictions(
@@ -472,7 +619,12 @@ def aggregate_task_method(
         "n_schools": int(per_pv["n_schools"].max()),
         "single_pv": bool(len(per_pv) < 2),
         "weighted": bool(weighted),
-        "cfg_fingerprint": cset.fingerprint,
+        # A (task, method) row spans the PVs, and each PV is its own cell with
+        # its own fingerprint. Record them all rather than pretend there is one.
+        "cfg_fingerprints": ";".join(
+            sorted({str(v) for k, v in cset.fingerprints.items()
+                    if k[0] == task and k[1] == method})
+        ),
         "repeat_spread": float(per_pv["repeat_sd"].mean()),
     }
     out.update(rr.as_dict())

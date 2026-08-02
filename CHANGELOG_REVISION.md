@@ -255,7 +255,18 @@ The SE of the null mean is 0.0016, so the ±0.03 gate can now resolve a true nul
 
 **AUDIT-M2 — aggregation hierarchy replaces the pooled glob `FIXED`.** Notebook 05 previously globbed every `*_preds.parquet`, concatenated the lot and grouped by `task` alone. Four errors compounded in those five lines: the glob applied **no configuration filter at all**; it pooled selectors, which are different estimators; it pooled repeats, which are re-partitions of the *same* students; and it pooled plausible values, which carry *different labels* for 69.7% of students.
 
-On the fingerprint point, stated precisely: the local `results/checkpoints/` currently holds 30 fold-result checkpoints spanning **two** fingerprints (15 × `cfg-2a228fe0c5`, 5 × `cfg-350625c08f`, 5 unfingerprinted legacy) but only **5** `*_preds.parquet` files, all from `cfg-350625c08f`. So on *this* directory today the unfiltered glob happens to be uniform, and running it produces AUC 0.8735 — the handover's headline figure. The defect is that nothing in the old code checked, and the very next resumed run adds a second fingerprint to the prediction files as it already has to the fold-result files. The guard is written against the mechanism, not against today's directory listing. Each student entered the frame up to 250 times, and the bootstrap — which resamples schools — saw each school as many times over, so the interval collapsed.
+**Correction to the first version of this fix.** It required **one fingerprint per directory** and raised otherwise. That is not the invariant and could never be satisfied: `stage_nested` calls `run_nested_cv` once per (task, PV) on that combination's row subset, and `_config_fingerprint` hashes `sample_signature` — row count, positive count, school count, digest of school ids — so a different task or PV *necessarily* yields a different fingerprint. Run against the real Drive checkpoint directory it rejected all 30 cells of the 750-fold run and listed them as suspect. The guard was wrong, not the data.
+
+The invariant is **one fingerprint per cell**, where a cell is `(task, method, pv)` — one call to `run_nested_cv`. On the real directory:
+
+| Shape | Cells | Folds | Reading |
+|---|---|---|---|
+| 5 repeats × 5 folds | 30 | 750 | the full run: 3 tasks × 10 PVs |
+| 1 repeat × 3 folds | 3 | 9 | leftover quick-mode smoke test, same directory |
+
+So the genuine defect the old glob committed was concatenating a 3-fold smoke test into the reported estimate for three of the thirty cells. Cells are separated by **declaring the budget being reported** — `outer_splits=5, outer_repeats=5` — which is a specification, not a heuristic; dropped cells are named in a warning. `inventory()` prints everything on disk without raising, so the choice can be made from the actual contents. Note that the notebook declares the budget as a literal rather than reading it from `cfg`, because `quick.yaml` specifies 3 folds and would have selected the smoke-test cells in QUICK_MODE.
+
+Two cells were also made affordable: the level-1 BCa bootstrap runs 150 times at full budget (3 tasks × 10 PVs × 5 repeats), each adding a jackknife over ~1,084 schools, so the notebook offers a `FAST_PASS` percentile pass labelled not-reportable; and the pooled-versus-correct demonstration now prints the duplication factor for free and makes the pooled bootstrap opt-in, since running it over every duplicated row is precisely the thing being criticised. Each student entered the frame up to 250 times, and the bootstrap — which resamples schools — saw each school as many times over, so the interval collapsed.
 
 `src/vlpso_xai/evaluation/aggregate.py` replaces it with an explicit three-level hierarchy in which only the first level pools rows:
 

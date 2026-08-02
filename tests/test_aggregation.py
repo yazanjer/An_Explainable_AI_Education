@@ -18,6 +18,7 @@ import pytest
 from vlpso_xai.evaluation.aggregate import (
     aggregate_task_method,
     aggregation_table,
+    inventory,
     load_fold_predictions,
     oof_predictions,
     parse_checkpoint_name,
@@ -117,7 +118,8 @@ def test_parse_checkpoint_name_ignores_non_prediction_files():
 # ---------------------------------------------------------------------------
 # M2 (1): the glob must not mix configuration fingerprints
 # ---------------------------------------------------------------------------
-def test_mixed_fingerprints_raise_and_name_the_candidates(tmp_path):
+def test_two_configs_for_the_SAME_cell_raise_and_name_the_candidates(tmp_path):
+    """Same (task, method, pv), run twice under different configurations."""
     d = tmp_path / "ckpt"; d.mkdir()
     _write_repeat(d, cfg="aaaaaaaaaa", seed=1)
     _write_repeat(d, cfg="bbbbbbbbbb", seed=2)
@@ -127,6 +129,30 @@ def test_mixed_fingerprints_raise_and_name_the_candidates(tmp_path):
     msg = str(exc.value)
     assert "more than one configuration" in msg
     assert "aaaaaaaaaa" in msg and "bbbbbbbbbb" in msg   # both listed, none chosen
+
+
+def test_different_configs_across_DIFFERENT_cells_are_accepted(tmp_path):
+    """The real-world layout, and the bug in the first version of this module.
+
+    stage_nested calls run_nested_cv once per (task, pv) on that combination's
+    row subset, and the fingerprint hashes the row signature -- so every task
+    and every PV necessarily has its own fingerprint. Demanding one fingerprint
+    per directory could never be satisfied by a real run: it rejected all 30
+    cells of the 750-fold run.
+    """
+    # Fingerprints must be hex: run_nested_cv writes a sha256 prefix and the
+    # filename regex only accepts [0-9a-f].
+    d = tmp_path / "ckpt"; d.mkdir()
+    seed = 0
+    for task in ("low_vs_high", "low_vs_med", "med_vs_high"):
+        for pv in (1, 2):
+            _write_repeat(d, task=task, pv=pv, cfg=f"{seed:010x}", seed=seed)
+            seed += 1
+    cset = load_fold_predictions(d)          # must NOT raise
+    assert len(cset.fingerprints) == 6       # one per cell
+    assert len(set(cset.fingerprints.values())) == 6
+    assert cset.fingerprint is None          # no single directory-wide value
+    assert sorted(cset.tasks) == ["low_vs_high", "low_vs_med", "med_vs_high"]
 
 
 def test_legacy_files_count_as_a_distinct_configuration(tmp_path):
@@ -154,6 +180,42 @@ def test_explicit_fingerprint_selects_one_configuration(tmp_path):
     cset = load_fold_predictions(d, cfg_fingerprint="bbbbbbbbbb")
     assert cset.fingerprint == "bbbbbbbbbb"
     assert len(cset.index) == 5
+
+
+def test_declared_budget_separates_a_quick_run_from_the_full_one(tmp_path):
+    """The exact situation in the live checkpoint directory: 5x5 cells and
+    leftover 3-fold quick-mode cells for the same (task, pv)."""
+    d = tmp_path / "ckpt"; d.mkdir()
+    for rep in range(5):                                  # full: 5 repeats x 5 folds
+        _write_repeat(d, rep=rep, n_folds=5, cfg="fadedfaded", seed=20 + rep)
+    _write_repeat(d, rep=0, n_folds=3, cfg="0badbadbad", seed=99)   # leftover
+
+    with pytest.raises(ValueError, match="more than one configuration"):
+        load_fold_predictions(d)
+
+    cset = load_fold_predictions(d, outer_splits=5, outer_repeats=5)
+    assert cset.fingerprint == "fadedfaded"
+    assert len(cset.index) == 25
+    b = cset.budget()
+    assert b["n_repeats"].iloc[0] == 5 and b["folds_per_repeat"].iloc[0] == 5
+
+
+def test_declared_budget_that_matches_nothing_raises_with_an_inventory(tmp_path):
+    d = tmp_path / "ckpt"; d.mkdir()
+    _write_repeat(d, n_folds=5, cfg="aaaaaaaaaa", seed=1)
+    with pytest.raises(ValueError, match="No cell matches the declared budget"):
+        load_fold_predictions(d, outer_splits=5, outer_repeats=5)
+
+
+def test_inventory_lists_everything_and_never_raises(tmp_path):
+    d = tmp_path / "ckpt"; d.mkdir()
+    for rep in range(2):
+        _write_repeat(d, rep=rep, n_folds=5, cfg="fadedfaded", seed=30 + rep)
+    _write_repeat(d, rep=0, n_folds=3, cfg="0badbadbad", seed=98)
+    inv = inventory(d)                                    # must not raise
+    assert set(inv["cfg_fingerprint"]) == {"fadedfaded", "0badbadbad"}
+    assert inv.loc[inv.cfg_fingerprint == "fadedfaded", "total_folds"].iloc[0] == 10
+    assert inv.loc[inv.cfg_fingerprint == "0badbadbad", "folds_per_repeat"].iloc[0] == 3
 
 
 def test_renamed_file_is_caught_by_the_embedded_fingerprint(tmp_path):
@@ -223,6 +285,7 @@ def test_rubin_interval_is_wider_than_the_naive_pooled_one(one_config):
         cset, "low_vs_high", "none", n_resamples=300, expected_folds=5,
     )
     s = res["summary"]
+    assert s["cfg_fingerprints"]        # provenance recorded, one entry per PV
     assert s["n_pv"] == 2 and s["n_repeats"] == 2
     assert not s["single_pv"]
     assert s["between_variance"] > 0            # PV uncertainty is carried
