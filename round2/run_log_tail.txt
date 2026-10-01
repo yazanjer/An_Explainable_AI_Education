@@ -1,3 +1,4 @@
+/usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
@@ -303,7 +304,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 23:28:02,480 INFO    cells | done       1.8s  sel|fold=0|method=chi2|pv=9|rep=2|task=low_vs_medium  [3436 done, 0 failed, 6.34 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
