@@ -8,6 +8,60 @@ Status legend — `DONE` implemented and tested · `BUILT` implemented, awaiting
 
 ---
 
+## R2. Second-round revision (editor first decision + four reviewers, Oct 2026)
+
+Source: `reviewers report .docx` (editor decision: major revision; R1–R4). Every
+entry below names the comment it answers. Numbers are filled in only from
+completed cells (`scripts/cells.py reconcile`); until then the status is `BUILT`.
+
+### R2.1 Wrapper fitness is school-grouped (audit M7; editor "use grouped resampling consistently"; R2.2) `DONE`
+**Old:** `selection/bpso.py:96` and `selection/vlpso.py:291` scored candidate subsets with an ungrouped `StratifiedKFold` inside the outer training fold.
+**New:** `selection.base.fitness_splits` builds the internal folds once per fit from `StratifiedGroupKFold` on `CNTSCHID` and asserts that no school straddles a fold. Selectors take `groups` in `fit`; with `require_groups=True` (every round-2 run) a missing `groups` raises. The splitter used is recorded on each result row (`fitness_splitter`). Tests: `tests/test_round2.py::test_swarm_fit_uses_grouped_folds`, `::test_require_groups_raises_without_groups`.
+**Consequence:** to be reported from the round-2 selector comparison.
+
+### R2.2 BPSO and VLPSO matched on every setting except the length mechanism (audit M11; editor "ensure fair comparison") `DONE`
+**Old:** `BPSOSelector(max_cardinality=15)` vs `VLPSOSelector(max_length=None)`.
+**New:** both receive one shared settings block (`config/revision_r2.yaml: sel.swarm`) including the cardinality bounds (both uncapped, minimum 2). `tests/test_round2.py::test_bpso_and_vlpso_share_every_common_setting` asserts equality attribute by attribute.
+
+### R2.3 The five declared-but-missing selectors are implemented (handover §4; editor "five planned comparison methods were not evaluated") `DONE`
+`selection/embedded.py`: `L1PathRanker` (order of entry along the L1 path), `TreeImportanceRanker` (random-forest impurity importance), `BorutaSelector` (shadow features, Bonferroni-corrected binomial test, rough fix; implemented in-house because the `boruta` package is incompatible with NumPy 2). `selection/wrappers.py`: `RFERanker` (RFE with L2 logistic regression), `SFSSelector` (greedy forward selection scored by school-grouped internal CV AUC; subset size = best prefix of its own path, k ≤ 30, patience 5). Each raises `LeakageError` on a leaking matrix (tested).
+
+### R2.4 Filters and rankers choose k on school-grouped inner folds (editor "filter methods used a fixed value of k") `DONE`
+**Old:** every filter ran at a fixed k = 15, contradicting `config/default.yaml: k_filter  # tuned on inner folds`.
+**New:** `selection/tuned.TunedTopKSelector` refits the ranker in each inner-training fold, scores k ∈ {5, 10, 15, 20, 30} by inner-validation AUC, picks the best (ties → smaller k), and refits on the whole outer-training fold. Used for SU, MI, χ², ReliefF, RFE, L1 and tree importance.
+
+### R2.5 Selector comparison at the configured budget (editor "strengthen the feature-selection evaluation"; R2.3) `BUILT`
+`config/revision_r2.yaml: sel` — 3 tasks × 10 PVs × 5 repeats × 5 outer folds × 16 arms = 12,000 cells, every arm on the identical headline outer folds, one downstream learner (L2 logistic regression, C tuned on the same school-grouped inner folds) so differences are attributable to the selector. Swarms: population 60, 100 iterations, patience 15, fitness subsample 3,000 (reported). Contrasts: paired differences on matched folds, Nadeau–Bengio variance within each PV, Rubin across PVs, Holm within task × reference. Stability: Nogueira et al. (2018) estimator (defined for unequal subset sizes, unlike Kuncheva's index, which was undefined for VLPSO in round 1).
+
+### R2.6 VLPSO instability investigated (editor "additional repetitions, sensitivity analyses, convergence diagnostics") `BUILT`
+`vlstab` cells: 10 swarm seeds × 5 folds for VLPSO and BPSO (seed stability), and 13 one-at-a-time variants (population 20/100, iterations 30/200, λ 0/0.05/0.30, τ 0.40/0.60, β 5/15, fitness subsample 1,500/6,000) × 5 folds. Convergence traces are stored for every swarm fit.
+
+### R2.7 Permutation nulls at the configured budget (handover criterion 6) `BUILT`
+100 unrestricted and 30 within-school draws, each re-running the full headline fold specification (5 school-grouped outer folds, 5 inner, model family chosen in the inner loop) on Low vs. High, PV1, plus the observed run in the same result set. The two nulls now use disjoint seed streams (round 1: the within-school seeds were a prefix of the unrestricted ones, so the nulls were not independent). Gate |mean − 0.50| ≤ 0.03.
+
+### R2.8 Explanations across plausible values and folds (R2.4) `BUILT`
+`shap` cells: the headline inner-loop model refitted for every (task, PV, fold) of repeat 0 — 150 fits — and explained with TreeSHAP on the fitted pipeline's feature space (`transformed_frames`), interventional, k-means background (200) from the training partition only, 2,000 label-stratified test instances. Agreement across the 50 PV × fold units per task: Kendall's W. Each cell also reproduces a headline fold, so its AUC is checked against `results-3`.
+**Defects fixed on the way:** (i) notebook 08 median-imputed on the full frame before the split — the cells impute inside the pipeline; (ii) `explain/shap_global.global_shap` passed a shap `DenseData` k-means summary to `LinearExplainer`, which rejects it — the background is now a plain frame for every explainer; (iii) shap's additivity check raised on a random-forest fold (discrepancy 0.017 on the probability scale) — it is disabled and the maximum discrepancy is recorded per cell (`shap_additivity_max_abs_error`).
+
+### R2.9 LIME stability statistics that are not zero-fill artefacts `DONE`
+**Old (notebook 08, manuscript §4.6.2):** an unnamed feature's weight was recorded as 0 for that seed, and the paper reported that "every feature named by fewer than half the seeds had an SD exceeding its own mean weight". For a feature named by m of R seeds with similar weights that inequality holds whenever m < R/2, so the statement was true by construction.
+**New:** `explain/lime_local.lime_seed_stability` reports selection frequency separately from the weight's mean, SD and coefficient of variation computed ONLY over the seeds that named the feature, plus Spearman agreement both on the zero-filled union (round-1 definition, for comparison) and on features named by both runs.
+**Manuscript consequence:** the round-1 sentence must be withdrawn.
+
+### R2.10 External validation Spain → Portugal (removes a stated limitation) `BUILT`
+`ext` cells: the inner-loop model selection on all of Spain, evaluated once on Portugal (same exclusion rule, PV-specific categories), per PV; school-clustered bootstrap over Portuguese schools; Rubin across PVs. Portuguese schools asserted disjoint from Spanish ones.
+
+### R2.11 Design-based standard errors for the AUC (R4.2) `BUILT`
+`brr` cells: Fay-BRR (80 replicates, k = 0.5) of the survey-weighted, fold-weighted AUC on stored outer-test predictions (models not refitted per replicate), Rubin across PVs. Round 1's abstract said standard errors came from BRR while Table 4 reported a school-cluster bootstrap; the manuscript must state which estimand each interval belongs to.
+
+### R2.12 Cell infrastructure (handover §5) `DONE`
+`experiments/cells.py` (manifest, cell ids, cell-id-derived seeds, atomic idempotent writes with a configuration fingerprint in the directory name, reconciliation), `experiments/kinds.py`, `experiments/aggregate.py`, `experiments/publish.py` (copies only non-student-level outputs and raises on a student-level column), `scripts/cells.py`, `scripts/runpod_bootstrap.sh`, `scripts/runpod_publish.sh`. The PISA file is downloaded from the OECD inside the compute pod and never leaves it.
+
+### R2.13 Test-suite fix `DONE`
+`tests/test_leakage_detection_power.py::test_sentinel_through_the_full_harness` failed under scikit-learn 1.8 (and passed under 1.6.1) because all eleven columns were noise on the training rows and a k = 3 filter picked the sentinel by chance (p ≈ 3/11). Rebuilt with one genuine column and k = 1, which separates isolated from leaky selection deterministically; the calibration test still shows the leaky fit selects the sentinel. Suite: 218 tests (196 pre-existing + 22 round-2), passing on scikit-learn 1.6.1 and 1.8.0. (The handover's "309 tests" was out of date.)
+
+---
+
 ## 0. The headline finding, stated plainly
 
 **The editor's leakage hypothesis is correct, and the leakage is direct rather than subtle.**

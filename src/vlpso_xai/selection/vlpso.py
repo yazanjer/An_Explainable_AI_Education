@@ -180,7 +180,11 @@ class VLPSOSelector(BaseSelector):
         ``"random"`` is the initialisation ablation.
     fitness_cv_splits:
         Folds of the INTERNAL CV used for the wrapper score. Must be >= 2;
-        there is deliberately no resubstitution option.
+        there is deliberately no resubstitution option. When ``groups`` is
+        passed to ``fit`` the folds are school-grouped (audit M7).
+    require_groups:
+        If True, ``fit`` raises unless ``groups`` is supplied. Set by every
+        comparison run so ungrouped wrapper fitness cannot recur silently.
     fitness_subsample:
         Stratified subsample size used for the k-NN wrapper evaluation ONLY.
         The wrapper is O(n^2) in the training-fold size, so on the full Spanish
@@ -224,6 +228,7 @@ class VLPSOSelector(BaseSelector):
         random_state: int = 42,
         n_bins: int = 10,
         verbose: bool = False,
+        require_groups: bool = False,
     ):
         self.population_size = population_size
         self.divisions = divisions
@@ -253,6 +258,7 @@ class VLPSOSelector(BaseSelector):
         self.random_state = random_state
         self.n_bins = n_bins
         self.verbose = verbose
+        self.require_groups = require_groups
 
     # -- objective -------------------------------------------------------
     def _rank_features(self, values: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -274,7 +280,6 @@ class VLPSOSelector(BaseSelector):
     def _fitness(self, values: np.ndarray, y: np.ndarray, cols: np.ndarray) -> float:
         """The three-term objective. MAXIMISED."""
         from sklearn.metrics import balanced_accuracy_score
-        from sklearn.model_selection import StratifiedKFold
         from sklearn.neighbors import KNeighborsClassifier
 
         self._n_evaluations += 1
@@ -287,12 +292,10 @@ class VLPSOSelector(BaseSelector):
         p = values.shape[1]
 
         # --- performance term: INTERNAL CV, never resubstitution ---------
-        n_splits = int(max(2, min(self.fitness_cv_splits, np.bincount(y).min())))
-        skf = StratifiedKFold(
-            n_splits=n_splits, shuffle=True, random_state=self.random_state
-        )
+        # Folds are fixed once per fit (see fit) and are school-grouped when
+        # groups are supplied (audit M7).
         scores = []
-        for tr, va in skf.split(Xs, y):
+        for tr, va in self._splits:
             knn = KNeighborsClassifier(
                 n_neighbors=int(min(self.k_neighbors, max(1, len(tr) - 1)))
             )
@@ -417,8 +420,9 @@ class VLPSOSelector(BaseSelector):
         return "shrink"
 
     # -- fit -------------------------------------------------------------
-    def fit(self, X, y, **kwargs) -> "VLPSOSelector":
+    def fit(self, X, y, groups=None, **kwargs) -> "VLPSOSelector":
         from ..data.features import assert_no_leakage
+        from .base import fitness_splits
 
         values = self._record_input(X)
         if isinstance(X, pd.DataFrame):
@@ -492,6 +496,12 @@ class VLPSOSelector(BaseSelector):
                 train_size=int(self.fitness_subsample),
                 stratify=y, random_state=self.random_state,
             )
+        y_fit = y if self._fit_idx is None else y[self._fit_idx]
+        g_fit = None if groups is None else (
+            np.asarray(groups) if self._fit_idx is None else np.asarray(groups)[self._fit_idx])
+        self._splits, self.fitness_splitter_ = fitness_splits(
+            y_fit, g_fit, self.fitness_cv_splits, self.random_state,
+            require_groups=self.require_groups, where="VLPSOSelector")
         self.ranking_ = self._rank_features(values, y)
         self._su_pairwise_ = (
             su_matrix(values, self.n_bins)
@@ -641,7 +651,7 @@ class VLPSOSelector(BaseSelector):
             "length_penalty": self.length_penalty,
             "interpretability_weight": self.interpretability_weight,
             "k_neighbors": self.k_neighbors,
-            "fitness_evaluation": f"internal StratifiedKFold(n_splits={self.fitness_cv_splits})",
+            "fitness_evaluation": f"internal {getattr(self, 'fitness_splitter_', 'unfitted')} (n_splits={self.fitness_cv_splits})",
             "fitness_subsample": self.fitness_subsample,
             "stopping": f"max_iter={self.max_iter} or no gbest improvement for {self.convergence_patience} iters",
             "stopped_early": getattr(self, "stopped_early_", None),

@@ -60,6 +60,7 @@ class BPSOSelector(BaseSelector):
         convergence_patience: int = 15,
         random_state: int = 42,
         n_bins: int = 10,
+        require_groups: bool = False,
     ):
         self.population_size = population_size
         self.max_iter = max_iter
@@ -79,11 +80,11 @@ class BPSOSelector(BaseSelector):
         self.convergence_patience = convergence_patience
         self.random_state = random_state
         self.n_bins = n_bins
+        self.require_groups = require_groups
 
     def _fitness(self, values: np.ndarray, y: np.ndarray, cols: np.ndarray) -> float:
         """Identical objective to VLPSO, so only the length mechanism differs."""
         from sklearn.metrics import balanced_accuracy_score
-        from sklearn.model_selection import StratifiedKFold
         from sklearn.neighbors import KNeighborsClassifier
 
         self._n_evaluations += 1
@@ -92,10 +93,8 @@ class BPSOSelector(BaseSelector):
         if self._fit_idx is not None:
             values, y = values[self._fit_idx], y[self._fit_idx]
         Xs = values[:, cols]
-        n_splits = int(max(2, min(self.fitness_cv_splits, np.bincount(y).min())))
-        skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=self.random_state)
         scores = []
-        for tr, va in skf.split(Xs, y):
+        for tr, va in self._splits:          # fixed per fit; grouped when groups given (M7)
             knn = KNeighborsClassifier(n_neighbors=int(min(self.k_neighbors, max(1, len(tr) - 1))))
             knn.fit(Xs[tr], y[tr])
             scores.append(balanced_accuracy_score(y[va], knn.predict(Xs[va])))
@@ -124,8 +123,9 @@ class BPSOSelector(BaseSelector):
         out[keep] = True
         return out
 
-    def fit(self, X, y, **kwargs) -> "BPSOSelector":
+    def fit(self, X, y, groups=None, **kwargs) -> "BPSOSelector":
         from ..data.features import assert_no_leakage
+        from .base import fitness_splits
 
         values = self._record_input(X)
         if isinstance(X, pd.DataFrame):
@@ -142,6 +142,12 @@ class BPSOSelector(BaseSelector):
                 train_size=int(self.fitness_subsample),
                 stratify=y, random_state=self.random_state,
             )
+        y_fit = y if self._fit_idx is None else y[self._fit_idx]
+        g_fit = None if groups is None else (
+            np.asarray(groups) if self._fit_idx is None else np.asarray(groups)[self._fit_idx])
+        self._splits, self.fitness_splitter_ = fitness_splits(
+            y_fit, g_fit, self.fitness_cv_splits, self.random_state,
+            require_groups=self.require_groups, where="BPSOSelector")
         p = values.shape[1]
         self._n_evaluations = 0
         t0 = time.perf_counter()
@@ -221,7 +227,7 @@ class BPSOSelector(BaseSelector):
             "length_penalty": self.length_penalty,
             "interpretability_weight": self.interpretability_weight,
             "k_neighbors": self.k_neighbors,
-            "fitness_evaluation": f"internal StratifiedKFold(n_splits={self.fitness_cv_splits})",
+            "fitness_evaluation": f"internal {getattr(self, 'fitness_splitter_', 'unfitted')} (n_splits={self.fitness_cv_splits})",
             "fitness_subsample": self.fitness_subsample,
             "stopped_early": getattr(self, "stopped_early_", None),
             "stop_iteration": getattr(self, "stop_iteration_", None),

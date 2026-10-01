@@ -183,13 +183,36 @@ def global_shap(
     idx = stratified_sample(X_test, y_test, n_instances, seed)
     Xe = X_test.iloc[idx]
 
-    explainer, cls_name, perturb = _pick_explainer(model, bg, output_scale, seed)
-    vals = explainer.shap_values(Xe)
+    # The k-means summary is a shap DenseData object; LinearExplainer rejects
+    # it (NotImplementedError: only Independent/Partition/Impute maskers) and
+    # TreeExplainer expects a matrix. Every explainer therefore receives the
+    # SAME background as a plain frame of the summary points.
+    bg_frame = pd.DataFrame(np.asarray(bg_values), columns=list(X_train.columns))
+    explainer, cls_name, perturb = _pick_explainer(model, bg_frame, output_scale, seed)
+    # shap's built-in additivity check raises on small numerical discrepancies
+    # for some random-forest folds (observed: 0.017 on the probability scale).
+    # It is disabled, and the discrepancy is MEASURED instead and returned, so
+    # it is reported rather than either crashing the run or being hidden.
+    vals = explainer.shap_values(Xe, check_additivity=False)
     if isinstance(vals, list):                      # multiclass -> positive class
         vals = vals[1]
     vals = np.asarray(vals)
+    ev = np.asarray(getattr(explainer, "expected_value", np.nan)).ravel()
     if vals.ndim == 3:
         vals = vals[:, :, 1]
+    ev = float(ev[-1]) if ev.size else float("nan")
+    try:
+        if cls_name == "TreeExplainer":
+            raw = (model.decision_function(Xe) if hasattr(model, "decision_function")
+                   and "GradientBoosting" in type(model).__name__
+                   else model.predict_proba(Xe)[:, 1])
+        elif cls_name == "LinearExplainer":
+            raw = model.decision_function(Xe)
+        else:
+            raw = model.predict_proba(Xe)[:, 1]
+        additivity_err = float(np.max(np.abs(ev + vals.sum(axis=1) - raw)))
+    except Exception:
+        additivity_err = float("nan")
 
     mean_abs = np.abs(vals).mean(axis=0)
 
@@ -218,7 +241,7 @@ def global_shap(
         n_explained=int(len(idx)),
     )
     return {"importance": out, "spec": spec, "shap_values": vals,
-            "explained_index": idx}
+            "explained_index": idx, "additivity_max_abs_error": additivity_err}
 
 
 def noise_control_benchmark(importance: pd.DataFrame,

@@ -115,6 +115,58 @@ class BaseSelector(SelectorMixin, BaseEstimator):
         return mask
 
 
+def fitness_splits(
+    y: np.ndarray,
+    groups: Optional[np.ndarray],
+    n_splits: int,
+    random_state: int,
+    *,
+    require_groups: bool = False,
+    where: str = "selector",
+):
+    """Folds for a wrapper selector's INTERNAL fitness evaluation.
+
+    Audit M7 (and editor/R2 comment, round 2): the swarm selectors scored
+    candidate subsets with an UNGROUPED ``StratifiedKFold`` inside the outer
+    training fold, so a student's classmates could sit on the other side of an
+    internal split. The headline estimates were unaffected (that arm uses no
+    selector), but the selector comparison was not school-respecting.
+
+    With ``groups`` supplied the folds come from ``StratifiedGroupKFold`` and no
+    school straddles an internal boundary; this is asserted, not assumed. With
+    ``require_groups=True`` a missing ``groups`` argument is an error rather
+    than a silent fall-back to the ungrouped splitter -- the comparison runs
+    set it, so the defect cannot return unnoticed.
+
+    Returns ``(splits, splitter_name)``; the name is recorded on the selector so
+    every result row states which protocol produced it.
+    """
+    from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold
+
+    y = np.asarray(y).astype(int)
+    if groups is None:
+        if require_groups:
+            raise ValueError(
+                f"{where}: groups are required for school-grouped wrapper "
+                "fitness (audit M7) but were not passed to fit(). Pass "
+                "select__groups=<school ids> through the Pipeline."
+            )
+        k = int(max(2, min(n_splits, np.bincount(y).min())))
+        skf = StratifiedKFold(n_splits=k, shuffle=True, random_state=random_state)
+        return list(skf.split(np.zeros(len(y)), y)), "StratifiedKFold(ungrouped)"
+
+    groups = np.asarray(groups)
+    if len(groups) != len(y):
+        raise ValueError(f"{where}: groups has length {len(groups)}, y has {len(y)}")
+    k = int(max(2, min(n_splits, len(np.unique(groups)))))
+    sgkf = StratifiedGroupKFold(n_splits=k, shuffle=True, random_state=random_state)
+    splits = list(sgkf.split(np.zeros(len(y)), y, groups=groups))
+    for tr, va in splits:
+        if set(groups[tr]) & set(groups[va]):
+            raise AssertionError(f"{where}: a school straddles a fitness fold")
+    return splits, "StratifiedGroupKFold(CNTSCHID)"
+
+
 class IdentitySelector(BaseSelector):
     """The 'no selection' baseline: keeps every feature.
 

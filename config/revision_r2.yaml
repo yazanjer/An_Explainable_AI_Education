@@ -1,0 +1,135 @@
+# =====================================================================
+# Round-2 revision: the analyses the editor and four reviewers asked for.
+#
+# Every cell of work is enumerated up front by `scripts/cells.py manifest`
+# from this file; `scripts/cells.py run` computes cells idempotently and
+# writes one directory per cell atomically; `scripts/cells.py aggregate`
+# builds every table from completed cells. The budget actually executed is
+# whatever the manifest reconciliation reports -- never this file alone.
+# =====================================================================
+
+meta:
+  name: revision_r2
+  base_config: default          # data, outcome, design and CV settings come from default.yaml
+  schema_version: 1             # bump to invalidate every cell
+
+seed: 42                        # outer splits use seed + repeat, as in the headline run
+
+# ---------------------------------------------------------------------
+# Selector comparison (editor: grouping, fairness, scale; R2.1-R2.3)
+# ---------------------------------------------------------------------
+sel:
+  tasks: [low_vs_high, low_vs_medium, medium_vs_high]
+  pvs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  repeats: [0, 1, 2, 3, 4]
+  outer_splits: 5
+  folds: [0, 1, 2, 3, 4]
+  downstream:
+    model: LogisticRegression_L2     # one learner for every arm, C tuned on inner folds
+    C_grid: [0.01, 0.1, 1.0, 10.0]
+    inner_splits: 5
+  k_grid: [5, 10, 15, 20, 30]        # rankers: k chosen on school-grouped inner folds
+  methods: [none, symmetric_uncertainty, mutual_info, chi2, relieff,
+            rfe, l1_logistic, tree_importance, sfs, boruta,
+            bpso, vlpso, vlpso_nopenalty, vlpso_shrink_only,
+            vlpso_random_init, vlpso_mi]
+  swarm:                              # IDENTICAL for BPSO and VLPSO (audit M11)
+    population_size: 60
+    max_iter: 100
+    inertia_start: 0.9
+    inertia_end: 0.4
+    c1: 1.49445
+    c2: 1.49445
+    gamma_accuracy: 0.8
+    length_penalty: 0.15
+    interpretability_weight: 0.05
+    k_neighbors: 5
+    fitness_cv_splits: 3
+    fitness_subsample: 3000
+    convergence_patience: 15
+    min_features: 2                   # VLPSO min_length / BPSO min_features
+    max_features: null                # VLPSO max_length / BPSO max_cardinality: both uncapped
+  vlpso_only:                         # the length mechanism itself
+    divisions: 12
+    beta_stagnation: 9
+    growth_prob: 0.5
+    length_step: 1
+  sfs: {k_max: 30, cv_splits: 3, patience: 5}
+  boruta: {max_iter: 30, n_estimators: 100, max_depth: 7}
+
+# ---------------------------------------------------------------------
+# VLPSO stability and sensitivity (editor: "investigate this instability")
+# ---------------------------------------------------------------------
+vlstab:
+  task: low_vs_high
+  pv: 1
+  repeat: 0
+  folds: [0, 1, 2, 3, 4]
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  seed_methods: [vlpso, bpso]
+  variants:                           # one-at-a-time departures from the comparison settings
+    pop20: {population_size: 20}
+    pop100: {population_size: 100}
+    iter30: {max_iter: 30}
+    iter200: {max_iter: 200}
+    lambda0: {length_penalty: 0.0}
+    lambda005: {length_penalty: 0.05}
+    lambda030: {length_penalty: 0.30}
+    tau040: {selection_threshold: 0.40}
+    tau060: {selection_threshold: 0.60}
+    beta5: {beta_stagnation: 5}
+    beta15: {beta_stagnation: 15}
+    sub1500: {fitness_subsample: 1500}
+    sub6000: {fitness_subsample: 6000}
+
+# ---------------------------------------------------------------------
+# Permutation nulls (handover acceptance criterion 6)
+# Same specification as the headline fold, on Low vs. High, PV1, repeat 0:
+# 5 school-grouped outer folds, 5 inner, model family chosen in the inner loop.
+# ---------------------------------------------------------------------
+perm:
+  task: low_vs_high
+  pv: 1
+  outer_splits: 5
+  inner_splits: 5
+  n_unrestricted: 100
+  n_within_school: 30
+  seed_offset_unrestricted: 100000   # disjoint seed streams: the two nulls are independent
+  seed_offset_within: 200000
+  gate_tolerance: 0.03
+
+# ---------------------------------------------------------------------
+# Explainability across plausible values and folds (R2.4)
+# ---------------------------------------------------------------------
+shap:
+  tasks: [low_vs_high, low_vs_medium, medium_vs_high]
+  pvs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  repeat: 0
+  folds: [0, 1, 2, 3, 4]
+  n_instances: 2000
+  background_size: 200
+  background_method: kmeans          # training partition only
+  n_bootstrap: 1000
+  local_quantiles: [0.05, 0.25, 0.50, 0.75, 0.95, 0.99]
+  lime_pvs: [1]                       # LIME seed stability at PV1, all folds and tasks
+  lime_repeats: 30
+  lime_samples: 5000
+  lime_features: 15
+
+# ---------------------------------------------------------------------
+# External validation Spain -> Portugal (removes a stated limitation)
+# ---------------------------------------------------------------------
+ext:
+  tasks: [low_vs_high, low_vs_medium, medium_vs_high]
+  pvs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  inner_splits: 5
+  n_bootstrap: 2000
+
+# ---------------------------------------------------------------------
+# Design-based uncertainty (R4.2): Fay-BRR on the stored outer-test predictions
+# ---------------------------------------------------------------------
+brr:
+  tasks: [low_vs_high, low_vs_medium, medium_vs_high]
+  pvs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  n_replicates: 80
+  fay_k: 0.5

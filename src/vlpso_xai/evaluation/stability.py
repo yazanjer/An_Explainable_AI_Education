@@ -53,6 +53,55 @@ def kuncheva(a: Sequence[str], b: Sequence[str], n_total: int) -> float:
     return float((r * n_total - k * k) / (k * (n_total - k)))
 
 
+def nogueira(subsets: Sequence[Sequence[str]], all_features: Sequence[str]) -> Dict[str, float]:
+    r"""Nogueira, Sechidis & Brown (2018) stability estimator, with its variance.
+
+    .. math::
+
+        \hat\Phi = 1 - \frac{\tfrac{1}{d}\sum_f s_f^2}
+                         {\tfrac{\bar k}{d}\left(1-\tfrac{\bar k}{d}\right)},
+        \qquad s_f^2 = \tfrac{M}{M-1}\hat p_f(1-\hat p_f)
+
+    over ``M`` selected subsets of a ``d``-feature universe. Unlike Kuncheva's
+    index it is defined when subset sizes differ -- which is exactly the case
+    for the variable-length search, whose subsets ranged from 2 to 17 features
+    and for which Kuncheva's index was therefore undefined in round 1. It is
+    corrected for chance (0 = random selection of the same average size,
+    1 = identical subsets). The asymptotic variance follows Theorem 6 of the
+    paper and gives a 95% interval.
+    """
+    feats = list(all_features)
+    idx = {f: i for i, f in enumerate(feats)}
+    subsets = [list(s) for s in subsets if s is not None]
+    M, d = len(subsets), len(feats)
+    if M < 2 or d < 2:
+        return {"nogueira": float("nan"), "nogueira_ci_low": float("nan"),
+                "nogueira_ci_high": float("nan"), "n_subsets": M}
+    Z = np.zeros((M, d))
+    for i, s in enumerate(subsets):
+        for f in s:
+            Z[i, idx[f]] = 1.0
+    p_hat = Z.mean(axis=0)
+    k_bar = Z.sum(axis=1).mean()
+    denom = (k_bar / d) * (1 - k_bar / d)
+    if denom <= 0:
+        return {"nogueira": float("nan"), "nogueira_ci_low": float("nan"),
+                "nogueira_ci_high": float("nan"), "n_subsets": M}
+    s2 = M / (M - 1) * p_hat * (1 - p_hat)
+    phi = 1 - s2.mean() / denom
+    # Variance (Nogueira et al. 2018, Thm 6).
+    ki = Z.sum(axis=1)
+    phi_i = np.empty(M)
+    for i in range(M):
+        phi_i[i] = (1.0 / denom) * (np.mean(Z[i] * p_hat) - ki[i] * k_bar / d ** 2
+                                     + (phi / 2) * (2 * k_bar * ki[i] / d ** 2 - ki[i] / d - k_bar / d + 1))
+    phi_bar = phi_i.mean()
+    var = 4.0 / M ** 2 * np.sum((phi_i - phi_bar) ** 2)
+    half = 1.959963984540054 * np.sqrt(var)
+    return {"nogueira": float(phi), "nogueira_ci_low": float(phi - half),
+            "nogueira_ci_high": float(phi + half), "n_subsets": M}
+
+
 def pairwise_stability(
     subsets: Sequence[Sequence[str]],
     n_total: int,

@@ -197,13 +197,21 @@ class ReliefFFilter(_TopKFilter):
     """
 
     def __init__(self, k: int = 10, n_neighbors: int = 10, n_samples: int = 500,
-                 random_state: int = 42, n_bins: int = 10):
+                 random_state: int = 42, n_bins: int = 10, use_skrebate: bool = True):
         super().__init__(k=k, n_bins=n_bins)
         self.n_neighbors = n_neighbors
         self.n_samples = n_samples
         self.random_state = random_state
+        self.use_skrebate = use_skrebate
 
     def _score(self, values, y):
+        # skrebate's ReliefF is O(n^2) in the training-fold size; at ~12,000 rows
+        # per fold it dominates the comparison's run time. The comparison sets
+        # use_skrebate=False and uses the sampled reference implementation below
+        # (n_samples anchor rows), which is recorded in implementation_.
+        if not self.use_skrebate:
+            self.implementation_ = "internal"
+            return self._relieff(np.nan_to_num(values), np.asarray(y))
         try:
             from skrebate import ReliefF as _SkReliefF
 
