@@ -1,5 +1,7 @@
+  opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
+2026-10-01 22:10:54,287 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -42,10 +44,9 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:45:46,707 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:45:49,438 INFO    cells | done     223.2s  shap|fold=1|pv=3|task=low_vs_medium  [202 done, 0 failed, 4.14 h]
-2026-10-01 21:45:50,910 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:45:53,557 INFO    cells | done     226.8s  shap|fold=2|pv=3|task=low_vs_medium  [203 done, 0 failed, 4.14 h]
+2026-10-01 22:10:57,201 INFO    cells | done     247.8s  shap|fold=0|pv=7|task=low_vs_medium  [259 done, 0 failed, 4.56 h]
+2026-10-01 22:11:02,868 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:11:05,707 INFO    cells | done     159.4s  shap|fold=0|pv=7|task=medium_vs_high  [260 done, 0 failed, 4.56 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -88,8 +89,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:46:11,028 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:46:13,795 INFO    cells | done     229.7s  shap|fold=4|pv=3|task=low_vs_medium  [204 done, 0 failed, 4.14 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -132,12 +131,12 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:47:05,960 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:47:07,116 INFO    cells | done     113.3s  shap|fold=2|pv=3|task=medium_vs_high  [205 done, 0 failed, 4.16 h]
+2026-10-01 22:11:25,737 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
+2026-10-01 22:11:27,513 INFO    cells | done     244.5s  shap|fold=4|pv=7|task=low_vs_medium  [261 done, 0 failed, 4.56 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -176,8 +175,8 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:47:22,717 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:47:24,613 INFO    cells | done     127.6s  shap|fold=0|pv=4|task=low_vs_high  [206 done, 0 failed, 4.16 h]
+2026-10-01 22:11:29,926 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:11:33,056 INFO    cells | done     276.8s  shap|fold=2|pv=7|task=low_vs_medium  [262 done, 0 failed, 4.57 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -220,6 +219,10 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
+2026-10-01 22:11:41,801 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:11:42,348 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:11:43,935 INFO    cells | done     156.3s  shap|fold=1|pv=7|task=medium_vs_high  [263 done, 0 failed, 4.57 h]
+2026-10-01 22:11:44,706 INFO    cells | done     266.7s  shap|fold=3|pv=7|task=low_vs_medium  [264 done, 0 failed, 4.57 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -262,8 +265,8 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:47:48,049 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:47:49,985 INFO    cells | done     153.5s  shap|fold=4|pv=3|task=medium_vs_high  [207 done, 0 failed, 4.17 h]
+2026-10-01 22:11:52,012 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:11:53,258 INFO    cells | done     115.2s  shap|fold=2|pv=7|task=medium_vs_high  [265 done, 0 failed, 4.57 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -306,8 +309,8 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:47:52,675 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:47:54,403 INFO    cells | done     160.2s  shap|fold=3|pv=3|task=medium_vs_high  [208 done, 0 failed, 4.17 h]
+2026-10-01 22:13:22,325 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:13:23,955 INFO    cells | done     146.8s  shap|fold=3|pv=7|task=medium_vs_high  [266 done, 0 failed, 4.60 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -344,16 +347,12 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:47:56,488 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:47:59,478 INFO    cells | done     130.0s  shap|fold=1|pv=4|task=low_vs_high  [209 done, 0 failed, 4.17 h]
-2026-10-01 21:48:01,418 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:48:03,288 INFO    cells | done     129.7s  shap|fold=2|pv=4|task=low_vs_high  [210 done, 0 failed, 4.17 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -396,5 +395,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:48:20,867 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
-2026-10-01 21:48:23,809 INFO    cells | done     130.0s  shap|fold=3|pv=4|task=low_vs_high  [211 done, 0 failed, 4.18 h]
+2026-10-01 22:13:31,249 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:13:31,655 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-10-01 22:13:32,874 INFO    cells | done      99.6s  shap|fold=4|pv=8|task=low_vs_high  [267 done, 0 failed, 4.60 h]
