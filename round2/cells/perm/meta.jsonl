@@ -1,0 +1,2 @@
+{"auc_fold_weighted": 0.8845335104513274, "cell_id": "perm|draw=0|null=observed", "draw": 0, "fingerprint": "83738cfbd1", "kind": "perm", "null": "observed", "perm_seed": null, "seconds": 670.19, "seed": 172516994}
+{"auc_fold_weighted": 0.49733725380369165, "cell_id": "perm|draw=0|null=unrestricted", "draw": 0, "fingerprint": "83738cfbd1", "kind": "perm", "null": "unrestricted", "perm_seed": 100000, "seconds": 503.29, "seed": 964868526}
