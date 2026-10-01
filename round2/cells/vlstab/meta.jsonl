@@ -59,6 +59,7 @@
 {"auc": 0.8432739744003518, "cell_id": "vlstab|fold=3|swarm_seed=0|variant=pop100", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 7, "seconds": 354.62, "seed": 455310142}
 {"auc": 0.8622133871476856, "cell_id": "vlstab|fold=3|swarm_seed=0|variant=seed_bpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 20, "seconds": 98.55, "seed": 1809510901}
 {"auc": 0.8539514890568419, "cell_id": "vlstab|fold=3|swarm_seed=0|variant=seed_vlpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 9, "seconds": 179.38, "seed": 1719730073}
+{"auc": 0.8588306018293569, "cell_id": "vlstab|fold=3|swarm_seed=0|variant=sub6000", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 9, "seconds": 492.28, "seed": 878317207}
 {"auc": 0.8433151154254017, "cell_id": "vlstab|fold=3|swarm_seed=0|variant=tau040", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 4, "seconds": 200.28, "seed": 1679974817}
 {"auc": 0.8433151154254017, "cell_id": "vlstab|fold=3|swarm_seed=0|variant=tau060", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 4, "seconds": 102.1, "seed": 1687039218}
 {"auc": 0.8530627010501601, "cell_id": "vlstab|fold=3|swarm_seed=1|variant=seed_vlpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 8, "seconds": 87.97, "seed": 1396449658}
@@ -72,10 +73,12 @@
 {"auc": 0.8454689899523686, "cell_id": "vlstab|fold=3|swarm_seed=9|variant=seed_bpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 18, "seconds": 42.68, "seed": 1969217148}
 {"auc": 0.8600896590614882, "cell_id": "vlstab|fold=3|swarm_seed=9|variant=seed_vlpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 11, "seconds": 112.8, "seed": 148109764}
 {"auc": 0.8766766399596333, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=beta15", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 10, "seconds": 74.24, "seed": 1839526651}
+{"auc": 0.8860576793539364, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=iter30", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 9, "seconds": 113.38, "seed": 1516949159}
 {"auc": 0.8648032979226321, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=lambda030", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 5, "seconds": 51.08, "seed": 590661639}
 {"auc": 0.8891837739463133, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=lambda0", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 30, "seconds": 124.84, "seed": 1123632498}
 {"auc": 0.8751705420850102, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=pop100", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 9, "seconds": 109.1, "seed": 234685183}
 {"auc": 0.8726855877547721, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=seed_vlpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 7, "seconds": 149.29, "seed": 2086714833}
+{"auc": 0.890084860761726, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=sub1500", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 14, "seconds": 45.67, "seed": 189976080}
 {"auc": 0.8802032175810826, "cell_id": "vlstab|fold=4|swarm_seed=0|variant=tau040", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 12, "seconds": 204.32, "seed": 754958212}
 {"auc": 0.875863732893741, "cell_id": "vlstab|fold=4|swarm_seed=2|variant=seed_bpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 17, "seconds": 71.62, "seed": 709375962}
 {"auc": 0.8838890086391661, "cell_id": "vlstab|fold=4|swarm_seed=3|variant=seed_bpso", "fingerprint": "6a28de99d7", "kind": "vlstab", "n_selected": 18, "seconds": 48.62, "seed": 491774573}
