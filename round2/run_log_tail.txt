@@ -83,8 +83,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-/usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
-  opt_res = optimize.minimize(
 2026-10-01 22:30:12,803 WARNING shap | Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
 2026-10-01 22:30:16,065 INFO    cells | done     233.5s  shap|fold=0|pv=10|task=low_vs_medium  [304 done, 0 failed, 4.88 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -398,3 +396,5 @@
   shap       150        150        0
 vlstab       165          0      165
 published 28 files to /workspace/pub/round2
+published 2026-10-01T22:32:43Z
+ALL_DONE 2026-10-01T22:32:43Z
