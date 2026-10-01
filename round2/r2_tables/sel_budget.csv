@@ -1,4 +1,7 @@
 task,pv,cells,complete
 low_vs_high,1.0,135,False
+low_vs_high,2.0,108,False
 low_vs_medium,1.0,135,False
-medium_vs_high,1.0,116,False
+low_vs_medium,2.0,103,False
+medium_vs_high,1.0,130,False
+medium_vs_high,2.0,80,False
