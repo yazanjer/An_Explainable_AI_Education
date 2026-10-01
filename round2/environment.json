@@ -1,0 +1,21 @@
+{
+ "python": "3.12.14 (main, Sep 19 2026, 03:36:28) [GCC 12.2.0]",
+ "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.36",
+ "machine": "x86_64",
+ "in_colab": false,
+ "project_root": "/workspace/proj",
+ "packages": {
+  "numpy": "2.5.3",
+  "pandas": "2.2.2",
+  "scipy": "1.18.1",
+  "sklearn": "1.6.1",
+  "xgboost": null,
+  "lightgbm": null,
+  "shap": "0.52.0",
+  "lime": "unknown",
+  "tensorflow": null,
+  "pyreadstat": "1.3.6",
+  "boruta": null,
+  "skrebate": null
+ }
+}
