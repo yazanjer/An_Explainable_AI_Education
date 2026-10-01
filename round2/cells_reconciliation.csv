@@ -2,7 +2,7 @@ kind,expected,completed,missing
 brr,30,0,30
 eda,1,1,0
 ext,30,30,0
-perm,131,125,6
+perm,131,131,0
 sel,12000,0,12000
-shap,150,0,150
+shap,150,48,102
 vlstab,165,0,165
