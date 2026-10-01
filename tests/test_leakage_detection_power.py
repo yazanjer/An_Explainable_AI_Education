@@ -151,11 +151,20 @@ def test_sentinel_through_the_full_harness():
     sentinel = rng.normal(size=n)
     sentinel[te0] = y[te0] * 8.0 + rng.normal(0, 0.01, len(te0))
     X["ST099Q01TA"] = sentinel          # signal ONLY on fold 0's test rows
+    # One genuinely informative column, present in every row. Without it all
+    # eleven columns are noise on the training rows and a k-of-11 filter picks
+    # the sentinel by chance with probability k/11 -- the test then fails (or
+    # passes) for reasons unrelated to leakage, and did fail under
+    # scikit-learn 1.8, whose discretiser reorders ties among noise columns.
+    # With a real signal and k=1, an isolated selector deterministically picks
+    # ST000Q01TA (SU ~0.028 vs ~0.005 for the sentinel on training rows),
+    # while a selector that sees the test rows picks the sentinel (SU ~0.083).
+    X["ST000Q01TA"] = X["ST000Q01TA"] + 0.6 * y
 
     res = run_nested_cv(
         X, y, groups,
         models=get_models(["LogisticRegression_L2"], fast=True),
-        selector_factory=lambda: SymmetricUncertaintyFilter(k=3),
+        selector_factory=lambda: SymmetricUncertaintyFilter(k=1),
         cfg=NestedCVConfig(outer_splits=4, outer_repeats=1, inner_splits=3,
                            random_state=SEED, verbose=False),
         task="sentinel", pv=1, method="su",
@@ -165,9 +174,11 @@ def test_sentinel_through_the_full_harness():
         "the sentinel was selected on the fold where it is signal only in the "
         "TEST rows; the selector saw outer-test data"
     )
-    assert abs(fold0["auc"] - 0.5) < 0.12, (
-        f"fold-0 AUC {fold0['auc']:.4f} on noise labels; the pipeline is "
-        "exploiting information visible only in the outer test fold"
+    assert list(fold0["selected"]) == ["ST000Q01TA"], fold0["selected"]
+    assert fold0["auc"] < 0.85, (
+        f"fold-0 AUC {fold0['auc']:.4f}; the genuine column alone gives ~0.66, "
+        "the sentinel would give ~1.0 -- the pipeline is exploiting information "
+        "visible only in the outer test fold"
     )
 
 
@@ -185,9 +196,10 @@ def test_sentinel_IS_exploited_without_isolation():
     sentinel = rng.normal(size=n)
     sentinel[te0] = y[te0] * 8.0 + rng.normal(0, 0.01, len(te0))
     X["ST099Q01TA"] = sentinel
+    X["ST000Q01TA"] = X["ST000Q01TA"] + 0.6 * y   # same construction as above
 
     # Leaky: selector fitted on the FULL data, as the submitted pipeline did.
-    leaky = SymmetricUncertaintyFilter(k=3).fit(X, y)
+    leaky = SymmetricUncertaintyFilter(k=1).fit(X, y)
     assert "ST099Q01TA" in leaky.selected_feature_names_, (
         "the sentinel is not even detectable by a leaky fit, so this test "
         "has no power and must be redesigned"
