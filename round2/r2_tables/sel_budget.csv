@@ -6,7 +6,7 @@ low_vs_high,4.0,135,False
 low_vs_high,5.0,135,False
 low_vs_high,6.0,135,False
 low_vs_high,7.0,135,False
-low_vs_high,8.0,27,False
+low_vs_high,8.0,132,False
 low_vs_medium,1.0,130,False
 low_vs_medium,2.0,130,False
 low_vs_medium,3.0,130,False
@@ -14,7 +14,7 @@ low_vs_medium,4.0,130,False
 low_vs_medium,5.0,130,False
 low_vs_medium,6.0,130,False
 low_vs_medium,7.0,130,False
-low_vs_medium,8.0,26,False
+low_vs_medium,8.0,109,False
 medium_vs_high,1.0,135,False
 medium_vs_high,2.0,135,False
 medium_vs_high,3.0,135,False
@@ -22,4 +22,4 @@ medium_vs_high,4.0,135,False
 medium_vs_high,5.0,135,False
 medium_vs_high,6.0,135,False
 medium_vs_high,7.0,135,False
-medium_vs_high,8.0,12,False
+medium_vs_high,8.0,108,False
