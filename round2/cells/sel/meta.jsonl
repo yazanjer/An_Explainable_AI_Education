@@ -11,6 +11,9 @@
 {"auc": 0.7311064509366331, "cell_id": "sel|fold=0|method=boruta|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 38.32, "seed": 1450896537}
 {"auc": 0.7388180630714687, "cell_id": "sel|fold=0|method=boruta|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 38.05, "seed": 441810539}
 {"auc": 0.725826035577751, "cell_id": "sel|fold=0|method=boruta|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 39.35, "seed": 503854812}
+{"auc": 0.723198839477015, "cell_id": "sel|fold=0|method=boruta|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 38.89, "seed": 1096499920}
+{"auc": 0.7193044344084492, "cell_id": "sel|fold=0|method=boruta|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 39.04, "seed": 61729247}
+{"auc": 0.7433253922977237, "cell_id": "sel|fold=0|method=boruta|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 37.69, "seed": 636411787}
 {"auc": 0.6489864854893883, "cell_id": "sel|fold=0|method=bpso|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 25, "seconds": 42.32, "seed": 893910943}
 {"auc": 0.6489769690800357, "cell_id": "sel|fold=0|method=bpso|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 118.87, "seed": 44609340}
 {"auc": 0.6806540016332604, "cell_id": "sel|fold=0|method=bpso|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 59.93, "seed": 241314689}
@@ -23,6 +26,9 @@
 {"auc": 0.6821751770457193, "cell_id": "sel|fold=0|method=bpso|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 71.82, "seed": 1291375055}
 {"auc": 0.6800129982668978, "cell_id": "sel|fold=0|method=bpso|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 96.63, "seed": 839254155}
 {"auc": 0.6754880166280921, "cell_id": "sel|fold=0|method=bpso|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 75.31, "seed": 1053717554}
+{"auc": 0.7045987393696358, "cell_id": "sel|fold=0|method=bpso|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 108.2, "seed": 1033296140}
+{"auc": 0.6308070807577854, "cell_id": "sel|fold=0|method=bpso|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 105.52, "seed": 1368341473}
+{"auc": 0.6064960381964646, "cell_id": "sel|fold=0|method=bpso|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 12, "seconds": 59.17, "seed": 2079675009}
 {"auc": 0.7241312883265351, "cell_id": "sel|fold=0|method=chi2|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.71, "seed": 1175156232}
 {"auc": 0.7269294287605325, "cell_id": "sel|fold=0|method=chi2|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.63, "seed": 769837131}
 {"auc": 0.7282346942714282, "cell_id": "sel|fold=0|method=chi2|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.69, "seed": 2138592344}
@@ -36,6 +42,9 @@
 {"auc": 0.7316150453683157, "cell_id": "sel|fold=0|method=chi2|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.62, "seed": 380954393}
 {"auc": 0.7384185109162157, "cell_id": "sel|fold=0|method=chi2|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.61, "seed": 1248297100}
 {"auc": 0.7263677031387503, "cell_id": "sel|fold=0|method=chi2|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.63, "seed": 488025476}
+{"auc": 0.7239312754895229, "cell_id": "sel|fold=0|method=chi2|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.62, "seed": 1267873035}
+{"auc": 0.7239685644180507, "cell_id": "sel|fold=0|method=chi2|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.78, "seed": 254908492}
+{"auc": 0.7459684424536097, "cell_id": "sel|fold=0|method=chi2|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.6, "seed": 1228965340}
 {"auc": 0.7318459169233331, "cell_id": "sel|fold=0|method=l1_logistic|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.71, "seed": 1172542102}
 {"auc": 0.7361642538659313, "cell_id": "sel|fold=0|method=l1_logistic|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.24, "seed": 270669635}
 {"auc": 0.7360608717487092, "cell_id": "sel|fold=0|method=l1_logistic|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.99, "seed": 1032983867}
@@ -49,6 +58,9 @@
 {"auc": 0.7379928951928755, "cell_id": "sel|fold=0|method=l1_logistic|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.08, "seed": 68349085}
 {"auc": 0.7420703862660945, "cell_id": "sel|fold=0|method=l1_logistic|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.19, "seed": 1833644494}
 {"auc": 0.7315610936616845, "cell_id": "sel|fold=0|method=l1_logistic|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.68, "seed": 1384283026}
+{"auc": 0.7283811490242631, "cell_id": "sel|fold=0|method=l1_logistic|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.56, "seed": 378979565}
+{"auc": 0.7291647602226885, "cell_id": "sel|fold=0|method=l1_logistic|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.53, "seed": 1262204608}
+{"auc": 0.753969857519157, "cell_id": "sel|fold=0|method=l1_logistic|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.07, "seed": 1957149708}
 {"auc": 0.8746713198945965, "cell_id": "sel|fold=0|method=mutual_info|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.82, "seed": 1113073142}
 {"auc": 0.8939302951013156, "cell_id": "sel|fold=0|method=mutual_info|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.57, "seed": 1710239282}
 {"auc": 0.8560481854862154, "cell_id": "sel|fold=0|method=mutual_info|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.94, "seed": 1285240728}
@@ -62,6 +74,9 @@
 {"auc": 0.8736113619083002, "cell_id": "sel|fold=0|method=mutual_info|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.86, "seed": 684163172}
 {"auc": 0.8688645064260322, "cell_id": "sel|fold=0|method=mutual_info|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.54, "seed": 1755549303}
 {"auc": 0.8717992965677357, "cell_id": "sel|fold=0|method=mutual_info|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.56, "seed": 474294262}
+{"auc": 0.8946350589992192, "cell_id": "sel|fold=0|method=mutual_info|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.56, "seed": 1964502838}
+{"auc": 0.8651702457248732, "cell_id": "sel|fold=0|method=mutual_info|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.75, "seed": 33336800}
+{"auc": 0.8631945362830856, "cell_id": "sel|fold=0|method=mutual_info|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.62, "seed": 1649801149}
 {"auc": 0.7319834068647854, "cell_id": "sel|fold=0|method=none|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.15, "seed": 1086870455}
 {"auc": 0.735728314655586, "cell_id": "sel|fold=0|method=none|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.08, "seed": 519677507}
 {"auc": 0.7372459042675024, "cell_id": "sel|fold=0|method=none|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.17, "seed": 2129679742}
@@ -75,6 +90,9 @@
 {"auc": 0.7379998192063157, "cell_id": "sel|fold=0|method=none|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.09, "seed": 345560892}
 {"auc": 0.7438817689867513, "cell_id": "sel|fold=0|method=none|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.09, "seed": 635279474}
 {"auc": 0.7326023951424612, "cell_id": "sel|fold=0|method=none|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.09, "seed": 1720267610}
+{"auc": 0.7301466733328921, "cell_id": "sel|fold=0|method=none|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.07, "seed": 667260121}
+{"auc": 0.7291619943972278, "cell_id": "sel|fold=0|method=none|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.25, "seed": 319749853}
+{"auc": 0.7552768563124483, "cell_id": "sel|fold=0|method=none|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.09, "seed": 715200594}
 {"auc": 0.6820718019249101, "cell_id": "sel|fold=0|method=relieff|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.68, "seed": 909722026}
 {"auc": 0.6897556941086652, "cell_id": "sel|fold=0|method=relieff|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.24, "seed": 1840214988}
 {"auc": 0.7035411526400985, "cell_id": "sel|fold=0|method=relieff|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.34, "seed": 1181606271}
@@ -87,6 +105,9 @@
 {"auc": 0.6959334428801942, "cell_id": "sel|fold=0|method=relieff|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.99, "seed": 239544699}
 {"auc": 0.6978307336799539, "cell_id": "sel|fold=0|method=relieff|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.18, "seed": 182797609}
 {"auc": 0.6996376049255078, "cell_id": "sel|fold=0|method=relieff|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.05, "seed": 274043438}
+{"auc": 0.7046655334147934, "cell_id": "sel|fold=0|method=relieff|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.8, "seed": 289817623}
+{"auc": 0.7119892807998125, "cell_id": "sel|fold=0|method=relieff|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.07, "seed": 953924875}
+{"auc": 0.6920116124930271, "cell_id": "sel|fold=0|method=relieff|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.17, "seed": 1436293028}
 {"auc": 0.8853955561390914, "cell_id": "sel|fold=0|method=rfe|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.87, "seed": 1370633396}
 {"auc": 0.896018803398806, "cell_id": "sel|fold=0|method=rfe|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.38, "seed": 1691291711}
 {"auc": 0.8704829013616121, "cell_id": "sel|fold=0|method=rfe|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.15, "seed": 974759850}
@@ -100,6 +121,9 @@
 {"auc": 0.8765475916205374, "cell_id": "sel|fold=0|method=rfe|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.96, "seed": 1242992448}
 {"auc": 0.8817942551022945, "cell_id": "sel|fold=0|method=rfe|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.72, "seed": 311485993}
 {"auc": 0.8721700712095225, "cell_id": "sel|fold=0|method=rfe|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.8, "seed": 215642418}
+{"auc": 0.8975581507167019, "cell_id": "sel|fold=0|method=rfe|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.23, "seed": 32521439}
+{"auc": 0.8679856728637215, "cell_id": "sel|fold=0|method=rfe|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.95, "seed": 682837532}
+{"auc": 0.8722227994936805, "cell_id": "sel|fold=0|method=rfe|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.66, "seed": 294124028}
 {"auc": 0.8861540351152118, "cell_id": "sel|fold=0|method=sfs|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 48.05, "seed": 1944494807}
 {"auc": 0.896294043250677, "cell_id": "sel|fold=0|method=sfs|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 49.57, "seed": 810266265}
 {"auc": 0.8701139134041077, "cell_id": "sel|fold=0|method=sfs|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 51.9, "seed": 1164416137}
@@ -113,6 +137,9 @@
 {"auc": 0.8755146531284616, "cell_id": "sel|fold=0|method=sfs|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 53.19, "seed": 1078296522}
 {"auc": 0.8812147313993088, "cell_id": "sel|fold=0|method=sfs|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 48.45, "seed": 280249584}
 {"auc": 0.8716489076008801, "cell_id": "sel|fold=0|method=sfs|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 52.32, "seed": 1626066358}
+{"auc": 0.8958010430926225, "cell_id": "sel|fold=0|method=sfs|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 51.96, "seed": 1954599047}
+{"auc": 0.8664085663751551, "cell_id": "sel|fold=0|method=sfs|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 49.95, "seed": 518570362}
+{"auc": 0.8731377372698149, "cell_id": "sel|fold=0|method=sfs|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 45.12, "seed": 718480793}
 {"auc": 0.6792760779290539, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.13, "seed": 1022138614}
 {"auc": 0.6914321160452983, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.12, "seed": 1880038425}
 {"auc": 0.6962943588581126, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.14, "seed": 1010366147}
@@ -126,6 +153,8 @@
 {"auc": 0.6989283651068746, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.19, "seed": 321830879}
 {"auc": 0.7011198552301924, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.22, "seed": 946271591}
 {"auc": 0.7064910330526349, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.92, "seed": 1675297682}
+{"auc": 0.7138232642495241, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.27, "seed": 2060358841}
+{"auc": 0.6936404205929809, "cell_id": "sel|fold=0|method=symmetric_uncertainty|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.19, "seed": 1794904995}
 {"auc": 0.6820061330318958, "cell_id": "sel|fold=0|method=tree_importance|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.43, "seed": 462122531}
 {"auc": 0.6903976332866778, "cell_id": "sel|fold=0|method=tree_importance|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.95, "seed": 647660342}
 {"auc": 0.6987378558952854, "cell_id": "sel|fold=0|method=tree_importance|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 11.75, "seed": 729128054}
@@ -138,6 +167,9 @@
 {"auc": 0.6959459690285289, "cell_id": "sel|fold=0|method=tree_importance|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.95, "seed": 417107067}
 {"auc": 0.6980115540150202, "cell_id": "sel|fold=0|method=tree_importance|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.16, "seed": 125355261}
 {"auc": 0.7002741995008076, "cell_id": "sel|fold=0|method=tree_importance|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.43, "seed": 850783563}
+{"auc": 0.7049878606418847, "cell_id": "sel|fold=0|method=tree_importance|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.17, "seed": 1050017383}
+{"auc": 0.7126370121208606, "cell_id": "sel|fold=0|method=tree_importance|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.02, "seed": 631137234}
+{"auc": 0.6927877780910165, "cell_id": "sel|fold=0|method=tree_importance|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.42, "seed": 845992615}
 {"auc": 0.8621474166890787, "cell_id": "sel|fold=0|method=vlpso|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 9, "seconds": 175.23, "seed": 1029144474}
 {"auc": 0.8719338540468383, "cell_id": "sel|fold=0|method=vlpso|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 165.39, "seed": 1846035814}
 {"auc": 0.8297841497967078, "cell_id": "sel|fold=0|method=vlpso|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 84.55, "seed": 313135780}
@@ -151,6 +183,9 @@
 {"auc": 0.8561672931407488, "cell_id": "sel|fold=0|method=vlpso|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 10, "seconds": 125.89, "seed": 1331671760}
 {"auc": 0.8574927132274344, "cell_id": "sel|fold=0|method=vlpso|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 99.63, "seed": 1395034598}
 {"auc": 0.806394303238214, "cell_id": "sel|fold=0|method=vlpso|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 204.03, "seed": 815234344}
+{"auc": 0.8608268234322499, "cell_id": "sel|fold=0|method=vlpso|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 106.87, "seed": 1383823843}
+{"auc": 0.8357188529256688, "cell_id": "sel|fold=0|method=vlpso|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 98.26, "seed": 1922004731}
+{"auc": 0.8415561904042189, "cell_id": "sel|fold=0|method=vlpso|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 154.82, "seed": 1890192484}
 {"auc": 0.7078458753017565, "cell_id": "sel|fold=0|method=vlpso_mi|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 122.11, "seed": 781624625}
 {"auc": 0.709448413288974, "cell_id": "sel|fold=0|method=vlpso_mi|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 75.88, "seed": 203072461}
 {"auc": 0.6824747664466468, "cell_id": "sel|fold=0|method=vlpso_mi|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 100.69, "seed": 993373761}
@@ -164,6 +199,9 @@
 {"auc": 0.7167980412735313, "cell_id": "sel|fold=0|method=vlpso_mi|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 91.06, "seed": 2104349959}
 {"auc": 0.7255007277477141, "cell_id": "sel|fold=0|method=vlpso_mi|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 172.7, "seed": 1202297121}
 {"auc": 0.7157922924015101, "cell_id": "sel|fold=0|method=vlpso_mi|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 97.52, "seed": 1173415322}
+{"auc": 0.706562789536163, "cell_id": "sel|fold=0|method=vlpso_mi|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 150.38, "seed": 768465199}
+{"auc": 0.7020256115437652, "cell_id": "sel|fold=0|method=vlpso_mi|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 170.24, "seed": 2035374291}
+{"auc": 0.7270098802212455, "cell_id": "sel|fold=0|method=vlpso_mi|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 90.66, "seed": 77727137}
 {"auc": 0.7221377535447709, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 24, "seconds": 252.9, "seed": 1746666776}
 {"auc": 0.7247952603298746, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 161.19, "seed": 1189393475}
 {"auc": 0.7243227151137979, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 188.42, "seed": 1896013163}
@@ -177,6 +215,8 @@
 {"auc": 0.7292519693368782, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 69.5, "seed": 1760280805}
 {"auc": 0.7372477701063632, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 26, "seconds": 62.03, "seed": 823089291}
 {"auc": 0.7221053875799831, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 114.35, "seed": 1321849918}
+{"auc": 0.714003868926979, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 76.71, "seed": 405037905}
+{"auc": 0.7165194852403699, "cell_id": "sel|fold=0|method=vlpso_nopenalty|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 173.92, "seed": 1041503560}
 {"auc": 0.8027527598540501, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 72.98, "seed": 1921272775}
 {"auc": 0.873778968425732, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 86.25, "seed": 645055235}
 {"auc": 0.8359395045794041, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 64.64, "seed": 2066714852}
@@ -190,6 +230,9 @@
 {"auc": 0.833132695582026, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 70.3, "seed": 658443293}
 {"auc": 0.8193886413354214, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 83.39, "seed": 929741843}
 {"auc": 0.8594885389053485, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 10, "seconds": 208.88, "seed": 1084264590}
+{"auc": 0.8573451341199896, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 81.41, "seed": 1030560708}
+{"auc": 0.839020651917411, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 60.2, "seed": 980664146}
+{"auc": 0.8400940442678744, "cell_id": "sel|fold=0|method=vlpso_random_init|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 218.89, "seed": 1049781069}
 {"auc": 0.6462136349281774, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 87.83, "seed": 1888515590}
 {"auc": 0.6392530856343046, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 186.83, "seed": 931642808}
 {"auc": 0.6852178310185791, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 82.1, "seed": 218017876}
@@ -202,6 +245,9 @@
 {"auc": 0.6647009154336951, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 118.74, "seed": 1077624828}
 {"auc": 0.6937908723281341, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 141.64, "seed": 1329055525}
 {"auc": 0.681185101132493, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 122.29, "seed": 1525929292}
+{"auc": 0.6014472860170037, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 157.99, "seed": 1924099209}
+{"auc": 0.7015811422817164, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 172.12, "seed": 1090857373}
+{"auc": 0.676192589837869, "cell_id": "sel|fold=0|method=vlpso_shrink_only|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 116.17, "seed": 856406667}
 {"auc": 0.6955978361378015, "cell_id": "sel|fold=1|method=boruta|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 31.22, "seed": 1179569246}
 {"auc": 0.6829362514688601, "cell_id": "sel|fold=1|method=boruta|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 32.33, "seed": 1861395525}
 {"auc": 0.7015947446442966, "cell_id": "sel|fold=1|method=boruta|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 24.08, "seed": 1096477831}
@@ -214,6 +260,9 @@
 {"auc": 0.6782310424442405, "cell_id": "sel|fold=1|method=boruta|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 32.85, "seed": 340668679}
 {"auc": 0.7082957204236364, "cell_id": "sel|fold=1|method=boruta|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 30.91, "seed": 1214622526}
 {"auc": 0.7032609676925553, "cell_id": "sel|fold=1|method=boruta|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 25.03, "seed": 899877170}
+{"auc": 0.6866577278763659, "cell_id": "sel|fold=1|method=boruta|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 30.57, "seed": 911566639}
+{"auc": 0.6958310252149114, "cell_id": "sel|fold=1|method=boruta|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 31.31, "seed": 759156812}
+{"auc": 0.706967131761105, "cell_id": "sel|fold=1|method=boruta|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 30.46, "seed": 282709736}
 {"auc": 0.840733439759538, "cell_id": "sel|fold=1|method=bpso|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 19, "seconds": 89.18, "seed": 620132323}
 {"auc": 0.8491419651056016, "cell_id": "sel|fold=1|method=bpso|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 58.14, "seed": 299807544}
 {"auc": 0.8753249581623529, "cell_id": "sel|fold=1|method=bpso|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 25, "seconds": 51.85, "seed": 1559524014}
@@ -227,6 +276,9 @@
 {"auc": 0.844800574919152, "cell_id": "sel|fold=1|method=bpso|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 88.52, "seed": 132108338}
 {"auc": 0.8492759375926284, "cell_id": "sel|fold=1|method=bpso|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 108.38, "seed": 905472679}
 {"auc": 0.8493978877806074, "cell_id": "sel|fold=1|method=bpso|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 19, "seconds": 80.77, "seed": 1348779890}
+{"auc": 0.8390262997871694, "cell_id": "sel|fold=1|method=bpso|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 110.83, "seed": 1805885067}
+{"auc": 0.8564018412313346, "cell_id": "sel|fold=1|method=bpso|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 65.13, "seed": 306295103}
+{"auc": 0.853530289248681, "cell_id": "sel|fold=1|method=bpso|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 102.71, "seed": 848356606}
 {"auc": 0.6835587065677708, "cell_id": "sel|fold=1|method=chi2|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.49, "seed": 728993682}
 {"auc": 0.6714568155111633, "cell_id": "sel|fold=1|method=chi2|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.55, "seed": 1964151993}
 {"auc": 0.7026098344757814, "cell_id": "sel|fold=1|method=chi2|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.44, "seed": 780310075}
@@ -239,6 +291,9 @@
 {"auc": 0.6816119125763795, "cell_id": "sel|fold=1|method=chi2|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.42, "seed": 947522519}
 {"auc": 0.6951310443236206, "cell_id": "sel|fold=1|method=chi2|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.51, "seed": 2094107565}
 {"auc": 0.7014077628256636, "cell_id": "sel|fold=1|method=chi2|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.52, "seed": 532212681}
+{"auc": 0.6852492533496117, "cell_id": "sel|fold=1|method=chi2|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.53, "seed": 21703678}
+{"auc": 0.6904209766629616, "cell_id": "sel|fold=1|method=chi2|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.55, "seed": 1445091338}
+{"auc": 0.6956178883133016, "cell_id": "sel|fold=1|method=chi2|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.5, "seed": 685209309}
 {"auc": 0.6971857811316892, "cell_id": "sel|fold=1|method=l1_logistic|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 6.6, "seed": 655033986}
 {"auc": 0.6823105170387778, "cell_id": "sel|fold=1|method=l1_logistic|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 6.94, "seed": 1588153082}
 {"auc": 0.7062229764903609, "cell_id": "sel|fold=1|method=l1_logistic|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 6.43, "seed": 1396906406}
@@ -251,6 +306,9 @@
 {"auc": 0.6805589267518201, "cell_id": "sel|fold=1|method=l1_logistic|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.96, "seed": 1725497944}
 {"auc": 0.7070842220073212, "cell_id": "sel|fold=1|method=l1_logistic|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.44, "seed": 373315916}
 {"auc": 0.7074179220891366, "cell_id": "sel|fold=1|method=l1_logistic|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.61, "seed": 685315811}
+{"auc": 0.6885638839043857, "cell_id": "sel|fold=1|method=l1_logistic|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.54, "seed": 459266012}
+{"auc": 0.6992195844300668, "cell_id": "sel|fold=1|method=l1_logistic|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.84, "seed": 840109299}
+{"auc": 0.7068557140021386, "cell_id": "sel|fold=1|method=l1_logistic|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.07, "seed": 545654017}
 {"auc": 0.7376600843746032, "cell_id": "sel|fold=1|method=mutual_info|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.04, "seed": 1541264676}
 {"auc": 0.7361325524443508, "cell_id": "sel|fold=1|method=mutual_info|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.75, "seed": 1163551377}
 {"auc": 0.7338307513214348, "cell_id": "sel|fold=1|method=mutual_info|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 24.66, "seed": 1981997631}
@@ -264,6 +322,9 @@
 {"auc": 0.7294841949566526, "cell_id": "sel|fold=1|method=mutual_info|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 24.48, "seed": 273821985}
 {"auc": 0.7386582270910107, "cell_id": "sel|fold=1|method=mutual_info|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 24.81, "seed": 103140305}
 {"auc": 0.7394003055767762, "cell_id": "sel|fold=1|method=mutual_info|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 24.55, "seed": 661226504}
+{"auc": 0.7401543078976356, "cell_id": "sel|fold=1|method=mutual_info|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.11, "seed": 1343735354}
+{"auc": 0.7316864960215916, "cell_id": "sel|fold=1|method=mutual_info|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.15, "seed": 1172198813}
+{"auc": 0.7383934024217382, "cell_id": "sel|fold=1|method=mutual_info|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 24.89, "seed": 372988402}
 {"auc": 0.6963643300041058, "cell_id": "sel|fold=1|method=none|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.98, "seed": 1200050747}
 {"auc": 0.6739283196239717, "cell_id": "sel|fold=1|method=none|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.98, "seed": 389400546}
 {"auc": 0.704761235803895, "cell_id": "sel|fold=1|method=none|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.93, "seed": 785019312}
@@ -276,6 +337,9 @@
 {"auc": 0.6776368324591675, "cell_id": "sel|fold=1|method=none|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.95, "seed": 1128169410}
 {"auc": 0.7076273618857111, "cell_id": "sel|fold=1|method=none|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.97, "seed": 281937956}
 {"auc": 0.707643895330092, "cell_id": "sel|fold=1|method=none|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.95, "seed": 1169617505}
+{"auc": 0.6932334280004531, "cell_id": "sel|fold=1|method=none|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.97, "seed": 817768000}
+{"auc": 0.6988602420718395, "cell_id": "sel|fold=1|method=none|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.99, "seed": 1797517909}
+{"auc": 0.7044691968316376, "cell_id": "sel|fold=1|method=none|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.96, "seed": 170392306}
 {"auc": 0.8621840153280936, "cell_id": "sel|fold=1|method=relieff|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.94, "seed": 1438637880}
 {"auc": 0.8639654729109275, "cell_id": "sel|fold=1|method=relieff|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.6, "seed": 73750432}
 {"auc": 0.8811352330299627, "cell_id": "sel|fold=1|method=relieff|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.76, "seed": 16184150}
@@ -289,6 +353,9 @@
 {"auc": 0.8771606180380883, "cell_id": "sel|fold=1|method=relieff|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.82, "seed": 210802345}
 {"auc": 0.8761624507614647, "cell_id": "sel|fold=1|method=relieff|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.8, "seed": 1524505548}
 {"auc": 0.8671565506508205, "cell_id": "sel|fold=1|method=relieff|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.11, "seed": 2102042318}
+{"auc": 0.8723837032532685, "cell_id": "sel|fold=1|method=relieff|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.62, "seed": 588662363}
+{"auc": 0.8716238694710067, "cell_id": "sel|fold=1|method=relieff|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.33, "seed": 284982422}
+{"auc": 0.8732530471166091, "cell_id": "sel|fold=1|method=relieff|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.77, "seed": 425065343}
 {"auc": 0.7433950018779965, "cell_id": "sel|fold=1|method=rfe|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.23, "seed": 880968447}
 {"auc": 0.7443253693077271, "cell_id": "sel|fold=1|method=rfe|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.45, "seed": 1728041440}
 {"auc": 0.7392991985893923, "cell_id": "sel|fold=1|method=rfe|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.0, "seed": 343253097}
@@ -302,6 +369,9 @@
 {"auc": 0.7373894729571135, "cell_id": "sel|fold=1|method=rfe|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.09, "seed": 1822407070}
 {"auc": 0.7448646863161157, "cell_id": "sel|fold=1|method=rfe|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.61, "seed": 898360576}
 {"auc": 0.743916088662137, "cell_id": "sel|fold=1|method=rfe|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.58, "seed": 1271643172}
+{"auc": 0.7455848744419173, "cell_id": "sel|fold=1|method=rfe|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.48, "seed": 660451116}
+{"auc": 0.738970003101764, "cell_id": "sel|fold=1|method=rfe|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.12, "seed": 1899343973}
+{"auc": 0.7434734044825784, "cell_id": "sel|fold=1|method=rfe|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 8.26, "seed": 260983742}
 {"auc": 0.7428823668058164, "cell_id": "sel|fold=1|method=sfs|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 57.33, "seed": 967355872}
 {"auc": 0.7440156080593622, "cell_id": "sel|fold=1|method=sfs|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 56.8, "seed": 1918099831}
 {"auc": 0.7386733868720106, "cell_id": "sel|fold=1|method=sfs|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.34, "seed": 1609659777}
@@ -315,6 +385,9 @@
 {"auc": 0.7367073651043717, "cell_id": "sel|fold=1|method=sfs|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 57.0, "seed": 1558249328}
 {"auc": 0.7449860737486423, "cell_id": "sel|fold=1|method=sfs|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 59.72, "seed": 117773957}
 {"auc": 0.7446711964721813, "cell_id": "sel|fold=1|method=sfs|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 56.1, "seed": 1202544074}
+{"auc": 0.7448228975569615, "cell_id": "sel|fold=1|method=sfs|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.47, "seed": 615274732}
+{"auc": 0.7386208583849903, "cell_id": "sel|fold=1|method=sfs|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.24, "seed": 1156410396}
+{"auc": 0.7430831486116976, "cell_id": "sel|fold=1|method=sfs|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 53.49, "seed": 1215642767}
 {"auc": 0.8646500090955301, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.85, "seed": 271493425}
 {"auc": 0.8665505968778697, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.84, "seed": 1892677983}
 {"auc": 0.8844562634205237, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.89, "seed": 1135615435}
@@ -328,6 +401,9 @@
 {"auc": 0.8785088034495149, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.85, "seed": 970774356}
 {"auc": 0.8780732274681728, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.86, "seed": 1254766347}
 {"auc": 0.8705911915204679, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.85, "seed": 959971680}
+{"auc": 0.8745112496199452, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.87, "seed": 2132581467}
+{"auc": 0.8751214435442083, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.89, "seed": 1533500604}
+{"auc": 0.8751096961979261, "cell_id": "sel|fold=1|method=symmetric_uncertainty|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.85, "seed": 1361526599}
 {"auc": 0.8624024780644712, "cell_id": "sel|fold=1|method=tree_importance|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.13, "seed": 407416003}
 {"auc": 0.8654993572084482, "cell_id": "sel|fold=1|method=tree_importance|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.56, "seed": 1300205869}
 {"auc": 0.8834445183130449, "cell_id": "sel|fold=1|method=tree_importance|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.08, "seed": 809619606}
@@ -341,6 +417,9 @@
 {"auc": 0.8765167085878549, "cell_id": "sel|fold=1|method=tree_importance|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.32, "seed": 802262972}
 {"auc": 0.8758231677795001, "cell_id": "sel|fold=1|method=tree_importance|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.88, "seed": 1407210165}
 {"auc": 0.8684527388700245, "cell_id": "sel|fold=1|method=tree_importance|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.78, "seed": 1101372157}
+{"auc": 0.8729439039221647, "cell_id": "sel|fold=1|method=tree_importance|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.52, "seed": 1190444752}
+{"auc": 0.8726947807244806, "cell_id": "sel|fold=1|method=tree_importance|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.39, "seed": 392279522}
+{"auc": 0.8738904857194835, "cell_id": "sel|fold=1|method=tree_importance|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.47, "seed": 464775660}
 {"auc": 0.6885952120217356, "cell_id": "sel|fold=1|method=vlpso|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 80.55, "seed": 2061305048}
 {"auc": 0.7243699358519374, "cell_id": "sel|fold=1|method=vlpso|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 91.55, "seed": 218105780}
 {"auc": 0.7133774255926294, "cell_id": "sel|fold=1|method=vlpso|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 67.24, "seed": 1727280097}
@@ -354,6 +433,8 @@
 {"auc": 0.7109221606679477, "cell_id": "sel|fold=1|method=vlpso|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 71.17, "seed": 756399762}
 {"auc": 0.7215029748756561, "cell_id": "sel|fold=1|method=vlpso|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 106.41, "seed": 346101632}
 {"auc": 0.728481250329527, "cell_id": "sel|fold=1|method=vlpso|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 105.15, "seed": 510170934}
+{"auc": 0.7188654591330991, "cell_id": "sel|fold=1|method=vlpso|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 108.7, "seed": 1748120134}
+{"auc": 0.7120047115980421, "cell_id": "sel|fold=1|method=vlpso|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 116.63, "seed": 1545703348}
 {"auc": 0.6478103166119809, "cell_id": "sel|fold=1|method=vlpso_mi|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 93.33, "seed": 551056168}
 {"auc": 0.6482432432432432, "cell_id": "sel|fold=1|method=vlpso_mi|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 105.15, "seed": 365214338}
 {"auc": 0.6189470595532586, "cell_id": "sel|fold=1|method=vlpso_mi|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 89.91, "seed": 174222803}
@@ -366,6 +447,9 @@
 {"auc": 0.66118246321292, "cell_id": "sel|fold=1|method=vlpso_mi|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 106.22, "seed": 2045609817}
 {"auc": 0.6495426207098416, "cell_id": "sel|fold=1|method=vlpso_mi|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 120.14, "seed": 1859870836}
 {"auc": 0.6075674681520716, "cell_id": "sel|fold=1|method=vlpso_mi|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 105.97, "seed": 1550010403}
+{"auc": 0.6388910672064794, "cell_id": "sel|fold=1|method=vlpso_mi|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 146.62, "seed": 400541813}
+{"auc": 0.6552081409901316, "cell_id": "sel|fold=1|method=vlpso_mi|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 78.29, "seed": 895220941}
+{"auc": 0.6514967759286415, "cell_id": "sel|fold=1|method=vlpso_mi|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 138.41, "seed": 769753331}
 {"auc": 0.6687347849804421, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 85.82, "seed": 1962489468}
 {"auc": 0.6640079318448884, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 26, "seconds": 220.27, "seed": 947141576}
 {"auc": 0.689626937493238, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 192.44, "seed": 255462758}
@@ -378,6 +462,9 @@
 {"auc": 0.6778426220050585, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 77.9, "seed": 1224130711}
 {"auc": 0.7078449963317556, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 174.42, "seed": 444764637}
 {"auc": 0.7013797264434111, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 84.18, "seed": 1343338126}
+{"auc": 0.6834202353915616, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 222.35, "seed": 1967351240}
+{"auc": 0.6607566766473931, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 270.24, "seed": 1787929778}
+{"auc": 0.6333356812171428, "cell_id": "sel|fold=1|method=vlpso_nopenalty|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 264.81, "seed": 1142232085}
 {"auc": 0.6885952120217356, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 75.08, "seed": 1465439422}
 {"auc": 0.7144392045616919, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 90.62, "seed": 1891796377}
 {"auc": 0.7111387484358074, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 93.33, "seed": 202178708}
@@ -391,6 +478,8 @@
 {"auc": 0.6949124849647356, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 167.88, "seed": 847034293}
 {"auc": 0.7309690196979316, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 11, "seconds": 217.98, "seed": 246686567}
 {"auc": 0.6840877119770614, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 64.12, "seed": 1410950578}
+{"auc": 0.7188633922880223, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 92.77, "seed": 364578850}
+{"auc": 0.7074637605341143, "cell_id": "sel|fold=1|method=vlpso_random_init|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 127.19, "seed": 1540843223}
 {"auc": 0.8383975035744584, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 140.39, "seed": 59829477}
 {"auc": 0.8558196510560148, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 11, "seconds": 140.98, "seed": 832788500}
 {"auc": 0.8665165096322108, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 63.34, "seed": 1246990151}
@@ -404,6 +493,9 @@
 {"auc": 0.8577398490837226, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 281.74, "seed": 1648556897}
 {"auc": 0.8558819768297072, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 81.02, "seed": 1593871539}
 {"auc": 0.8346973153650254, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 74.06, "seed": 427291908}
+{"auc": 0.8317949984797811, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 86.16, "seed": 1785659898}
+{"auc": 0.8376413897263177, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 121.91, "seed": 5940594}
+{"auc": 0.8457427687829726, "cell_id": "sel|fold=1|method=vlpso_shrink_only|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 69.7, "seed": 1269525604}
 {"auc": 0.8558460090138172, "cell_id": "sel|fold=2|method=boruta|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 28.37, "seed": 1040914071}
 {"auc": 0.8628545458619745, "cell_id": "sel|fold=2|method=boruta|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 28.6, "seed": 1556346992}
 {"auc": 0.8824051839146179, "cell_id": "sel|fold=2|method=boruta|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 27.45, "seed": 2038153909}
@@ -417,6 +509,9 @@
 {"auc": 0.8758508306204346, "cell_id": "sel|fold=2|method=boruta|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 27.75, "seed": 13713129}
 {"auc": 0.8610381221435508, "cell_id": "sel|fold=2|method=boruta|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 27.72, "seed": 2053609796}
 {"auc": 0.859710191139218, "cell_id": "sel|fold=2|method=boruta|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 27.51, "seed": 1856781467}
+{"auc": 0.875861939954874, "cell_id": "sel|fold=2|method=boruta|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 27.91, "seed": 2018810209}
+{"auc": 0.877364052340506, "cell_id": "sel|fold=2|method=boruta|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 27.96, "seed": 29278761}
+{"auc": 0.8775134730295185, "cell_id": "sel|fold=2|method=boruta|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 27.57, "seed": 360259492}
 {"auc": 0.7215150041585559, "cell_id": "sel|fold=2|method=bpso|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 76.98, "seed": 2146678087}
 {"auc": 0.7345816149091962, "cell_id": "sel|fold=2|method=bpso|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 113.4, "seed": 1074410693}
 {"auc": 0.7284890512125666, "cell_id": "sel|fold=2|method=bpso|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 74.62, "seed": 1958054231}
@@ -429,6 +524,9 @@
 {"auc": 0.6909191640845799, "cell_id": "sel|fold=2|method=bpso|pv=2|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 56.77, "seed": 106849261}
 {"auc": 0.7258032634550025, "cell_id": "sel|fold=2|method=bpso|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 82.0, "seed": 1273066989}
 {"auc": 0.7166171788571614, "cell_id": "sel|fold=2|method=bpso|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 119.78, "seed": 253448107}
+{"auc": 0.7212880303782934, "cell_id": "sel|fold=2|method=bpso|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 130.73, "seed": 781319536}
+{"auc": 0.725532282640594, "cell_id": "sel|fold=2|method=bpso|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 66.75, "seed": 1707842846}
+{"auc": 0.7364997500235677, "cell_id": "sel|fold=2|method=bpso|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 91.5, "seed": 1129678748}
 {"auc": 0.8455394206250372, "cell_id": "sel|fold=2|method=chi2|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.34, "seed": 1516235518}
 {"auc": 0.8529814624964287, "cell_id": "sel|fold=2|method=chi2|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.33, "seed": 1152733557}
 {"auc": 0.8721237532558288, "cell_id": "sel|fold=2|method=chi2|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.33, "seed": 1431640385}
@@ -442,6 +540,9 @@
 {"auc": 0.8667598884252078, "cell_id": "sel|fold=2|method=chi2|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.49, "seed": 297954497}
 {"auc": 0.8580294856114582, "cell_id": "sel|fold=2|method=chi2|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.41, "seed": 1661638042}
 {"auc": 0.8438124690848291, "cell_id": "sel|fold=2|method=chi2|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.49, "seed": 1505911751}
+{"auc": 0.8675968855044436, "cell_id": "sel|fold=2|method=chi2|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.4, "seed": 1778138349}
+{"auc": 0.8684917086808471, "cell_id": "sel|fold=2|method=chi2|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.42, "seed": 382681835}
+{"auc": 0.8640733943816051, "cell_id": "sel|fold=2|method=chi2|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.35, "seed": 244111575}
 {"auc": 0.8601627824230564, "cell_id": "sel|fold=2|method=l1_logistic|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.16, "seed": 993163517}
 {"auc": 0.8665414586869687, "cell_id": "sel|fold=2|method=l1_logistic|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.88, "seed": 307131799}
 {"auc": 0.8833018867924528, "cell_id": "sel|fold=2|method=l1_logistic|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.01, "seed": 278413665}
@@ -455,6 +556,9 @@
 {"auc": 0.8798750245799558, "cell_id": "sel|fold=2|method=l1_logistic|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.55, "seed": 1586093803}
 {"auc": 0.8658371998751211, "cell_id": "sel|fold=2|method=l1_logistic|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.21, "seed": 1679913373}
 {"auc": 0.8661391840166353, "cell_id": "sel|fold=2|method=l1_logistic|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.22, "seed": 2132821725}
+{"auc": 0.8785369756412027, "cell_id": "sel|fold=2|method=l1_logistic|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.3, "seed": 1734055963}
+{"auc": 0.8816975859781313, "cell_id": "sel|fold=2|method=l1_logistic|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.21, "seed": 2094501089}
+{"auc": 0.8836407843392653, "cell_id": "sel|fold=2|method=l1_logistic|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.58, "seed": 440573194}
 {"auc": 0.6955679844573313, "cell_id": "sel|fold=2|method=mutual_info|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 15.86, "seed": 340850467}
 {"auc": 0.699360954027051, "cell_id": "sel|fold=2|method=mutual_info|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 15.64, "seed": 31035527}
 {"auc": 0.7014455046764341, "cell_id": "sel|fold=2|method=mutual_info|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 16.25, "seed": 1858204000}
@@ -467,6 +571,9 @@
 {"auc": 0.677857911044971, "cell_id": "sel|fold=2|method=mutual_info|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 19.3, "seed": 529818574}
 {"auc": 0.6961411803685321, "cell_id": "sel|fold=2|method=mutual_info|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 16.23, "seed": 1209890677}
 {"auc": 0.6728252815092601, "cell_id": "sel|fold=2|method=mutual_info|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 16.03, "seed": 702401979}
+{"auc": 0.6538227591695002, "cell_id": "sel|fold=2|method=mutual_info|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 16.1, "seed": 957355456}
+{"auc": 0.6788494089317111, "cell_id": "sel|fold=2|method=mutual_info|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 15.92, "seed": 949773128}
+{"auc": 0.6890413880032921, "cell_id": "sel|fold=2|method=mutual_info|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 15.68, "seed": 965091094}
 {"auc": 0.8602480282274804, "cell_id": "sel|fold=2|method=none|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.9, "seed": 1038833153}
 {"auc": 0.8675183330252153, "cell_id": "sel|fold=2|method=none|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.89, "seed": 1533587497}
 {"auc": 0.8862893081761006, "cell_id": "sel|fold=2|method=none|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.9, "seed": 1809098621}
@@ -480,6 +587,9 @@
 {"auc": 0.8790891942872542, "cell_id": "sel|fold=2|method=none|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.96, "seed": 1974571432}
 {"auc": 0.8668739174783913, "cell_id": "sel|fold=2|method=none|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.9, "seed": 1717107614}
 {"auc": 0.8666529038798796, "cell_id": "sel|fold=2|method=none|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.94, "seed": 962359669}
+{"auc": 0.8793960376663443, "cell_id": "sel|fold=2|method=none|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.91, "seed": 1026918043}
+{"auc": 0.8816869314945114, "cell_id": "sel|fold=2|method=none|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.88, "seed": 690133597}
+{"auc": 0.883733046777056, "cell_id": "sel|fold=2|method=none|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.86, "seed": 480055856}
 {"auc": 0.7245324404422154, "cell_id": "sel|fold=2|method=relieff|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 8.82, "seed": 1597209128}
 {"auc": 0.7407410775799588, "cell_id": "sel|fold=2|method=relieff|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 8.69, "seed": 266049697}
 {"auc": 0.7350618411198379, "cell_id": "sel|fold=2|method=relieff|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 8.8, "seed": 1952345468}
@@ -493,6 +603,9 @@
 {"auc": 0.7331552089032697, "cell_id": "sel|fold=2|method=relieff|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.41, "seed": 51091604}
 {"auc": 0.729074787392283, "cell_id": "sel|fold=2|method=relieff|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.89, "seed": 217680604}
 {"auc": 0.7385218380487408, "cell_id": "sel|fold=2|method=relieff|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.69, "seed": 317020749}
+{"auc": 0.7275401894672422, "cell_id": "sel|fold=2|method=relieff|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.71, "seed": 1354380689}
+{"auc": 0.7535861290619845, "cell_id": "sel|fold=2|method=relieff|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 8.95, "seed": 478396542}
+{"auc": 0.7405550257447554, "cell_id": "sel|fold=2|method=relieff|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.09, "seed": 1707339149}
 {"auc": 0.6971608136351595, "cell_id": "sel|fold=2|method=rfe|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 7.41, "seed": 780804728}
 {"auc": 0.6986527288087377, "cell_id": "sel|fold=2|method=rfe|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.88, "seed": 1435567548}
 {"auc": 0.7011089636157215, "cell_id": "sel|fold=2|method=rfe|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.32, "seed": 936804488}
@@ -505,6 +618,9 @@
 {"auc": 0.6737660492380362, "cell_id": "sel|fold=2|method=rfe|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 10, "seconds": 6.48, "seed": 32331071}
 {"auc": 0.7027716027410448, "cell_id": "sel|fold=2|method=rfe|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 7.65, "seed": 2020973468}
 {"auc": 0.6795313102384755, "cell_id": "sel|fold=2|method=rfe|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.9, "seed": 1122000702}
+{"auc": 0.6754944657454967, "cell_id": "sel|fold=2|method=rfe|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.54, "seed": 1675360244}
+{"auc": 0.6853694551471832, "cell_id": "sel|fold=2|method=rfe|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 8.86, "seed": 1342864995}
+{"auc": 0.7049187082004938, "cell_id": "sel|fold=2|method=rfe|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.3, "seed": 175616751}
 {"auc": 0.6980927850225191, "cell_id": "sel|fold=2|method=sfs|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 28, "seconds": 55.81, "seed": 1465236345}
 {"auc": 0.6929783065955191, "cell_id": "sel|fold=2|method=sfs|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 29, "seconds": 59.65, "seed": 1785592456}
 {"auc": 0.6996580526571878, "cell_id": "sel|fold=2|method=sfs|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 56.52, "seed": 1280699806}
@@ -517,6 +633,9 @@
 {"auc": 0.6846193657347857, "cell_id": "sel|fold=2|method=sfs|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 29, "seconds": 49.71, "seed": 1856664010}
 {"auc": 0.7002001943177723, "cell_id": "sel|fold=2|method=sfs|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 27, "seconds": 59.51, "seed": 767182699}
 {"auc": 0.6799794219109084, "cell_id": "sel|fold=2|method=sfs|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.61, "seed": 135826204}
+{"auc": 0.6751738407002823, "cell_id": "sel|fold=2|method=sfs|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.54, "seed": 931158093}
+{"auc": 0.6835099780063669, "cell_id": "sel|fold=2|method=sfs|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.15, "seed": 2041980552}
+{"auc": 0.7062111469345032, "cell_id": "sel|fold=2|method=sfs|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 28, "seconds": 53.49, "seed": 1926685189}
 {"auc": 0.7281466035495239, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.26, "seed": 1095581572}
 {"auc": 0.7380841079650743, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.26, "seed": 710591201}
 {"auc": 0.7342343616492725, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.39, "seed": 1708874037}
@@ -530,6 +649,9 @@
 {"auc": 0.7402133870485923, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.22, "seed": 632937568}
 {"auc": 0.7255013602806739, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.33, "seed": 837791773}
 {"auc": 0.7381865483537606, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.19, "seed": 1798659215}
+{"auc": 0.7280301887048615, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.3, "seed": 986141277}
+{"auc": 0.7530808138851315, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.23, "seed": 431793853}
+{"auc": 0.7420394872713799, "cell_id": "sel|fold=2|method=symmetric_uncertainty|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.12, "seed": 505563722}
 {"auc": 0.7325670520805381, "cell_id": "sel|fold=2|method=tree_importance|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 14.65, "seed": 1987762282}
 {"auc": 0.7408450365269484, "cell_id": "sel|fold=2|method=tree_importance|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 14.21, "seed": 22640872}
 {"auc": 0.7329158318836076, "cell_id": "sel|fold=2|method=tree_importance|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 16.04, "seed": 159924091}
@@ -543,6 +665,9 @@
 {"auc": 0.7409423784815414, "cell_id": "sel|fold=2|method=tree_importance|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 14.68, "seed": 995715785}
 {"auc": 0.7265594529832475, "cell_id": "sel|fold=2|method=tree_importance|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 15.41, "seed": 252388428}
 {"auc": 0.7363848828152872, "cell_id": "sel|fold=2|method=tree_importance|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 15.14, "seed": 1586375617}
+{"auc": 0.730731613834388, "cell_id": "sel|fold=2|method=tree_importance|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 15.47, "seed": 1479994635}
+{"auc": 0.7542754178896269, "cell_id": "sel|fold=2|method=tree_importance|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 14.96, "seed": 1767475751}
+{"auc": 0.7441187204765463, "cell_id": "sel|fold=2|method=tree_importance|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 14.48, "seed": 605408380}
 {"auc": 0.6950222248388331, "cell_id": "sel|fold=2|method=vlpso|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 92.12, "seed": 1471803816}
 {"auc": 0.6223112225545893, "cell_id": "sel|fold=2|method=vlpso|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 114.72, "seed": 2066710699}
 {"auc": 0.6305336676217765, "cell_id": "sel|fold=2|method=vlpso|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 68.46, "seed": 862068649}
@@ -555,6 +680,9 @@
 {"auc": 0.6598304491711983, "cell_id": "sel|fold=2|method=vlpso|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 108.57, "seed": 128491928}
 {"auc": 0.6291365283831553, "cell_id": "sel|fold=2|method=vlpso|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 94.95, "seed": 509494748}
 {"auc": 0.662871381936343, "cell_id": "sel|fold=2|method=vlpso|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 76.34, "seed": 845417907}
+{"auc": 0.6637910728495985, "cell_id": "sel|fold=2|method=vlpso|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 156.26, "seed": 674194238}
+{"auc": 0.6359397683231734, "cell_id": "sel|fold=2|method=vlpso|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 111.18, "seed": 107640293}
+{"auc": 0.6476418985865076, "cell_id": "sel|fold=2|method=vlpso|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 77.97, "seed": 2071875973}
 {"auc": 0.8315602206013165, "cell_id": "sel|fold=2|method=vlpso_mi|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 91.77, "seed": 417736490}
 {"auc": 0.8315588533526047, "cell_id": "sel|fold=2|method=vlpso_mi|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 102.02, "seed": 1032278301}
 {"auc": 0.861320437075154, "cell_id": "sel|fold=2|method=vlpso_mi|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 169.05, "seed": 596022567}
@@ -568,6 +696,9 @@
 {"auc": 0.865150356500397, "cell_id": "sel|fold=2|method=vlpso_mi|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 12, "seconds": 138.11, "seed": 1997717076}
 {"auc": 0.8418185180987532, "cell_id": "sel|fold=2|method=vlpso_mi|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 147.69, "seed": 2072963534}
 {"auc": 0.8200921016593017, "cell_id": "sel|fold=2|method=vlpso_mi|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 89.47, "seed": 570307434}
+{"auc": 0.848900774738684, "cell_id": "sel|fold=2|method=vlpso_mi|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 90.67, "seed": 1026159528}
+{"auc": 0.861096431600346, "cell_id": "sel|fold=2|method=vlpso_mi|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 102.73, "seed": 2072345935}
+{"auc": 0.8107867970125578, "cell_id": "sel|fold=2|method=vlpso_mi|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 99.01, "seed": 343286083}
 {"auc": 0.8502316462076736, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 19, "seconds": 90.65, "seed": 1192967840}
 {"auc": 0.8630240108009389, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 167.13, "seed": 1476691489}
 {"auc": 0.8793443872689156, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 26, "seconds": 229.16, "seed": 420886224}
@@ -581,6 +712,9 @@
 {"auc": 0.8761825689877428, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 33, "seconds": 77.95, "seed": 1820777395}
 {"auc": 0.8553507769819488, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 25, "seconds": 153.87, "seed": 888944646}
 {"auc": 0.8506410597073295, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 233.63, "seed": 1214787028}
+{"auc": 0.8736739938757656, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 28, "seconds": 158.93, "seed": 2051272011}
+{"auc": 0.8816840902988795, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 27, "seconds": 185.94, "seed": 463642666}
+{"auc": 0.8748115016370769, "cell_id": "sel|fold=2|method=vlpso_nopenalty|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 92.99, "seed": 2051660678}
 {"auc": 0.6905030761531894, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 134.96, "seed": 371467376}
 {"auc": 0.6432314789272692, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 76.53, "seed": 922335538}
 {"auc": 0.6537185084067687, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 124.83, "seed": 149392533}
@@ -593,6 +727,9 @@
 {"auc": 0.6152898535284493, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 67.15, "seed": 689390506}
 {"auc": 0.673097846162112, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 122.91, "seed": 947512553}
 {"auc": 0.6340079208119083, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 77.16, "seed": 1148183391}
+{"auc": 0.6269678072777256, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 73.69, "seed": 55547082}
+{"auc": 0.6400927702646532, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 93.36, "seed": 1086695775}
+{"auc": 0.6309068645076746, "cell_id": "sel|fold=2|method=vlpso_random_init|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 78.12, "seed": 1230180202}
 {"auc": 0.7076723502734565, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 93.67, "seed": 167333146}
 {"auc": 0.6976062997722698, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 62.35, "seed": 1627540607}
 {"auc": 0.7233958608439235, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 9, "seconds": 114.53, "seed": 649588786}
@@ -605,6 +742,9 @@
 {"auc": 0.7184708079221533, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=2|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 10, "seconds": 147.97, "seed": 354460439}
 {"auc": 0.7279987194131957, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 10, "seconds": 107.61, "seed": 396225578}
 {"auc": 0.7075234949336049, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 97.53, "seed": 245823165}
+{"auc": 0.6974577354528491, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 125.86, "seed": 471027465}
+{"auc": 0.7124363725513745, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 99.77, "seed": 356602981}
+{"auc": 0.7398012131271522, "cell_id": "sel|fold=2|method=vlpso_shrink_only|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 99.99, "seed": 1620718681}
 {"auc": 0.7397551419558359, "cell_id": "sel|fold=3|method=boruta|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 36.85, "seed": 472879454}
 {"auc": 0.7447870753131749, "cell_id": "sel|fold=3|method=boruta|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 37.06, "seed": 1497274443}
 {"auc": 0.7347373138565526, "cell_id": "sel|fold=3|method=boruta|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 38.82, "seed": 962032949}
@@ -618,6 +758,8 @@
 {"auc": 0.7363538701127166, "cell_id": "sel|fold=3|method=boruta|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 38.56, "seed": 519631422}
 {"auc": 0.7349430393351006, "cell_id": "sel|fold=3|method=boruta|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 38.22, "seed": 968497250}
 {"auc": 0.7207512956213217, "cell_id": "sel|fold=3|method=boruta|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 39.27, "seed": 1781600670}
+{"auc": 0.735613767490244, "cell_id": "sel|fold=3|method=boruta|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 40.31, "seed": 1400494622}
+{"auc": 0.7414411214105404, "cell_id": "sel|fold=3|method=boruta|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 37.0, "seed": 332053069}
 {"auc": 0.6656949272864646, "cell_id": "sel|fold=3|method=bpso|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 122.87, "seed": 1680694133}
 {"auc": 0.6575175139345517, "cell_id": "sel|fold=3|method=bpso|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 89.82, "seed": 74103616}
 {"auc": 0.6414356130052361, "cell_id": "sel|fold=3|method=bpso|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 115.86, "seed": 569216364}
@@ -630,6 +772,9 @@
 {"auc": 0.6437367733170727, "cell_id": "sel|fold=3|method=bpso|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 120.47, "seed": 1182570873}
 {"auc": 0.6145831730201969, "cell_id": "sel|fold=3|method=bpso|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 84.52, "seed": 733305009}
 {"auc": 0.6807382406182788, "cell_id": "sel|fold=3|method=bpso|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 85.85, "seed": 755078844}
+{"auc": 0.6575483024556694, "cell_id": "sel|fold=3|method=bpso|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 89.49, "seed": 521821917}
+{"auc": 0.6795263559969442, "cell_id": "sel|fold=3|method=bpso|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 53.8, "seed": 2128746808}
+{"auc": 0.6436304493903195, "cell_id": "sel|fold=3|method=bpso|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 84.76, "seed": 491180383}
 {"auc": 0.7424673186119873, "cell_id": "sel|fold=3|method=chi2|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.66, "seed": 612374165}
 {"auc": 0.7473368366697763, "cell_id": "sel|fold=3|method=chi2|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.62, "seed": 2011205011}
 {"auc": 0.7355281128373123, "cell_id": "sel|fold=3|method=chi2|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.66, "seed": 954610894}
@@ -643,6 +788,9 @@
 {"auc": 0.7378280174875725, "cell_id": "sel|fold=3|method=chi2|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.73, "seed": 1358620440}
 {"auc": 0.7340058751880777, "cell_id": "sel|fold=3|method=chi2|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.61, "seed": 1615282301}
 {"auc": 0.7220486018372587, "cell_id": "sel|fold=3|method=chi2|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.62, "seed": 954600489}
+{"auc": 0.7395066571408118, "cell_id": "sel|fold=3|method=chi2|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.68, "seed": 2028654109}
+{"auc": 0.7376299708103989, "cell_id": "sel|fold=3|method=chi2|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.61, "seed": 34605053}
+{"auc": 0.7432345519887518, "cell_id": "sel|fold=3|method=chi2|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.61, "seed": 1402636568}
 {"auc": 0.7479360252365931, "cell_id": "sel|fold=3|method=l1_logistic|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.65, "seed": 44370292}
 {"auc": 0.7539971699431993, "cell_id": "sel|fold=3|method=l1_logistic|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.2, "seed": 199898572}
 {"auc": 0.7432508961945425, "cell_id": "sel|fold=3|method=l1_logistic|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.45, "seed": 945489017}
@@ -656,6 +804,9 @@
 {"auc": 0.7459567797253036, "cell_id": "sel|fold=3|method=l1_logistic|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.69, "seed": 1027241775}
 {"auc": 0.7432942677680086, "cell_id": "sel|fold=3|method=l1_logistic|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.97, "seed": 1445794088}
 {"auc": 0.7297596142565522, "cell_id": "sel|fold=3|method=l1_logistic|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.41, "seed": 1385629938}
+{"auc": 0.7422183115568199, "cell_id": "sel|fold=3|method=l1_logistic|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 12.2, "seed": 186338206}
+{"auc": 0.7474357176192039, "cell_id": "sel|fold=3|method=l1_logistic|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.12, "seed": 1573305909}
+{"auc": 0.7499662921216579, "cell_id": "sel|fold=3|method=l1_logistic|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.2, "seed": 1669531132}
 {"auc": 0.868158265267399, "cell_id": "sel|fold=3|method=mutual_info|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.74, "seed": 997467775}
 {"auc": 0.8758708765708694, "cell_id": "sel|fold=3|method=mutual_info|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 14.67, "seed": 650648229}
 {"auc": 0.8585771786532014, "cell_id": "sel|fold=3|method=mutual_info|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.84, "seed": 1104758921}
@@ -669,6 +820,9 @@
 {"auc": 0.8626824159778964, "cell_id": "sel|fold=3|method=mutual_info|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.55, "seed": 644744196}
 {"auc": 0.8720872105499307, "cell_id": "sel|fold=3|method=mutual_info|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.49, "seed": 1638180706}
 {"auc": 0.8807485677038663, "cell_id": "sel|fold=3|method=mutual_info|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.78, "seed": 259419266}
+{"auc": 0.8541050223293123, "cell_id": "sel|fold=3|method=mutual_info|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.64, "seed": 579759202}
+{"auc": 0.8612681364235915, "cell_id": "sel|fold=3|method=mutual_info|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 14.03, "seed": 221791679}
+{"auc": 0.8857327806258922, "cell_id": "sel|fold=3|method=mutual_info|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 13.49, "seed": 1743915736}
 {"auc": 0.7480098422712933, "cell_id": "sel|fold=3|method=none|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.09, "seed": 425996364}
 {"auc": 0.7549287778548055, "cell_id": "sel|fold=3|method=none|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.04, "seed": 696842211}
 {"auc": 0.7451426335546507, "cell_id": "sel|fold=3|method=none|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.09, "seed": 1403124210}
@@ -682,6 +836,9 @@
 {"auc": 0.7465314343468599, "cell_id": "sel|fold=3|method=none|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.21, "seed": 1596737606}
 {"auc": 0.7435324141837002, "cell_id": "sel|fold=3|method=none|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.07, "seed": 509725535}
 {"auc": 0.7293875022278047, "cell_id": "sel|fold=3|method=none|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.09, "seed": 337814912}
+{"auc": 0.743169801286575, "cell_id": "sel|fold=3|method=none|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.12, "seed": 1922285264}
+{"auc": 0.7478288686239757, "cell_id": "sel|fold=3|method=none|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.06, "seed": 1141165949}
+{"auc": 0.7502557564914208, "cell_id": "sel|fold=3|method=none|pv=4|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.17, "seed": 141936509}
 {"auc": 0.7005494317364735, "cell_id": "sel|fold=3|method=relieff|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.89, "seed": 1018000814}
 {"auc": 0.6962510752878236, "cell_id": "sel|fold=3|method=relieff|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.31, "seed": 568319358}
 {"auc": 0.6681337425605561, "cell_id": "sel|fold=3|method=relieff|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.16, "seed": 630523017}
@@ -694,6 +851,9 @@
 {"auc": 0.6727701830214228, "cell_id": "sel|fold=3|method=relieff|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.76, "seed": 1110347592}
 {"auc": 0.6880928379785668, "cell_id": "sel|fold=3|method=relieff|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.33, "seed": 248930672}
 {"auc": 0.6958069968526838, "cell_id": "sel|fold=3|method=relieff|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.27, "seed": 1698510852}
+{"auc": 0.6786325763616612, "cell_id": "sel|fold=3|method=relieff|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.18, "seed": 1916334249}
+{"auc": 0.6872079632395699, "cell_id": "sel|fold=3|method=relieff|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.92, "seed": 1402760502}
+{"auc": 0.6808968014850039, "cell_id": "sel|fold=3|method=relieff|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.05, "seed": 982268431}
 {"auc": 0.8657642832063044, "cell_id": "sel|fold=3|method=rfe|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.69, "seed": 1338838274}
 {"auc": 0.8822498074471329, "cell_id": "sel|fold=3|method=rfe|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.82, "seed": 692376141}
 {"auc": 0.8666167966366419, "cell_id": "sel|fold=3|method=rfe|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.87, "seed": 572350796}
@@ -707,6 +867,9 @@
 {"auc": 0.8644616844527979, "cell_id": "sel|fold=3|method=rfe|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.92, "seed": 1050554650}
 {"auc": 0.882575812996235, "cell_id": "sel|fold=3|method=rfe|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.9, "seed": 1999836786}
 {"auc": 0.8894589865861607, "cell_id": "sel|fold=3|method=rfe|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.67, "seed": 1132066717}
+{"auc": 0.8640626267224442, "cell_id": "sel|fold=3|method=rfe|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.85, "seed": 1323228167}
+{"auc": 0.8739797841126274, "cell_id": "sel|fold=3|method=rfe|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.02, "seed": 1166135566}
+{"auc": 0.8846857546382487, "cell_id": "sel|fold=3|method=rfe|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.89, "seed": 2052506686}
 {"auc": 0.8702185084959763, "cell_id": "sel|fold=3|method=sfs|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 45.52, "seed": 837507454}
 {"auc": 0.8822300584351324, "cell_id": "sel|fold=3|method=sfs|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 49.25, "seed": 1581130498}
 {"auc": 0.8656637145848146, "cell_id": "sel|fold=3|method=sfs|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 49.77, "seed": 390546785}
@@ -720,6 +883,9 @@
 {"auc": 0.8643338916894072, "cell_id": "sel|fold=3|method=sfs|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 52.07, "seed": 461729250}
 {"auc": 0.8824051179259086, "cell_id": "sel|fold=3|method=sfs|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 49.6, "seed": 1157581152}
 {"auc": 0.8890013379532745, "cell_id": "sel|fold=3|method=sfs|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 46.93, "seed": 1808217248}
+{"auc": 0.8639991837439468, "cell_id": "sel|fold=3|method=sfs|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 54.95, "seed": 315698375}
+{"auc": 0.8738512476782685, "cell_id": "sel|fold=3|method=sfs|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 50.0, "seed": 1902545873}
+{"auc": 0.8832336748013707, "cell_id": "sel|fold=3|method=sfs|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 41.46, "seed": 1080079623}
 {"auc": 0.7015047170780366, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 3.08, "seed": 1986934071}
 {"auc": 0.6947007459256902, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.18, "seed": 847479590}
 {"auc": 0.6720212778422205, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.1, "seed": 1125323686}
@@ -732,6 +898,9 @@
 {"auc": 0.6682624622254904, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.13, "seed": 2117651744}
 {"auc": 0.6921827467155045, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.19, "seed": 385926995}
 {"auc": 0.6961260339074226, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.13, "seed": 1670145055}
+{"auc": 0.6808679848224521, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.24, "seed": 1677374846}
+{"auc": 0.6896867838044308, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.21, "seed": 1258397898}
+{"auc": 0.6815264597457639, "cell_id": "sel|fold=3|method=symmetric_uncertainty|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.13, "seed": 1281191280}
 {"auc": 0.6986325837900518, "cell_id": "sel|fold=3|method=tree_importance|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.86, "seed": 930890360}
 {"auc": 0.6935208753137485, "cell_id": "sel|fold=3|method=tree_importance|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.95, "seed": 799061056}
 {"auc": 0.6700485263564901, "cell_id": "sel|fold=3|method=tree_importance|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.13, "seed": 313217223}
@@ -744,6 +913,9 @@
 {"auc": 0.6715618470726437, "cell_id": "sel|fold=3|method=tree_importance|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.2, "seed": 199861307}
 {"auc": 0.6882909850152106, "cell_id": "sel|fold=3|method=tree_importance|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.07, "seed": 1531557431}
 {"auc": 0.6968074041752009, "cell_id": "sel|fold=3|method=tree_importance|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.28, "seed": 1699783998}
+{"auc": 0.6797411030502538, "cell_id": "sel|fold=3|method=tree_importance|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.36, "seed": 1326965920}
+{"auc": 0.6878099950970891, "cell_id": "sel|fold=3|method=tree_importance|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.16, "seed": 770737456}
+{"auc": 0.6806595158201971, "cell_id": "sel|fold=3|method=tree_importance|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.97, "seed": 1774829459}
 {"auc": 0.8420468369290353, "cell_id": "sel|fold=3|method=vlpso|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 78.43, "seed": 471839124}
 {"auc": 0.868670167361905, "cell_id": "sel|fold=3|method=vlpso|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 10, "seconds": 149.46, "seed": 1383318192}
 {"auc": 0.8126413528446911, "cell_id": "sel|fold=3|method=vlpso|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 147.11, "seed": 1840693887}
@@ -757,6 +929,8 @@
 {"auc": 0.8233795877602057, "cell_id": "sel|fold=3|method=vlpso|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 73.51, "seed": 1079499584}
 {"auc": 0.8541876987378317, "cell_id": "sel|fold=3|method=vlpso|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 119.84, "seed": 1959662399}
 {"auc": 0.8642763045044427, "cell_id": "sel|fold=3|method=vlpso|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 166.34, "seed": 2088649990}
+{"auc": 0.8259333966455016, "cell_id": "sel|fold=3|method=vlpso|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 93.14, "seed": 1131114266}
+{"auc": 0.8452310290990337, "cell_id": "sel|fold=3|method=vlpso|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 9, "seconds": 80.52, "seed": 439672993}
 {"auc": 0.7208858675078865, "cell_id": "sel|fold=3|method=vlpso_mi|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 96.55, "seed": 1714698803}
 {"auc": 0.7268194954396715, "cell_id": "sel|fold=3|method=vlpso_mi|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 101.95, "seed": 1837869663}
 {"auc": 0.7140172508478162, "cell_id": "sel|fold=3|method=vlpso_mi|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 82.71, "seed": 1343515105}
@@ -769,6 +943,9 @@
 {"auc": 0.7276203070160286, "cell_id": "sel|fold=3|method=vlpso_mi|pv=2|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 88.6, "seed": 339528842}
 {"auc": 0.7270891156705428, "cell_id": "sel|fold=3|method=vlpso_mi|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 162.28, "seed": 841092899}
 {"auc": 0.7210162505928073, "cell_id": "sel|fold=3|method=vlpso_mi|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 83.74, "seed": 522883198}
+{"auc": 0.7148087357901006, "cell_id": "sel|fold=3|method=vlpso_mi|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 166.8, "seed": 1658286678}
+{"auc": 0.7252461454621426, "cell_id": "sel|fold=3|method=vlpso_mi|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 107.87, "seed": 2055762835}
+{"auc": 0.7261302169559051, "cell_id": "sel|fold=3|method=vlpso_mi|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 116.44, "seed": 2057757633}
 {"auc": 0.7374707255520505, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 65.69, "seed": 1801794647}
 {"auc": 0.7393855752689553, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 156.78, "seed": 1926333983}
 {"auc": 0.7360646599777034, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 84.2, "seed": 302089981}
@@ -781,6 +958,9 @@
 {"auc": 0.7387836837036719, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=2|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 187.79, "seed": 133698608}
 {"auc": 0.732214641658709, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 164.39, "seed": 2080249750}
 {"auc": 0.7338354196733504, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 19, "seconds": 180.93, "seed": 204247067}
+{"auc": 0.7163681990801225, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 74.6, "seed": 1819474294}
+{"auc": 0.7377024426805054, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 26, "seconds": 167.82, "seed": 55382449}
+{"auc": 0.7351283727430515, "cell_id": "sel|fold=3|method=vlpso_nopenalty|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 146.0, "seed": 38464122}
 {"auc": 0.8405749812914735, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 60.42, "seed": 260110747}
 {"auc": 0.8450814354167078, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 88.13, "seed": 446272353}
 {"auc": 0.8485449753962078, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 9, "seconds": 132.51, "seed": 1888776498}
@@ -794,6 +974,9 @@
 {"auc": 0.8371307444485512, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 158.16, "seed": 546454533}
 {"auc": 0.8531467636214667, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 164.46, "seed": 221677509}
 {"auc": 0.8172842979175958, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 75.39, "seed": 1020451330}
+{"auc": 0.8201061263679483, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 82.64, "seed": 863285598}
+{"auc": 0.8317269643866592, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 65.97, "seed": 1818244670}
+{"auc": 0.8673154406527328, "cell_id": "sel|fold=3|method=vlpso_random_init|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 85.24, "seed": 1787815737}
 {"auc": 0.6513727804167646, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 73.48, "seed": 1975920318}
 {"auc": 0.6849137854844982, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 198.23, "seed": 1492702801}
 {"auc": 0.6512648364910307, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 167.72, "seed": 893387446}
@@ -806,6 +989,9 @@
 {"auc": 0.6425732735816064, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 81.44, "seed": 934896573}
 {"auc": 0.6364665573972328, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 222.98, "seed": 630846706}
 {"auc": 0.6746869373313507, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 105.43, "seed": 331806147}
+{"auc": 0.6263067465463859, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 74.53, "seed": 619211519}
+{"auc": 0.6411502457156539, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 62.95, "seed": 762872094}
+{"auc": 0.6727349194585418, "cell_id": "sel|fold=3|method=vlpso_shrink_only|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 76.54, "seed": 130187958}
 {"auc": 0.6953846274498449, "cell_id": "sel|fold=4|method=boruta|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 30.25, "seed": 1467656034}
 {"auc": 0.7020536008721847, "cell_id": "sel|fold=4|method=boruta|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 31.52, "seed": 1202666637}
 {"auc": 0.6992594801607233, "cell_id": "sel|fold=4|method=boruta|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 24.19, "seed": 243002349}
@@ -818,6 +1004,9 @@
 {"auc": 0.6966569228730943, "cell_id": "sel|fold=4|method=boruta|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 13, "seconds": 32.04, "seed": 300982729}
 {"auc": 0.6709201361658307, "cell_id": "sel|fold=4|method=boruta|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 31.34, "seed": 462366608}
 {"auc": 0.6893741880009289, "cell_id": "sel|fold=4|method=boruta|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 31.62, "seed": 1555680039}
+{"auc": 0.7147175000162151, "cell_id": "sel|fold=4|method=boruta|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 30.69, "seed": 303322694}
+{"auc": 0.6886363670168907, "cell_id": "sel|fold=4|method=boruta|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 30.91, "seed": 116464474}
+{"auc": 0.6844893012968678, "cell_id": "sel|fold=4|method=boruta|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 26.96, "seed": 639500040}
 {"auc": 0.881108897091783, "cell_id": "sel|fold=4|method=bpso|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 14, "seconds": 115.5, "seed": 737772613}
 {"auc": 0.8592693797318074, "cell_id": "sel|fold=4|method=bpso|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 94.58, "seed": 1656007225}
 {"auc": 0.8573263187344878, "cell_id": "sel|fold=4|method=bpso|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 23, "seconds": 99.23, "seed": 1897041145}
@@ -831,6 +1020,9 @@
 {"auc": 0.8685053632837342, "cell_id": "sel|fold=4|method=bpso|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 92.14, "seed": 1775245688}
 {"auc": 0.8548800552375718, "cell_id": "sel|fold=4|method=bpso|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 16, "seconds": 102.07, "seed": 1259488562}
 {"auc": 0.8689598087831971, "cell_id": "sel|fold=4|method=bpso|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 62.69, "seed": 43645521}
+{"auc": 0.8399400805768688, "cell_id": "sel|fold=4|method=bpso|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 18, "seconds": 110.35, "seed": 1670536054}
+{"auc": 0.8628924253600557, "cell_id": "sel|fold=4|method=bpso|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 19, "seconds": 86.6, "seed": 805101750}
+{"auc": 0.8535530142975027, "cell_id": "sel|fold=4|method=bpso|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 91.07, "seed": 1998425168}
 {"auc": 0.6946742870655914, "cell_id": "sel|fold=4|method=chi2|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.5, "seed": 1807159572}
 {"auc": 0.7036000506975014, "cell_id": "sel|fold=4|method=chi2|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.54, "seed": 1906212966}
 {"auc": 0.696896032144651, "cell_id": "sel|fold=4|method=chi2|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.47, "seed": 387138493}
@@ -843,6 +1035,9 @@
 {"auc": 0.6983538411398282, "cell_id": "sel|fold=4|method=chi2|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.5, "seed": 1708403561}
 {"auc": 0.665752530393386, "cell_id": "sel|fold=4|method=chi2|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.51, "seed": 525925965}
 {"auc": 0.6813464592133258, "cell_id": "sel|fold=4|method=chi2|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.6, "seed": 1548261346}
+{"auc": 0.7085567237655421, "cell_id": "sel|fold=4|method=chi2|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.52, "seed": 437720240}
+{"auc": 0.6835215843728417, "cell_id": "sel|fold=4|method=chi2|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.5, "seed": 1698966462}
+{"auc": 0.6801882780890953, "cell_id": "sel|fold=4|method=chi2|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 1.62, "seed": 1076451639}
 {"auc": 0.6954654644872036, "cell_id": "sel|fold=4|method=l1_logistic|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 6.5, "seed": 964806414}
 {"auc": 0.7052920211286531, "cell_id": "sel|fold=4|method=l1_logistic|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 7.5, "seed": 1040805655}
 {"auc": 0.6990375439477649, "cell_id": "sel|fold=4|method=l1_logistic|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 6.28, "seed": 1162423480}
@@ -855,6 +1050,9 @@
 {"auc": 0.7055957214516072, "cell_id": "sel|fold=4|method=l1_logistic|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.95, "seed": 513835066}
 {"auc": 0.6769604126079953, "cell_id": "sel|fold=4|method=l1_logistic|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.65, "seed": 1725795491}
 {"auc": 0.6864453426557626, "cell_id": "sel|fold=4|method=l1_logistic|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 15, "seconds": 6.62, "seed": 1803872500}
+{"auc": 0.716048437834437, "cell_id": "sel|fold=4|method=l1_logistic|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.24, "seed": 1140213282}
+{"auc": 0.6902180029837884, "cell_id": "sel|fold=4|method=l1_logistic|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.29, "seed": 496015736}
+{"auc": 0.6833094056244852, "cell_id": "sel|fold=4|method=l1_logistic|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.42, "seed": 842812296}
 {"auc": 0.736789134010803, "cell_id": "sel|fold=4|method=mutual_info|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.23, "seed": 864874250}
 {"auc": 0.7168958692932605, "cell_id": "sel|fold=4|method=mutual_info|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 24.79, "seed": 59743545}
 {"auc": 0.7349511651323359, "cell_id": "sel|fold=4|method=mutual_info|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.05, "seed": 1358842774}
@@ -868,6 +1066,8 @@
 {"auc": 0.7278760346775586, "cell_id": "sel|fold=4|method=mutual_info|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.4, "seed": 937589054}
 {"auc": 0.7308914695463377, "cell_id": "sel|fold=4|method=mutual_info|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 24.53, "seed": 587132620}
 {"auc": 0.7448204589758955, "cell_id": "sel|fold=4|method=mutual_info|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.74, "seed": 1125468586}
+{"auc": 0.7483251238570141, "cell_id": "sel|fold=4|method=mutual_info|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 26.26, "seed": 168409021}
+{"auc": 0.7191324197756914, "cell_id": "sel|fold=4|method=mutual_info|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 25.16, "seed": 1392193118}
 {"auc": 0.6988018020626715, "cell_id": "sel|fold=4|method=none|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.96, "seed": 1020820518}
 {"auc": 0.7108121223358873, "cell_id": "sel|fold=4|method=none|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.03, "seed": 1691996060}
 {"auc": 0.6962041687594174, "cell_id": "sel|fold=4|method=none|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.93, "seed": 687097057}
@@ -880,6 +1080,9 @@
 {"auc": 0.7038121544181646, "cell_id": "sel|fold=4|method=none|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.96, "seed": 172909549}
 {"auc": 0.6748510753833855, "cell_id": "sel|fold=4|method=none|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.98, "seed": 25560381}
 {"auc": 0.6863508840198582, "cell_id": "sel|fold=4|method=none|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.01, "seed": 1998148030}
+{"auc": 0.7181907807260486, "cell_id": "sel|fold=4|method=none|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.97, "seed": 463558567}
+{"auc": 0.6907574449687367, "cell_id": "sel|fold=4|method=none|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 0.96, "seed": 2099397482}
+{"auc": 0.6861926594560762, "cell_id": "sel|fold=4|method=none|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 61, "seconds": 1.02, "seed": 1904337097}
 {"auc": 0.8940679522947557, "cell_id": "sel|fold=4|method=relieff|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.67, "seed": 2122322603}
 {"auc": 0.8693859597905842, "cell_id": "sel|fold=4|method=relieff|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.95, "seed": 36554352}
 {"auc": 0.8704880655195837, "cell_id": "sel|fold=4|method=relieff|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.58, "seed": 424889169}
@@ -893,6 +1096,9 @@
 {"auc": 0.882303122730136, "cell_id": "sel|fold=4|method=relieff|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.96, "seed": 2028406714}
 {"auc": 0.868884906498278, "cell_id": "sel|fold=4|method=relieff|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.36, "seed": 750935099}
 {"auc": 0.8773330414298075, "cell_id": "sel|fold=4|method=relieff|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.6, "seed": 1347962338}
+{"auc": 0.8627562934640356, "cell_id": "sel|fold=4|method=relieff|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 5.03, "seed": 583518508}
+{"auc": 0.8765112398051803, "cell_id": "sel|fold=4|method=relieff|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 11.33, "seed": 49367679}
+{"auc": 0.8749708841276066, "cell_id": "sel|fold=4|method=relieff|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 4.61, "seed": 1345694625}
 {"auc": 0.7399171977074123, "cell_id": "sel|fold=4|method=rfe|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 7.0, "seed": 323196787}
 {"auc": 0.7220713118138553, "cell_id": "sel|fold=4|method=rfe|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.59, "seed": 47105841}
 {"auc": 0.7370617088607596, "cell_id": "sel|fold=4|method=rfe|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 6.93, "seed": 687718408}
@@ -906,6 +1112,8 @@
 {"auc": 0.7347975697912023, "cell_id": "sel|fold=4|method=rfe|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.26, "seed": 1696735687}
 {"auc": 0.7384057562733571, "cell_id": "sel|fold=4|method=rfe|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.83, "seed": 1806339738}
 {"auc": 0.7476218608325909, "cell_id": "sel|fold=4|method=rfe|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.9, "seed": 1792751275}
+{"auc": 0.7506629824445359, "cell_id": "sel|fold=4|method=rfe|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 7.95, "seed": 1318816098}
+{"auc": 0.7256585812565541, "cell_id": "sel|fold=4|method=rfe|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 6.92, "seed": 682847729}
 {"auc": 0.7415051646854761, "cell_id": "sel|fold=4|method=sfs|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 57.52, "seed": 1343177056}
 {"auc": 0.7230003088557858, "cell_id": "sel|fold=4|method=sfs|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 59.1, "seed": 941759274}
 {"auc": 0.7384421749136939, "cell_id": "sel|fold=4|method=sfs|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 57.97, "seed": 261902754}
@@ -918,6 +1126,9 @@
 {"auc": 0.7455574016589788, "cell_id": "sel|fold=4|method=sfs|pv=2|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.68, "seed": 363506292}
 {"auc": 0.7351050547624643, "cell_id": "sel|fold=4|method=sfs|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 57.08, "seed": 1297589902}
 {"auc": 0.7386106270394495, "cell_id": "sel|fold=4|method=sfs|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 56.28, "seed": 584156147}
+{"auc": 0.7475007275406282, "cell_id": "sel|fold=4|method=sfs|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 58.07, "seed": 858601268}
+{"auc": 0.7513432081672964, "cell_id": "sel|fold=4|method=sfs|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 57.94, "seed": 1538075505}
+{"auc": 0.7249724657761503, "cell_id": "sel|fold=4|method=sfs|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 57.04, "seed": 4234559}
 {"auc": 0.8963428673605106, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.77, "seed": 956417115}
 {"auc": 0.8709258286136901, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.87, "seed": 1296122400}
 {"auc": 0.8719532860020969, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.81, "seed": 1838260614}
@@ -931,6 +1142,9 @@
 {"auc": 0.8843269749512497, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.87, "seed": 1045080974}
 {"auc": 0.8725387041187787, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.89, "seed": 950969829}
 {"auc": 0.8798462108273216, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.88, "seed": 9355657}
+{"auc": 0.8651791595028526, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 3.02, "seed": 1259554852}
+{"auc": 0.8772227192115133, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.88, "seed": 578587951}
+{"auc": 0.8785408704914291, "cell_id": "sel|fold=4|method=symmetric_uncertainty|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 2.82, "seed": 1275489746}
 {"auc": 0.8939038399831478, "cell_id": "sel|fold=4|method=tree_importance|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.85, "seed": 445635983}
 {"auc": 0.869714485899457, "cell_id": "sel|fold=4|method=tree_importance|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.18, "seed": 125121160}
 {"auc": 0.8701888201946609, "cell_id": "sel|fold=4|method=tree_importance|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.25, "seed": 1338484516}
@@ -944,6 +1158,9 @@
 {"auc": 0.8811774208618023, "cell_id": "sel|fold=4|method=tree_importance|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.02, "seed": 1598139999}
 {"auc": 0.8686475107520802, "cell_id": "sel|fold=4|method=tree_importance|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.99, "seed": 1838325108}
 {"auc": 0.8773210453944972, "cell_id": "sel|fold=4|method=tree_importance|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.05, "seed": 1499081300}
+{"auc": 0.8632196247159424, "cell_id": "sel|fold=4|method=tree_importance|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 10.15, "seed": 1346050356}
+{"auc": 0.8745304759064823, "cell_id": "sel|fold=4|method=tree_importance|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.76, "seed": 1543735826}
+{"auc": 0.8765820599406562, "cell_id": "sel|fold=4|method=tree_importance|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 30, "seconds": 9.7, "seed": 1249141560}
 {"auc": 0.716798071756488, "cell_id": "sel|fold=4|method=vlpso|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 135.46, "seed": 560795929}
 {"auc": 0.6776140869109605, "cell_id": "sel|fold=4|method=vlpso|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 82.92, "seed": 664807386}
 {"auc": 0.7178457997698504, "cell_id": "sel|fold=4|method=vlpso|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 88.14, "seed": 1963252382}
@@ -956,6 +1173,9 @@
 {"auc": 0.7246567301863316, "cell_id": "sel|fold=4|method=vlpso|pv=2|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 113.29, "seed": 1361616112}
 {"auc": 0.7194020830584213, "cell_id": "sel|fold=4|method=vlpso|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 12, "seconds": 215.14, "seed": 490671827}
 {"auc": 0.7017664912369803, "cell_id": "sel|fold=4|method=vlpso|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 93.43, "seed": 1537428631}
+{"auc": 0.7191999157179003, "cell_id": "sel|fold=4|method=vlpso|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 183.9, "seed": 1114599790}
+{"auc": 0.7267258557575818, "cell_id": "sel|fold=4|method=vlpso|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 95.49, "seed": 766280961}
+{"auc": 0.706338798191932, "cell_id": "sel|fold=4|method=vlpso|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 116.85, "seed": 1785458677}
 {"auc": 0.6645024661329009, "cell_id": "sel|fold=4|method=vlpso_mi|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 98.11, "seed": 851343641}
 {"auc": 0.65272240888239, "cell_id": "sel|fold=4|method=vlpso_mi|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 111.22, "seed": 815781097}
 {"auc": 0.6511065419387242, "cell_id": "sel|fold=4|method=vlpso_mi|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 143.48, "seed": 1555320831}
@@ -968,6 +1188,9 @@
 {"auc": 0.6608022222334027, "cell_id": "sel|fold=4|method=vlpso_mi|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 65.39, "seed": 2139497169}
 {"auc": 0.647497027997936, "cell_id": "sel|fold=4|method=vlpso_mi|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 80.59, "seed": 1164708242}
 {"auc": 0.6577029291591612, "cell_id": "sel|fold=4|method=vlpso_mi|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 120.22, "seed": 1747899842}
+{"auc": 0.6260058244744676, "cell_id": "sel|fold=4|method=vlpso_mi|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 168.27, "seed": 2042051691}
+{"auc": 0.6458622866092948, "cell_id": "sel|fold=4|method=vlpso_mi|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 136.33, "seed": 1224263719}
+{"auc": 0.6161083300704641, "cell_id": "sel|fold=4|method=vlpso_mi|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 77.82, "seed": 1510637540}
 {"auc": 0.6794618425053207, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=1|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 115.63, "seed": 1102359151}
 {"auc": 0.6988037384713061, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=1|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 183.96, "seed": 1571161984}
 {"auc": 0.6606146408839779, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=1|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 77.64, "seed": 1389329190}
@@ -980,6 +1203,9 @@
 {"auc": 0.6931353492867689, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=2|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 131.89, "seed": 1662662775}
 {"auc": 0.6618629666367755, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=3|rep=0|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 21, "seconds": 201.02, "seed": 1520278979}
 {"auc": 0.6873136717107369, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=3|rep=1|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 17, "seconds": 135.39, "seed": 1450047005}
+{"auc": 0.7191588239490975, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=3|rep=2|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 22, "seconds": 100.8, "seed": 1466337550}
+{"auc": 0.6693493328124016, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=3|rep=3|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 20, "seconds": 119.48, "seed": 1627319801}
+{"auc": 0.6478406119879927, "cell_id": "sel|fold=4|method=vlpso_nopenalty|pv=3|rep=4|task=medium_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 66.57, "seed": 1955226352}
 {"auc": 0.7093798017552625, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=1|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 6, "seconds": 204.77, "seed": 224083202}
 {"auc": 0.7017095546488227, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=1|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 113.89, "seed": 493448279}
 {"auc": 0.7091142836593785, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=1|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 115.87, "seed": 837544848}
@@ -992,6 +1218,9 @@
 {"auc": 0.7177514565075014, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=2|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 138.82, "seed": 666934368}
 {"auc": 0.7076366836285726, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=3|rep=0|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 76.82, "seed": 1348167437}
 {"auc": 0.702779404575985, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=3|rep=1|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 186.34, "seed": 723424623}
+{"auc": 0.7220831103295359, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=3|rep=2|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 5, "seconds": 85.27, "seed": 1504584837}
+{"auc": 0.7254892102641419, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=3|rep=3|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 104.94, "seed": 11371589}
+{"auc": 0.6961166375835628, "cell_id": "sel|fold=4|method=vlpso_random_init|pv=3|rep=4|task=low_vs_medium", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 72.37, "seed": 1932167051}
 {"auc": 0.8712358269423428, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=1|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 122.37, "seed": 360793551}
 {"auc": 0.7957669177322357, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=1|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 80.83, "seed": 974487955}
 {"auc": 0.8323472659072324, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=1|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 4, "seconds": 109.49, "seed": 208969593}
@@ -1005,3 +1234,6 @@
 {"auc": 0.8566210709689475, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=3|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 7, "seconds": 161.81, "seed": 1216122860}
 {"auc": 0.8273732273015593, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=3|rep=1|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 61.31, "seed": 188211731}
 {"auc": 0.8036766348721748, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=3|rep=2|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 2, "seconds": 65.99, "seed": 1238707293}
+{"auc": 0.8222190858260555, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=3|rep=3|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 3, "seconds": 84.64, "seed": 2043702228}
+{"auc": 0.8616551835983071, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=3|rep=4|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 8, "seconds": 119.9, "seed": 1387458036}
+{"auc": 0.8524943085053462, "cell_id": "sel|fold=4|method=vlpso_shrink_only|pv=4|rep=0|task=low_vs_high", "fingerprint": "7a59d63033", "kind": "sel", "n_selected": 10, "seconds": 125.96, "seed": 51762527}
