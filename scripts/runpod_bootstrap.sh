@@ -26,8 +26,13 @@ cp "$WORK/.ssh_id" ~/.ssh/id_ed25519 && cp "$WORK/.ssh_id.pub" ~/.ssh/id_ed25519
 ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
 echo "DEPLOY_PUBKEY_BEGIN $(cat ~/.ssh/id_ed25519.pub) DEPLOY_PUBKEY_END"
 
-pip install -q --root-user-action=ignore numpy==2.0.2 pandas==2.2.2 scikit-learn==1.6.1 scipy pyyaml \
-    pyarrow pyreadstat matplotlib joblib tqdm shap==0.52.0 lime==0.2.0.1 2>&1 | tail -2
+export PIP_ROOT_USER_ACTION=ignore PIP_DISABLE_PIP_VERSION_CHECK=1
+python -m pip install -q -U pip setuptools wheel
+python -m pip install -q numpy==2.0.2 pandas==2.2.2 scikit-learn==1.6.1 scipy pyyaml pyarrow \
+    pyreadstat matplotlib joblib tqdm || { echo "FATAL: core install failed"; sleep infinity; }
+python -m pip install -q shap==0.52.0 lime==0.2.0.1 || { echo "FATAL: shap/lime install failed"; sleep infinity; }
+python -c "import numpy, pandas, sklearn, scipy, shap, lime, pyreadstat; print('== versions numpy', numpy.__version__, 'pandas', pandas.__version__, 'sklearn', sklearn.__version__, 'shap', shap.__version__)" \
+    || { echo "FATAL: import check failed"; sleep infinity; }
 
 mkdir -p "$VLPSO_PROJECT_ROOT/data/raw" "$VLPSO_PROJECT_ROOT/config" "$VLPSO_PROJECT_ROOT/results"
 cp -r "$CODE"/config/* "$VLPSO_PROJECT_ROOT/config/"
