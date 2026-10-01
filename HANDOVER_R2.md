@@ -50,6 +50,17 @@ is an unweighted fold mean while the estimand is size-weighted; Equations
 Equation (4) uses gbest while Algorithm 3 uses per-dimension exemplars; §3.8
 says the school file was merged — ingest reads the student file only; the
 "0.013–0.023 cost of grouping" sentence has no generating run (delete).
+Found while rewriting §4.5 against `selection/vlpso.py`: the 18 Aug text
+described the third objective term as +λ3·MeanSU(S, Y) (relevance), but the
+code subtracts μ·Red(S), the mean pairwise SU *within* S (redundancy); the
+text gave a sigmoid position map (Eq. 5) but the code clips x + v to [0, 1]
+with |v| ≤ 0.5 and thresholds at τ = 0.5; Algorithm 3's per-dimension
+tournament exemplars do not exist (the social target is gbest on the overlap,
+the best spanning pbest beyond it); and length adaptation is a ±1 step on
+per-particle pbest stagnation (β = 9, p_grow = 0.5), not a redraw over
+[L_min, F] on gbest stagnation. The revised §4.5 and Algorithm 1 describe the
+code; the 1,122-column count is the student file plus columns derived at
+ingestion, not a student–school merge.
 
 ## 3. The compute run (October 2026)
 
