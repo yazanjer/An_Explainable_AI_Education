@@ -45,7 +45,8 @@ def _work(row):
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["manifest", "run", "reconcile", "aggregate", "publish"])
+    ap.add_argument("command", choices=["manifest", "run", "reconcile", "aggregate", "publish", "merge"])
+    ap.add_argument("--sources", nargs="*", default=[])
     ap.add_argument("--dest", default=None)
     ap.add_argument("--kinds", default="eda,brr,ext,perm,shap,vlstab,sel")
     ap.add_argument("--workers", type=int, default=1)
@@ -81,6 +82,11 @@ def main() -> int:
         rec.to_csv(results / "cells_reconciliation.csv", index=False)
         print(rec.to_string(index=False))
         return 0
+    if args.command == "merge":
+        from vlpso_xai.experiments.merge import merge_published
+        rep = merge_published([Path(x) for x in args.sources], results)
+        print(rep.groupby(["kind", "status"]).size().to_string() if len(rep) else "nothing merged")
+        return 1 if (len(rep) and (rep.status == "CONFLICT").any()) else 0
     if args.command == "publish":
         from vlpso_xai.experiments.publish import publish
         n = publish(results, Path(args.dest))

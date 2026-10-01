@@ -69,7 +69,9 @@ def publish(results: Path, dest: Path, kinds: Iterable[str] = tuple(PUBLISHABLE)
             continue
         out = dest / "cells" / kind
         out.mkdir(parents=True, exist_ok=True)
-        pd.DataFrame(metas).to_json(out / "meta.jsonl", orient="records", lines=True, default_handler=str)
+        with open(out / "meta.jsonl", "w") as fh:            # full float precision (repr)
+            for m in metas:
+                fh.write(json.dumps(m, default=str) + "\n")
         n += 1
         for t, fs in frames.items():
             if fs:

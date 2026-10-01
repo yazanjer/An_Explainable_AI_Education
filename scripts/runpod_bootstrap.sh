@@ -45,9 +45,12 @@ python scripts/cells.py manifest
 
 ( while true; do sleep 1500; bash scripts/runpod_publish.sh >> "$WORK/publish.log" 2>&1 || true; done ) &
 
-python scripts/cells.py run --kinds eda,shap,ext,perm,vlstab,sel --workers "${WORKERS:-32}" --max-hours "${MAX_HOURS:-30}"
-python scripts/cells.py run --kinds brr --workers 8
-python scripts/cells.py run --kinds eda,shap,ext,perm,vlstab,sel,brr --workers "${WORKERS:-32}" --max-hours 2   # retry failures once
+KINDS="${KINDS:-eda,shap,ext,perm,vlstab,sel}"
+SHARD_ARG=""; [ -n "${SHARD:-}" ] && SHARD_ARG="--shard $SHARD"
+echo "== pod role: kinds=$KINDS shard=${SHARD:-all} workers=${WORKERS:-32} max_hours=${MAX_HOURS:-30}"
+python scripts/cells.py run --kinds "$KINDS" $SHARD_ARG --workers "${WORKERS:-32}" --max-hours "${MAX_HOURS:-30}"
+if [[ ",$KINDS," == *",shap,"* ]]; then python scripts/cells.py run --kinds brr --workers "${WORKERS:-8}"; fi
+python scripts/cells.py run --kinds "$KINDS" $SHARD_ARG --workers "${WORKERS:-32}" --max-hours 2   # retry failures once
 python scripts/cells.py reconcile
 bash scripts/runpod_publish.sh
 echo "ALL_DONE $(date -u +%FT%TZ)"
