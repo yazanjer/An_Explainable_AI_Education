@@ -125,7 +125,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:27:08,714 INFO    cells | done      35.5s  sel|fold=1|method=sfs|pv=6|rep=3|task=medium_vs_high  [2356 done, 0 failed, 3.77 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -168,7 +167,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:27:14,706 INFO    cells | done      78.0s  sel|fold=4|method=vlpso_shrink_only|pv=6|rep=3|task=low_vs_medium  [2357 done, 0 failed, 3.77 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -211,7 +209,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:27:15,474 INFO    cells | done       0.8s  sel|fold=3|method=none|pv=6|rep=3|task=medium_vs_high  [2358 done, 0 failed, 3.77 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -284,6 +281,7 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
+2026-10-01 21:52:50,447 INFO    cells | done      99.6s  sel|fold=3|method=vlpso_shrink_only|pv=7|rep=2|task=low_vs_high  [2648 done, 0 failed, 4.20 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -304,7 +302,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:27:16,666 INFO    cells | done       1.2s  sel|fold=3|method=chi2|pv=6|rep=3|task=medium_vs_high  [2359 done, 0 failed, 3.77 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -327,6 +324,7 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
+2026-10-01 21:52:51,245 INFO    cells | done      52.5s  sel|fold=0|method=sfs|pv=7|rep=2|task=low_vs_medium  [2649 done, 0 failed, 4.20 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -397,4 +395,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 21:27:23,566 INFO    cells | done       6.9s  sel|fold=3|method=l1_logistic|pv=6|rep=3|task=medium_vs_high  [2360 done, 0 failed, 3.78 h]
+/usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+2026-10-01 21:52:56,920 INFO    cells | done      10.6s  sel|fold=2|method=l1_logistic|pv=7|rep=2|task=low_vs_medium  [2650 done, 0 failed, 4.20 h]
