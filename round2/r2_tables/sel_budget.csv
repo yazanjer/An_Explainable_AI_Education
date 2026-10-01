@@ -3,12 +3,14 @@ low_vs_high,1.0,135,False
 low_vs_high,2.0,135,False
 low_vs_high,3.0,135,False
 low_vs_high,4.0,135,False
-low_vs_high,5.0,5,False
+low_vs_high,5.0,121,False
 low_vs_medium,1.0,135,False
 low_vs_medium,2.0,135,False
 low_vs_medium,3.0,135,False
 low_vs_medium,4.0,135,False
+low_vs_medium,5.0,108,False
 medium_vs_high,1.0,130,False
 medium_vs_high,2.0,130,False
 medium_vs_high,3.0,130,False
-medium_vs_high,4.0,127,False
+medium_vs_high,4.0,130,False
+medium_vs_high,5.0,104,False
