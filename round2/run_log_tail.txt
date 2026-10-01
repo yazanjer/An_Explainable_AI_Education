@@ -46,8 +46,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 19:15:02,630 INFO    vlpso_xai.evaluation.nested_cv | run fingerprint df6db7a4ce (sample 95dd82234b0c, n=15237, groups=1084)
-2026-10-01 19:15:02,631 INFO    cells | done     725.2s  perm|draw=43|null=unrestricted  [77 done, 0 failed, 1.62 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -102,6 +100,8 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
+2026-10-01 19:40:10,602 INFO    cells | done     716.6s  perm|draw=59|null=unrestricted  [93 done, 0 failed, 2.04 h]
+2026-10-01 19:40:10,606 INFO    vlpso_xai.evaluation.nested_cv | run fingerprint df6db7a4ce (sample 95dd82234b0c, n=15237, groups=1084)
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -226,8 +226,6 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 19:16:20,074 INFO    cells | done     697.6s  perm|draw=45|null=unrestricted  [78 done, 0 failed, 1.65 h]
-2026-10-01 19:16:20,078 INFO    vlpso_xai.evaluation.nested_cv | run fingerprint df6db7a4ce (sample 95dd82234b0c, n=15237, groups=1084)
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
@@ -312,8 +310,10 @@
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
-2026-10-01 19:17:17,248 INFO    cells | done     726.6s  perm|draw=46|null=unrestricted  [79 done, 0 failed, 1.66 h]
-2026-10-01 19:17:17,252 INFO    vlpso_xai.evaluation.nested_cv | run fingerprint df6db7a4ce (sample 95dd82234b0c, n=15237, groups=1084)
+/usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+2026-10-01 19:42:20,490 INFO    vlpso_xai.evaluation.nested_cv | run fingerprint df6db7a4ce (sample 95dd82234b0c, n=15237, groups=1084)
+2026-10-01 19:42:20,494 INFO    cells | done     708.9s  perm|draw=61|null=unrestricted  [94 done, 0 failed, 2.08 h]
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
   opt_res = optimize.minimize(
 /usr/local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
