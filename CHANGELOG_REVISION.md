@@ -14,6 +14,12 @@ Source: `reviewers report .docx` (editor decision: major revision; R1–R4). Eve
 entry below names the comment it answers. Numbers are filled in only from
 completed cells (`scripts/cells.py reconcile`); until then the status is `BUILT`.
 
+R2.14 (2 Oct 2026) Round-2 run completed: all 12,507 cells. `scripts/cells.py
+      run --shard` now shards the full manifest instead of the machine-local
+      pending list (the old rule made the retry pass duplicate other pods'
+      cells); `experiments.merge` compares result tables, not only meta, when
+      deciding whether a duplicate is identical.
+
 ### R2.1 Wrapper fitness is school-grouped (audit M7; editor "use grouped resampling consistently"; R2.2) `DONE`
 **Old:** `selection/bpso.py:96` and `selection/vlpso.py:291` scored candidate subsets with an ungrouped `StratifiedKFold` inside the outer training fold.
 **New:** `selection.base.fitness_splits` builds the internal folds once per fit from `StratifiedGroupKFold` on `CNTSCHID` and asserts that no school straddles a fold. Selectors take `groups` in `fit`; with `require_groups=True` (every round-2 run) a missing `groups` raises. The splitter used is recorded on each result row (`fitness_splitter`). Tests: `tests/test_round2.py::test_swarm_fit_uses_grouped_folds`, `::test_require_groups_raises_without_groups`.

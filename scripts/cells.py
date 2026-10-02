@@ -102,10 +102,15 @@ def main() -> int:
         man = man[man.cell_id == args.cell]
         if man.empty:
             raise SystemExit(f"cell {args.cell!r} is not in the manifest")
-    pending = [r for r in man.to_dict("records") if not is_done(results, r)]
+    rows = man.to_dict("records")
     if args.shard:
+        # Shard over the FULL manifest, not over this machine's pending list:
+        # each pod only sees its own completed cells, so sharding the pending
+        # list made a retry pass pick up other pods' cells (round-2 run: 1,157
+        # cells computed twice, all identical).
         i, n = map(int, args.shard.split("/"))
-        pending = pending[i::n]
+        rows = rows[i::n]
+    pending = [r for r in rows if not is_done(results, r)]
     if args.limit:
         pending = pending[: args.limit]
     logger.info("%d cells in manifest for %s; %d pending", len(man), kinds, len(pending))

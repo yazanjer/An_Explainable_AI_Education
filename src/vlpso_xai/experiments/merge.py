@@ -39,6 +39,13 @@ def merge_published(sources: Iterable[Path], results: Path) -> pd.DataFrame:
                     old = json.loads((target / "meta.json").read_text())
                     same = all(abs(float(old.get(k, 0)) - float(m.get(k, 0))) < 1e-12
                                for k in ("auc", "auc_fold_weighted", "auc_weighted") if k in m)
+                    # sel/vlstab keep their AUC and subset in result.parquet, not meta
+                    rp = target / "result.parquet"
+                    if same and "result" in tabs and rp.exists():
+                        a, b = pd.read_parquet(rp), tabs["result"]
+                        same = (abs(float(a.auc.iloc[0]) - float(b.auc.iloc[0])) < 1e-12
+                                and a.get("selected", pd.Series([None])).iloc[0]
+                                == b.get("selected", pd.Series([None])).iloc[0])
                     rows.append({"source": str(src), "kind": kind, "cell_id": cid, "status": "duplicate" if same else "CONFLICT"})
                     continue
                 write_atomic(target, tabs, {k: v for k, v in m.items()})

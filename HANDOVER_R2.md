@@ -22,21 +22,21 @@ touching numbers.
 | Demand | Answered by | Status |
 |---|---|---|
 | Ed: moderate claims; VLPSO did not beat the full set, BPSO or any filter, and was least stable | manuscript reframing (protocol = primary contribution; VLPSO = refinement trading features for AUC); claims follow the round-2 `sel` results whatever they show | manuscript |
-| Ed / R2.3: comparison too small (3 folds, 1 repeat, 1 PV, 1 task, 1 model; 5 methods missing) | `sel` cells: 3 tasks × 10 PVs × 5 repeats × 5 folds × 16 arms; RFE, SFS, L1, tree importance, Boruta implemented | running |
+| Ed / R2.3: comparison too small (3 folds, 1 repeat, 1 PV, 1 task, 1 model; 5 methods missing) | `sel` cells: 3 tasks × 10 PVs × 5 repeats × 5 folds × 16 arms; RFE, SFS, L1, tree importance, Boruta implemented | done |
 | Ed / R2.2: grouped resampling in the swarm fitness | `selection.base.fitness_splits` (StratifiedGroupKFold on CNTSCHID, asserted); `require_groups=True` | done |
 | Ed: fair comparison (BPSO cap vs uncapped VLPSO; fixed k for filters) | shared swarm settings block, test asserts equality; `TunedTopKSelector` (k on inner folds) | done |
-| Ed: instability — repetitions, sensitivity, convergence | `vlstab` cells (10 seeds × 5 folds for VLPSO and BPSO; 13 one-at-a-time variants); convergence traces in every swarm cell | running |
+| Ed: instability — repetitions, sensitivity, convergence | `vlstab` cells (10 seeds × 5 folds for VLPSO and BPSO; 13 one-at-a-time variants); convergence traces in every swarm cell | done |
 | Ed / R4.6: reproducibility, permanent link | repo + Zenodo release (to mint after results land); allowlist, denylist, seeds, grids, item mappings already in `config/` | pending DOI |
 | Ed / R1 / R3.3 / R2.5: language, structure, notation, equations, cross-references, reference order | manuscript rewrite | manuscript |
 | R1: abstract length (480 words) | ≤ 200 words | manuscript |
-| R1.1: no EDA; target unexplained | `eda` cell (item descriptives, PV distribution, task sizes, categories) + new section | running |
+| R1.1: no EDA; target unexplained | `eda` cell (item descriptives, PV distribution, task sizes, categories) + new section | done |
 | R1.2: undefined terms (allowlist, Rubin's rules, Fay BRR, 1 + CV², design matrix, §2.3 sentence) | definitions at first use + short glossary | manuscript |
-| R2.1: why VLPSO underperforms | `sel` + `vlstab` (budget, penalty, convergence, seed variance) | running |
-| R2.4: explanations from one fold / one PV | `shap` cells: 10 PVs × 5 folds × 3 tasks, Kendall's W | running |
+| R2.1: why VLPSO underperforms | `sel` + `vlstab` (budget, penalty, convergence, seed variance) | done |
+| R2.4: explanations from one fold / one PV | `shap` cells: 10 PVs × 5 folds × 3 tasks, Kendall's W | done |
 | R3.2 / R3.5: third "innovation" is not one; distinguish protocol from VLPSO; retitle | manuscript | manuscript |
 | R3.4: Table 5 "Null" header | relabel | manuscript |
 | R4.1: EDM undefined in abstract | manuscript | manuscript |
-| R4.2: BRR vs bootstrap; estimand | `brr` cells (Fay-BRR on weighted fold-weighted AUC, Rubin); text states both estimands | running |
+| R4.2: BRR vs bootstrap; estimand | `brr` cells (Fay-BRR on weighted fold-weighted AUC, Rubin); text states both estimands | done |
 | R4.3: arithmetic (0.8760 − 0.5029) | full-precision recomputation from cells; arithmetic check script | manuscript |
 | R4.4: Figure 1 puts preprocessing before the split | redraw | manuscript |
 | R4.5: refs 30 and 9 irrelevant; incomplete refs | remove 9, 16, 26, 30 (all off-topic; 16/26/30 self-citations); complete 31–34, 50 | manuscript |
@@ -110,15 +110,28 @@ permutation nulls are not interchangeable; no variable interpreted without a
 codebook citation; STRATUM is a design variable; every response-letter claim
 must be true of a completed run.
 
-## 6. Scope table — round 2 (fill from `cells_reconciliation.csv`)
+## 6. Scope table — round 2 (from `cells_reconciliation.csv`, 2 Oct 2026)
 
 | Analysis | Configured | Completed | Evidence |
 |---|---|---|---|
-| Selector comparison | 12,000 cells | _pending_ | `r2_tables/sel_*.csv` |
-| VLPSO stability/sensitivity | 165 cells | _pending_ | `r2_tables/vlstab_*.csv` |
-| Permutation, unrestricted / within-school | 100 / 30 (+ observed) | _pending_ | `r2_tables/perm_summary.csv` |
-| SHAP across PVs × folds; LIME at PV1 | 150 cells | _pending_ | `r2_tables/shap_*.csv`, `lime_*.csv` |
-| External validation ESP→PRT | 30 cells | _pending_ | `r2_tables/ext_*.csv` |
-| BRR standard errors | 30 cells | _pending_ | `r2_tables/brr_*.csv` |
-| EDA | 1 cell | _pending_ | `cells/eda/*` |
-| Independent seeds for the headline (10) | 10 | **not run** (repeat-to-repeat spread 0.0006–0.0012 already reported; not requested by the reviewers) | — |
+| Selector comparison | 12,000 cells | 12,000 | `r2_tables/sel_*.csv` |
+| VLPSO stability/sensitivity | 165 cells | 165 | `r2_tables/vlstab_*.csv` |
+| Permutation, unrestricted / within-school | 100 / 30 (+ observed) | 100 / 30 / 1 | `r2_tables/perm_summary.csv` |
+| SHAP across PVs × folds; LIME at PV1 | 150 cells | 150 | `r2_tables/shap_*.csv`, `lime_*.csv` |
+| External validation ESP→PRT | 30 cells | 30 | `r2_tables/ext_*.csv` |
+| BRR standard errors | 30 cells | 30 | `r2_tables/brr_*.csv` (source: round-2 shap cells, repeat 0) |
+| EDA | 1 cell | 1 | `cells/eda/*` |
+| Independent seeds for the headline (10) | 10 | **not run** (not requested by the reviewers) | — |
+
+Run facts: pods ran 17:00 UTC 1 Oct – 00:52 UTC 2 Oct; all four terminated and all
+four deploy keys deleted (verified: repository has no deploy keys). Approximate
+compute 30 pod-hours × $0.24 ≈ $7.5. 1,157 cells were computed twice on different
+pods (retry pass sharded the local pending list — fixed in `scripts/cells.py`);
+every pair was identical in AUC and selected subset. The SHAP end-to-end check
+against results-3: same model family in 150/150 folds, identical outer AUC in
+131/150, max |ΔAUC| 4.1e-4 (NumPy 2.5.3 vs Colab). SHAP additivity held to 1e-4
+in 141/150 models (max 1.51 in one GB model); top-10 rankings unchanged when the 9
+are excluded.
+
+Manuscript (R2) built from these tables by `make_numbers.py`/`r2_numbers.py` in the
+manuscript workspace; delivered to the project folder (REVISION_R2_2026-10-02).
